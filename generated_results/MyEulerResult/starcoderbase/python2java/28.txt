@@ -1,0 +1,27 @@
+class Global {
+    public static int distinctPowers(int n) {
+        int result = 0;
+        Set<String> xs = new HashSet<>();
+        for (int i = 2; i <= n; i++) {
+            List<Integer> primes = Arrays.asList(2, 3, 5, 7);
+            List<Integer> powers = Arrays.asList(0, 0, 0, 0);
+            int num = i;
+            for (int j = 0; j < primes.size(); j++) {
+                while (num % primes.get(j) == 0) {
+                    num /= primes.get(j);
+                    powers.set(j, powers.get(j) + 1);
+                }
+            }
+            if (num!= 1) {
+                result += n - 1;
+                continue;
+            }
+            for (int j = 2; j <= n; j++) {
+                String pstr = String.format("%d-%d-%d-%d", powers.get(0) * j, powers.get(1) * j, powers.get(2) * j, powers.get(3) * j);
+                xs.add(pstr);
+            }
+        }
+        result += xs.size();
+        return result;
+    }
+}

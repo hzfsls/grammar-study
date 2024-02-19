@@ -1,0 +1,25 @@
+def is_prime(n: int) -> bool:
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+def pandigital_prime(n: int) -> int:
+    for i in range(n - 1, 0, -1):
+        if is_prime(i):
+            si = str(i)
+            length = len(si)
+            flag = True
+            for j in range(1, length + 1):
+                if si.find(str(j)) == -1:
+                    flag = False
+                    break
+            if flag:
+                return i
+    return -1

@@ -1,0 +1,17 @@
+int pentagonNumbers(int n) {
+    map<int, bool> pentagon;
+    for (int i = 1; i < n; i++) {
+        pentagon[i * (3 * i - 1) / 2] = true;
+    }
+    int result = -1;
+    for (const auto& [j, _] : pentagon) {
+        for (const auto& [k, _] : pentagon) {
+            if (pentagon[j + k] && pentagon[k - j]) {
+                if (result == -1 || k - j < result) {
+                    result = k - j;
+                }
+            }
+        }
+    }
+    return result;
+}

@@ -1,0 +1,9 @@
+def multiples_of_3_and_5(n)
+    result = 0
+    (0...n).each do |i|
+        if i % 3 == 0 or i % 5 == 0
+            result += i
+        end
+    end
+    result
+end

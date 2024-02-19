@@ -1,0 +1,12 @@
+def nth_prime(n: int) -> int:
+    primes = [2]
+    i = 3
+    while len(primes) < n:
+        for p in primes:
+            if i % p == 0:
+                break
+            if p * p > i:
+                primes.append(i)
+                break
+        i += 2
+    return primes[len(primes) - 1]

@@ -1,0 +1,37 @@
+def is_abundant(n)
+    if n < 12
+        return false
+    end
+    sum_divisors = 1
+    (2...Math.sqrt(n)).each do |i|
+        if n % i == 0
+            sum_divisors += i
+            if i!= n / i
+                sum_divisors += n / i
+            end
+        end
+    end
+    sum_divisors > n
+end
+
+def non_abundant_sums(n)
+    abundants = []
+    (12...n).each do |i|
+        if is_abundant(i)
+            abundants.push(i)
+        end
+    end
+    abundant_sums = {}
+    abundants.each do |i|
+        abundants.each do |j|
+            abundant_sums[i + j] = true
+        end
+    end
+    result = 0
+    (0...n).each do |i|
+        if!abundant_sums[i]
+            result += i
+        end
+    end
+    result
+end

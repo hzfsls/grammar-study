@@ -1,0 +1,24 @@
+const nDigitFibonacciNumber = (n) => {
+    let a = [1];
+    let b = [1];
+    let i = 2;
+    while (b.length < n) {
+        let carry = 0;
+        let c = b.slice();
+        for (let j = 0; j < b.length; j++) {
+            if (j < a.length) {
+                b[j] = a[j] + b[j] + carry;
+            } else {
+                b[j] = b[j] + carry;
+            }
+            carry = b[j] // 10;
+            b[j] = b[j] % 10;
+        }
+        if (carry) {
+            b.push(carry);
+        }
+        a = c;
+        i = i + 1;
+    }
+    return i;
+}

@@ -1,0 +1,36 @@
+def isPrime(n: Int): Boolean = {
+  if (n < 2) {
+    false
+  } else if (n == 2) {
+    true
+  } else if (n % 2 == 0) {
+    false
+  } else {
+    var i = 3
+    while (i <= math.sqrt(n).toInt) {
+      if (n % i == 0) {
+        return false
+      }
+      i += 2
+    }
+    true
+  }
+}
+
+def goldbachsOtherConjecture(n: Int): Int = {
+  var result = -1
+  for (i <- 9999 to n by -2) {
+    val upper = math.sqrt(i / 2).toInt
+    var flag = false
+    for (j <- 0 to upper) {
+      if (isPrime(i - 2 * j * j)) {
+        flag = true
+        break
+      }
+    }
+    if (!flag) {
+      result = i
+    }
+  }
+  result
+}

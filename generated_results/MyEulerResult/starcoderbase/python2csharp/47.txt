@@ -1,0 +1,31 @@
+class Global {
+    public static string SelfPowers(int n) {
+        int[] digits = new int[10];
+        for (int i = 1; i <= n; i++) {
+            int[] temp_digits = new int[10];
+            temp_digits[0] = 1;
+            for (int j = 0; j < i; j++) {
+                int carry = 0;
+                for (int k = 0; k < 10; k++) {
+                    temp_digits[k] = temp_digits[k] * i + carry;
+                    carry = temp_digits[k] / 10;
+                    temp_digits[k] %= 10;
+                }
+            }
+            for (int j = 0; j < 10; j++) {
+                digits[j] += temp_digits[j];
+                if (digits[j] >= 10) {
+                    digits[j] -= 10;
+                    if (j < 9) {
+                        digits[j + 1] += 1;
+                    }
+                }
+            }
+        }
+        string result = "";
+        for (int i = 9; i >= 0; i--) {
+            result += digits[i].ToString();
+        }
+        return result;
+    }
+}

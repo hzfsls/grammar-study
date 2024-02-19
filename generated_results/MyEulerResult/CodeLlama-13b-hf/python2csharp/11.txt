@@ -1,0 +1,20 @@
+class Global {
+    public static int HighlyDivisibleTriangularNumber(int n) {
+        for (int i = 1; i < 100000000; i++) {
+            int result = i * (i + 1) / 2;
+            int count = 0;
+            for (int j = 1; j <= (int)Math.Sqrt(result) + 1; j++) {
+                if (result % j == 0) {
+                    count += 2;
+                }
+                if (j * j == result) {
+                    count -= 1;
+                }
+            }
+            if (count > n) {
+                return result;
+            }
+        }
+        return -1;
+    }
+}

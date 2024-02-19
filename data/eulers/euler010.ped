@@ -1,0 +1,14 @@
+problem Euler010 {
+    code {
+        func summation_of_primes(n: int) -> int
+    }
+    tests {
+        template nse {
+            (10) -> 17
+            (100) -> 1060
+            (1000) -> 76127
+            (10000) -> 5736396
+            (100000) -> 454396537
+        }
+    }
+}

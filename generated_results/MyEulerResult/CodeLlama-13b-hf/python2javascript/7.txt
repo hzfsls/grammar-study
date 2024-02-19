@@ -1,0 +1,11 @@
+const largestProductInASeries = (s, k) => {
+    let result = 0;
+    for (let i = 0; i < s.length - k; i++) {
+        let product = 1;
+        for (let j = 0; j < k; j++) {
+            product *= parseInt(s[i + j]);
+        }
+        result = Math.max(result, product);
+    }
+    return result;
+}

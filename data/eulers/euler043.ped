@@ -1,0 +1,14 @@
+problem Euler043 {
+    code {
+        func sub_string_divisibility(n: int) -> int
+    }
+    tests {
+        template nse {
+            (3) -> 22212
+            (4) -> 711104
+            (5) -> 12444480
+            (6) -> 189838560
+            (7) -> 1099210170
+        }
+    }
+}

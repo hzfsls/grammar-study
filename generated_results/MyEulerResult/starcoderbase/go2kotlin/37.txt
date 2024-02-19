@@ -1,0 +1,20 @@
+fun pandigitalMultiples(n: Int): Int {
+    var result = -1
+    for (i in 2..n) {
+        var cprod = ""
+        for (j in 1..9) {
+            cprod += (i * j).toString()
+            if (cprod.length == 9) {
+                val chars = cprod.split("")
+                chars.sort()
+                if (chars.joinToString("") == "123456789") {
+                    result = max(result, cprod.toInt())
+                    break
+                }
+            } else if (cprod.length > 9) {
+                break
+            }
+        }
+    }
+    return result
+}

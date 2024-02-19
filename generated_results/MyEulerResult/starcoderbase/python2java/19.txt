@@ -1,0 +1,23 @@
+class Global {
+    public static int factorialDigitSum(int n) {
+        List<Integer> digits = new ArrayList<>();
+        digits.add(1);
+        for (int i = 1; i <= n; i++) {
+            int carry = 0;
+            for (int j = 0; j < digits.size(); j++) {
+                digits.set(j, digits.get(j) * i + carry);
+                carry = digits.get(j) / 10;
+                digits.set(j, digits.get(j) % 10);
+            }
+            while (carry > 0) {
+                digits.add(carry % 10);
+                carry /= 10;
+            }
+        }
+        int result = 0;
+        for (int digit : digits) {
+            result += digit;
+        }
+        return result;
+    }
+}

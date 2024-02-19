@@ -1,0 +1,16 @@
+def d(n: int) -> int:
+    result = 1
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            result += i
+            if i!= n // i:
+                result += n // i
+    return result
+
+def amicable_numbers(n: int) -> int:
+    result = 0
+    for a in range(2, n):
+        b = d(a)
+        if a!= b and a == d(b):
+            result += a
+    return result

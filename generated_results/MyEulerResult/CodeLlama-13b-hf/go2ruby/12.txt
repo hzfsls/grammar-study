@@ -1,0 +1,30 @@
+def large_sum(numbers)
+    digits = Array.new(60, 0)
+    (0...50).each do |i|
+        tmp = 0
+        numbers.each do |num|
+            tmp += num[49 - i].ord - '0'.ord
+        end
+        (i...60).each do |j|
+            digits[j] += tmp % 10
+            if digits[j] >= 10
+                digits[j + 1] += digits[j] / 10
+                digits[j] %= 10
+            end
+            tmp /= 10
+            if tmp == 0
+                break
+            end
+        end
+    end
+    (59...0).each do |i|
+        if digits[i] != 0
+            result = ""
+            (i...i - 10).each do |j|
+                result += digits[j].to_s
+            end
+            return result
+        end
+    end
+    ""
+end

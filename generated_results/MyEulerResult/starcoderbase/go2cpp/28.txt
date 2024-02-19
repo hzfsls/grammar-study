@@ -1,0 +1,25 @@
+int distinctPowers(int n) {
+    int result = 0;
+    map<string, bool> xs;
+    for (int i = 2; i <= n; i++) {
+        vector<int> primes = {2, 3, 5, 7};
+        vector<int> powers = {0, 0, 0, 0};
+        int num = i;
+        for (int j = 0; j < primes.size(); j++) {
+            while (num % primes[j] == 0) {
+                num /= primes[j];
+                powers[j] += 1;
+            }
+        }
+        if (num!= 1) {
+            result += n - 1;
+            continue;
+        }
+        for (int j = 2; j <= n; j++) {
+            string pstr = to_string(powers[0] * j) + "-" + to_string(powers[1] * j) + "-" + to_string(powers[2] * j) + "-" + to_string(powers[3] * j);
+            xs[pstr] = true;
+        }
+    }
+    result += xs.size();
+    return result;
+}

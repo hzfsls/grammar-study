@@ -1,0 +1,14 @@
+problem Euler047 {
+    code {
+        func distinct_primes_factors(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1) -> 134043
+            (134044) -> 238203
+            (238204) -> 253894
+            (253895) -> 259368
+            (259369) -> 315720
+        }
+    }
+}

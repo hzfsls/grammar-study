@@ -1,0 +1,1 @@
+python code/check_generated.py --input generated_results/generated_euler_result.json --output result/generated_euler_result.json

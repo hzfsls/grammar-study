@@ -1,0 +1,11 @@
+def special_pythagorean_triplet(n)
+    (1...n).each do |a|
+        (a...n).each do |b|
+            c = n - a - b
+            if a * a + b * b == c * c
+                return a * b * c
+            end
+        end
+    end
+    -1
+end

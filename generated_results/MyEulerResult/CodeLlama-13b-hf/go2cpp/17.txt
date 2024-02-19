@@ -1,0 +1,11 @@
+int maximumPathSumI(const vector<vector<int>>& triangle) {
+    vector<int> curr(triangle[triangle.size() - 1]);
+    for (int i = triangle.size() - 2; i >= 0; i--) {
+        vector<int> next(triangle[i]);
+        for (int j = 0; j < next.size(); j++) {
+            next[j] += max(curr[j], curr[j + 1]);
+        }
+        curr = next;
+    }
+    return curr[0];
+}

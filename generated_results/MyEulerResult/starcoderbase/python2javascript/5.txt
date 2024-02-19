@@ -1,0 +1,9 @@
+const sumSquareDifference = (n) => {
+    let sqrSum = 0;
+    let numSum = 0;
+    for (let i = 1; i <= n; i++) {
+        sqrSum += i * i;
+        numSum += i;
+    }
+    return numSum * numSum - sqrSum;
+}

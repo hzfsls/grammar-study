@@ -1,0 +1,14 @@
+const namesScores = (names, queries) => {
+    let sNames = names.sort();
+    let result = 0;
+    for (let i = 0; i < sNames.length; i++) {
+        let x = 0;
+        for (let c of sNames[i]) {
+            x += c.charCodeAt(0) - 64;
+        }
+        if (sNames[i] in queries) {
+            result += x * (i + 1);
+        }
+    }
+    return result;
+}

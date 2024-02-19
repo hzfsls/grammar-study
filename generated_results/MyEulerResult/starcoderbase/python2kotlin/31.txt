@@ -1,0 +1,18 @@
+fun pandigitalProducts(n: Int): Int {
+    val products = mutableSetOf<Int>()
+    val s = (1..n).joinToString("")
+    for (a in 1..99) {
+        for (b in 1..9999) {
+            val c = a * b
+            val chars = listOf(a, b, c).joinToString("").toCharArray().sortedArray()
+            if (chars.joinToString("") == s) {
+                products.add(c)
+            }
+        }
+    }
+    var result = 0
+    for (product in products) {
+        result += product
+    }
+    return result
+}

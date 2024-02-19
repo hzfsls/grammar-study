@@ -1,0 +1,34 @@
+fun genPermutations(s: String): List<String> {
+    if (s.length <= 1) {
+        return listOf(s)
+    }
+    val result = mutableListOf<String>()
+    for (perm in genPermutations(s.substring(1))) {
+        for (i in 0 until s.length) {
+            result.add(perm.substring(0, i) + s[0] + perm.substring(i))
+        }
+    }
+    return result
+}
+
+fun subStringDivisibility(n: Int): Int {
+    var result = 0
+    val primes = listOf(2, 3, 5, 7, 11, 13, 17)
+    var s = ""
+    for (i in 0..n) {
+        s += i.toString()
+    }
+    for (i in genPermutations(s)) {
+        var flag = true
+        for (j in 1 until n - 1) {
+            if (n, _) in i.substring(j, j + 3).toInt() % primes[j - 1]!= 0) {
+                flag = false
+                break
+            }
+        }
+        if (flag) {
+            result += i.toInt()
+        }
+    }
+    return result
+}

@@ -1,0 +1,18 @@
+def namesScores(names: collection.Seq[String], queries: collection.Seq[String]): Int = {
+  val sNames = names.clone()
+  sNames.sortWith(_ < _)
+  var result = 0
+  for (i <- 0 until sNames.length) {
+    var x = 0
+    for (c <- sNames(i)) {
+      x += c - 64
+    }
+    for (query <- queries) {
+      if (query == sNames(i)) {
+        result += x * (i + 1)
+        break
+      }
+    }
+  }
+  result
+}

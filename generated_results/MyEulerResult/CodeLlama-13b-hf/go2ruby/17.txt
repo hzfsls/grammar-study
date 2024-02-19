@@ -1,0 +1,11 @@
+def maximum_path_sum_i(triangle)
+    curr = triangle.last.dup
+    (triangle.length - 2).downto(0).each do |i|
+        next = triangle[i].dup
+        (0...next.length).each do |j|
+            next[j] += [curr[j], curr[j + 1]].max
+        end
+        curr = next
+    end
+    curr[0]
+end

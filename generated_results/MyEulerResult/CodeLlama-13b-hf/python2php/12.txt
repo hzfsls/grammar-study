@@ -1,0 +1,29 @@
+function largeSum($numbers) {
+    $digits = [0] * 60;
+    for ($i = 1; $i < 50; $i++) {
+        $tmp = 0;
+        foreach ($numbers as $num) {
+            $tmp += intval(substr($num, 49 - $i));
+        }
+        for ($j = $i; $j < 60; $j++) {
+            $digits[$j] += $tmp % 10;
+            if ($digits[$j] >= 10) {
+                $digits[$j + 1] += $digits[$j] // 10;
+                $digits[$j] %= 10;
+            }
+            $tmp //= 10;
+            if ($tmp == 0) {
+                break;
+            }
+        }
+    }
+    for ($i = 59; $i >= 0; $i--) {
+        if ($digits[$i] != 0) {
+            $result = '';
+            for ($j = $i; $j > $i - 10; $j--) {
+                $result .= strval($digits[$j]);
+            }
+            return $result;
+        }
+    }
+}

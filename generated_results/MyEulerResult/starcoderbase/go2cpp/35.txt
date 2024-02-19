@@ -1,0 +1,20 @@
+bool isPalindrome(const string& s) {
+    for (int i = 0; i < s.size() / 2; i++) {
+        if (s[i]!= s[s.size() - i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int doubleBasePalindromes(int n) {
+    int result = 0;
+    for (int i = 1; i < n; i++) {
+        string strI = to_string(i);
+        string binI = bitset<32>(i).to_string();
+        if (isPalindrome(strI) && isPalindrome(binI)) {
+            result += i;
+        }
+    }
+    return result;
+}

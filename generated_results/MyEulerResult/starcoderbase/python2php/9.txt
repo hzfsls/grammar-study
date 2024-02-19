@@ -1,0 +1,21 @@
+function summationOfPrimes($n) {
+    $primes = [2];
+    $i = 3;
+    while ($i <= $n) {
+        foreach ($primes as $p) {
+            if ($i % $p === 0) {
+                break;
+            }
+            if ($p * $p > $i) {
+                array_push($primes, $i);
+                break;
+            }
+        }
+        $i += 2;
+    }
+    $result = 0;
+    foreach ($primes as $prime) {
+        $result += $prime;
+    }
+    return $result;
+}

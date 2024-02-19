@@ -1,0 +1,14 @@
+problem Euler009 {
+    code {
+        func special_pythagorean_triplet(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000) -> 31875000
+            (156) -> 131820
+            (200) -> 255000
+            (324) -> 1180980
+            (798) -> 9903180
+        }
+    }
+}

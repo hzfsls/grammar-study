@@ -1,0 +1,23 @@
+fun powerDigitSum(n: Int): Int {
+    var digits = listOf(2)
+    for (i in 1 until n) {
+        var carry = 0
+        for (j in digits.indices) {
+            val temp = digits[j] * 2 + carry
+            digits = digits.toMutableList().apply {
+                this[j] = temp % 10
+                carry = temp / 10
+            }
+        }
+        if (carry!= 0) {
+            digits = digits.toMutableList().apply {
+                this.add(carry)
+            }
+        }
+    }
+    var result = 0
+    for (digit in digits) {
+        result += digit
+    }
+    return result
+}

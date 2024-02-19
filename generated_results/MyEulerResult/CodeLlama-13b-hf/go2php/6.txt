@@ -1,0 +1,17 @@
+function nthPrime($n) {
+    $primes = [2];
+    $i = 3;
+    while (count($primes) < $n) {
+        foreach ($primes as $p) {
+            if ($i % $p == 0) {
+                break;
+            }
+            if ($p * $p > $i) {
+                array_push($primes, $i);
+                break;
+            }
+        }
+        $i += 2;
+    }
+    return $primes[count($primes) - 1];
+}

@@ -1,0 +1,17 @@
+fun nthPrime(n: Int): Int {
+    val primes = mutableListOf(2)
+    var i = 3
+    while (primes.size < n) {
+        for (p in primes) {
+            if (i % p == 0) {
+                break
+            }
+            if (p * p > i) {
+                primes.add(i)
+                break
+            }
+        }
+        i += 2
+    }
+    return primes[primes.size - 1]
+}

@@ -1,0 +1,11 @@
+function largestProductInASeries($s, $k) {
+    $result = 0;
+    for ($i = 0; $i < strlen($s) - $k; $i++) {
+        $product = 1;
+        for ($j = 0; $j < $k; $j++) {
+            $product *= intval($s[$i + $j]);
+        }
+        $result = max($result, $product);
+    }
+    return $result;
+}

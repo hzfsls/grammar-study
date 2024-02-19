@@ -1,0 +1,21 @@
+fun triangularPentagonalAndHexagonal(n: Int): Int {
+    val ps = mutableMapOf<Int, Boolean>()
+    var i = 1
+    var c = (i * (3 * i - 1)) / 2
+    while (c < n) {
+        i++
+        ps[c] = true
+        c = (i * (3 * i - 1)) / 2
+    }
+    i = 1
+    c = i * (2 * i - 1)
+    var result = -1
+    while (c < n) {
+        i++
+        if (ps[c]) {
+            result = c
+        }
+        c = i * (2 * i - 1)
+    }
+    return result
+}

@@ -1,0 +1,19 @@
+func PandigitalProducts(n int) int {
+    products := map[int]bool{}
+    s := strings.Join(strings.Split(strings.Repeat("123456789", n), ""), "")
+    for a := 1; a < 100; a++ {
+        for b := 1; b < 10000; b++ {
+            c := a * b
+            chars := []string{strconv.Itoa(a), strconv.Itoa(b), strconv.Itoa(c)}
+            sort.Strings(chars)
+            if strings.Join(chars, "") == s {
+                products[c] = true
+            }
+        }
+    }
+    result := 0
+    for product := range products {
+        result += product
+    }
+    return result
+}

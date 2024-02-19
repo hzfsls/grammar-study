@@ -1,0 +1,13 @@
+class Global {
+    public static int LargestProductInASeries(string s, int k) {
+        int result = 0;
+        for (int i = 0; i < s.Length - k; i++) {
+            int product = 1;
+            for (int j = 0; j < k; j++) {
+                product *= (s[i + j] - '0');
+            }
+            result = Math.Max(result, product);
+        }
+        return result;
+    }
+}

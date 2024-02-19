@@ -1,0 +1,12 @@
+def maximumPathSumI(triangle: collection.Seq[collection.Seq[Int]]): Int = {
+  val curr = triangle.last.to[collection.mutable.ArrayBuffer]
+  for (i <- triangle.length - 2 to 0 by -1) {
+    val next = triangle(i).to[collection.mutable.ArrayBuffer]
+    for (j <- 0 until next.length) {
+      next(j) += math.max(curr(j), curr(j + 1))
+    }
+    curr.clear()
+    curr ++= next
+  }
+  curr(0)
+}

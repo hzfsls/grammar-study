@@ -1,0 +1,20 @@
+fn is_palindrome(s: &String) -> bool {
+    for i in 0..s.len() / 2 {
+        if s[i]!= s[s.len() - i - 1] {
+            return false;
+        }
+    }
+    true
+}
+
+fn double_base_palindromes(n: i32) -> i32 {
+    let mut result = 0;
+    for i in 1..n {
+        let str_i = i.to_string();
+        let bin_i = format!("{:b}", i);
+        if is_palindrome(&str_i) && is_palindrome(&bin_i) {
+            result += i;
+        }
+    }
+    result
+}

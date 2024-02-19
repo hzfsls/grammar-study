@@ -1,0 +1,11 @@
+fun largestProductInASeries(s: String, k: Int): Int {
+    var result = 0
+    for (i in 0 until s.length - k) {
+        var product = 1
+        for (j in 0 until k) {
+            product *= s[i + j].toInt() - '0'.toInt()
+        }
+        result = maxOf(result, product)
+    }
+    return result
+}

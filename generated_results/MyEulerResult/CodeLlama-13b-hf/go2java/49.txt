@@ -1,0 +1,35 @@
+class Global {
+    public static int consecutivePrimeSum(int limit) {
+        boolean[] sieve = new boolean[limit];
+        for (int i = 0; i < sieve.length; i++) {
+            sieve[i] = true;
+        }
+        List<Integer> primes = new ArrayList<>();
+        for (int i = 2; i < limit; i++) {
+            if (sieve[i]) {
+                primes.add(i);
+                for (int j = i * 2; j < limit; j += i) {
+                    sieve[j] = false;
+                }
+            }
+        }
+        int maxLength = 0;
+        int maxPrime = 0;
+        for (int i = 0; i < primes.size(); i++) {
+            for (int j = i + maxLength; j < primes.size(); j++) {
+                int s = 0;
+                for (int k = i; k < j; k++) {
+                    s += primes.get(k);
+                }
+                if (s >= limit) {
+                    break;
+                }
+                if (sieve[s] && j - i > maxLength) {
+                    maxLength = j - i;
+                    maxPrime = s;
+                }
+            }
+        }
+        return maxPrime;
+    }
+}

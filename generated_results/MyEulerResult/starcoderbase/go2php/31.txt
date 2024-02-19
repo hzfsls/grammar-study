@@ -1,0 +1,22 @@
+function pandigitalProducts($n) {
+    $products = [];
+    $s = "";
+    for ($i = 1; $i <= $n; $i++) {
+        $s.= strval($i);
+    }
+    for ($a = 1; $a < 100; $a++) {
+        for ($b = 1; $b < 10000; $b++) {
+            $c = $a * $b;
+            $chars = str_split(strval($a). strval($b). strval($c));
+            sort($chars);
+            if (implode("", $chars) === $s) {
+                $products[$c] = true;
+            }
+        }
+    }
+    $result = 0;
+    foreach ($products as $product) {
+        $result += $product;
+    }
+    return $result;
+}

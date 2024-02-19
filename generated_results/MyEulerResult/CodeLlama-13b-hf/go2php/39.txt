@@ -1,0 +1,12 @@
+function champernowneConstant($b) {
+    $s = "";
+    for ($i = 1; $i < intval(pow($b, 6)); $i++) {
+        $s .= strval($i);
+    }
+    $result = 1;
+    for ($i = 0; $i < 7; $i++) {
+        $n = intval(substr($s, intval(pow($b, $i)) - 1, 1));
+        $result *= $n;
+    }
+    return $result;
+}

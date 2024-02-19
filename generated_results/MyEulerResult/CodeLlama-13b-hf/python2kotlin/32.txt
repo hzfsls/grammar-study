@@ -1,0 +1,24 @@
+fun digitCancelingFractions(m: Int): Int {
+    var numer = 1
+    var denom = 1
+    for (d in 10 until m) {
+        for (n in 10 until d) {
+            val n0 = n % 10
+            val n1 = n / 10
+            val d0 = d % 10
+            val d1 = d / 10
+            if ((n1 == d0 && n0 * d == n * d1) || (n0 == d1 && n1 * d == n * d0)) {
+                numer *= n
+                denom *= d
+            }
+        }
+    }
+    var a = numer
+    var b = denom
+    while (b != 0) {
+        val t = b
+        b = a % b
+        a = t
+    }
+    return denom / a
+}

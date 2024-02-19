@@ -1,0 +1,19 @@
+def digit_canceling_fractions(m)
+    numer = 1
+    denom = 1
+    (10...m).each do |d|
+        (10...d).each do |n|
+            n0, n1 = n % 10, n / 10
+            d0, d1 = d % 10, d / 10
+            if (n1 == d0 and n0 * d == n * d1) or (n0 == d1 and n1 * d == n * d0)
+                numer *= n
+                denom *= d
+            end
+        end
+    end
+    a, b = numer, denom
+    while b
+        a, b = b, a % b
+    end
+    denom / a
+end

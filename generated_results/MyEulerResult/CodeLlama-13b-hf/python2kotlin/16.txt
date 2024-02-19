@@ -1,0 +1,21 @@
+fun numberToWords(n: Int): String {
+    val ones = listOf("", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+    val teens = listOf("ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
+    val tens = listOf("", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
+    return when {
+        n == 1000 -> "one thousand"
+        n >= 100 -> {
+            if (n % 100 == 0) {
+                "${ones[n / 100]} hundred"
+            } else {
+                "${ones[n / 100]} hundred and ${numberToWords(n % 100)}"
+            }
+        }
+        n >= 20 -> {
+            val suf = if (n % 10 != 0) " ${ones[n % 10]}" else ""
+            "${tens[n / 10]}$suf"
+        }
+        n >= 10 -> teens[n - 10]
+        else -> ones[n]
+    }
+}

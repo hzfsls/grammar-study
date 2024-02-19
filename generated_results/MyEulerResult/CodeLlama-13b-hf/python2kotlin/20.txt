@@ -1,0 +1,23 @@
+fun d(n: Int): Int {
+    var result = 1
+    for (i in 2..(Math.sqrt(n.toDouble()) + 1).toInt()) {
+        if (n % i == 0) {
+            result += i
+            if (i != n / i) {
+                result += n / i
+            }
+        }
+    }
+    return result
+}
+
+fun amicableNumbers(n: Int): Int {
+    var result = 0
+    for (a in 2 until n) {
+        val b = d(a)
+        if (a != b && a == d(b)) {
+            result += a
+        }
+    }
+    return result
+}

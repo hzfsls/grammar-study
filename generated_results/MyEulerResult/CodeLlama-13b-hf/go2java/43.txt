@@ -1,0 +1,19 @@
+class Global {
+    public static int pentagonNumbers(int n) {
+        Map<Integer, Boolean> pentagon = new HashMap<>();
+        for (int i = 1; i < n; i++) {
+            pentagon.put(i * (3 * i - 1) / 2, true);
+        }
+        int result = -1;
+        for (int j : pentagon.keySet()) {
+            for (int k : pentagon.keySet()) {
+                if (pentagon.get(j + k) && pentagon.get(k - j)) {
+                    if (result == -1 || k - j < result) {
+                        result = k - j;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+}

@@ -1,0 +1,14 @@
+problem Euler037 {
+    code {
+        func truncatable_primes(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000000) -> 748317
+            (100) -> 186
+            (1000) -> 1986
+            (10000) -> 8920
+            (739397) -> 8920
+        }
+    }
+}

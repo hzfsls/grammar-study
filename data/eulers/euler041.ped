@@ -1,0 +1,14 @@
+problem Euler041 {
+    code {
+        func pandigital_prime(n: int) -> int
+    }
+    tests {
+        template nse {
+            (7654321) -> 7652413
+            (1423) -> -1
+            (2000) -> 1423
+            (5000) -> 4231
+            (1234658) -> 1234657
+        }
+    }
+}

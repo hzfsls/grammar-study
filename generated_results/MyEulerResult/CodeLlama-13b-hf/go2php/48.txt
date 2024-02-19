@@ -1,0 +1,51 @@
+function isPrime($n) {
+    if ($n < 2) {
+        return false;
+    }
+    if ($n == 2) {
+        return true;
+    }
+    if ($n % 2 == 0) {
+        return false;
+    }
+    for ($i = 3; $i <= intval(sqrt($n)); $i += 2) {
+        if ($n % $i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function genPermutations($s) {
+    if (strlen($s) <= 1) {
+        return [$s];
+    }
+    $result = [];
+    foreach (genPermutations(substr($s, 1)) as $perm) {
+        for ($i = 0; $i < strlen($s); $i++) {
+            array_push($result, substr($perm, 0, $i) . $s[0] . substr($perm, $i));
+        }
+    }
+    return $result;
+}
+
+function primePermutations($n) {
+    for ($i = $n; $i > 999; $i--) {
+        if (isPrime($i)) {
+            $permutations = genPermutations(strval($i));
+            $candidates = [];
+            foreach ($permutations as $j) {
+                $candidate = intval($j);
+                if ($candidate > $i && isPrime($candidate)) {
+                    $candidates[$candidate] = true;
+                }
+            }
+            foreach ($candidates as $m) {
+                if ($candidates[$m + ($m - $i)]) {
+                    return strval($i) . strval($m) . strval($m + ($m - $i));
+                }
+            }
+        }
+    }
+    return "";
+}

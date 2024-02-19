@@ -1,0 +1,30 @@
+fn prime_factors(n: i32) -> i32 {
+    let mut num = n;
+    let mut factors = Vec::new();
+    let mut i = 2;
+    while i * i <= num {
+        if num % i!= 0 {
+            i += 1;
+        } else {
+            num /= i;
+            factors.push(i);
+        }
+    }
+    if num > 1 {
+        factors.push(num);
+    }
+    let mut s = std::collections::HashMap::new();
+    for v in factors {
+        s.insert(v, true);
+    }
+    s.len() as i32
+}
+
+fn distinct_primes_factors(n: i32) -> i32 {
+    for i in n..1000000 {
+        if prime_factors(i) == 4 && prime_factors(i + 1) == 4 && prime_factors(i + 2) == 4 && prime_factors(i + 3) == 4 {
+            return i;
+        }
+    }
+    -1
+}

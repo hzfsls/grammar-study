@@ -1,0 +1,21 @@
+fun summationOfPrimes(n: Int): Int {
+    val primes = mutableListOf(2)
+    var i = 3
+    while (i <= n) {
+        for (p in primes) {
+            if (i % p == 0) {
+                break
+            }
+            if p * p > i {
+                primes.add(i)
+                break
+            }
+        }
+        i += 2
+    }
+    var result = 0
+    for (prime in primes) {
+        result += prime
+    }
+    return result
+}

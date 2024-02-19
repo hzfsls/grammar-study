@@ -1,0 +1,15 @@
+def lattice_paths(m, n)
+    grid = Array.new(m + 1) { Array.new(n + 1, 0) }
+    (0..m).each do |i|
+        grid[i][0] = 1
+    end
+    (0..n).each do |j|
+        grid[0][j] = 1
+    end
+    (1..m).each do |i|
+        (1..n).each do |j|
+            grid[i][j] = grid[i - 1][j] + grid[i][j - 1]
+        end
+    end
+    grid[m][n]
+end

@@ -1,0 +1,14 @@
+class Global {
+    public static int LargestPrimeFactor(int n) {
+        int result = n;
+        int i = 2;
+        while (i * i <= result) {
+            if (result % i) {
+                i += 1;
+            } else {
+                result /= i;
+            }
+        }
+        return result;
+    }
+}

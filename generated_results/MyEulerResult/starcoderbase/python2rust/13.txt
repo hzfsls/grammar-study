@@ -1,0 +1,21 @@
+fn longest_collatz_sequence(n: i32) -> i32 {
+    let mut longest = 0;
+    let mut result = 0;
+    for i in 1..n {
+        let mut chain = 1;
+        let mut num = i;
+        while num!= 1 {
+            if num % 2 == 0 {
+                num = num / 2;
+            } else {
+                num = 3 * num + 1;
+            }
+            chain += 1;
+        }
+        if chain > longest {
+            longest = chain;
+            result = i;
+        }
+    }
+    result
+}

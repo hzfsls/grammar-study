@@ -1,0 +1,6 @@
+{
+    "javascript": {
+        "Example1" : "const productOfDivisible = (nums, m) => {\n    let result = 1;\n    for (let num of nums) {\n        if (num % m === 0) {\n            result *= num;\n        }\n    }\n    return result;\n}",
+        "Example2" : "const genRotations = (s) => {\n    let result = [];\n    for (let i = 1; i < s.length; i++) {\n        result.push(s.substring(i) + s.substring(0, i));\n    }\n    return result;\n}\n\nconst sumOfRotations = (s) => {\n    let result = 0;\n    for (let r of genRotations(s)) {\n        result += parseInt(r);\n    }\n    return result;\n}"
+    }
+}

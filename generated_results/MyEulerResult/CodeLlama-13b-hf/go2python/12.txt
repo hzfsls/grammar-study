@@ -1,0 +1,21 @@
+def large_sum(numbers: list[str]) -> str:
+    digits = [0] * 60
+    for i in range(0, 50):
+        tmp = 0
+        for num in numbers:
+            tmp += int(num[49 - i] - '0')
+        for j in range(i, 60):
+            digits[j] += tmp % 10
+            if digits[j] >= 10:
+                digits[j + 1] += digits[j] // 10
+                digits[j] %= 10
+            tmp //= 10
+            if tmp == 0:
+                break
+    for i in range(59, 0, -1):
+        if digits[i] != 0:
+            result = ""
+            for j in range(i, i - 10, -1):
+                result += str(digits[j])
+            return result
+    return ""

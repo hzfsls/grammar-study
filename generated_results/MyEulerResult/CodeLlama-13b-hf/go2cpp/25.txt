@@ -1,0 +1,21 @@
+int reciprocalCycles(int n) {
+    int result = 0;
+    int maxLength = 0;
+    for (int i = 1; i < n; i++) {
+        vector<int> remainders;
+        int remainder = 1;
+        while (remainder != 0 && !slices::contains(remainders, remainder)) {
+            remainders.push_back(remainder);
+            remainder = (remainder * 10) % i;
+        }
+        int length = 0;
+        if (remainder != 0) {
+            length = remainders.size() - slices::index(remainders, remainder);
+        }
+        if (length > maxLength) {
+            maxLength = length;
+            result = i;
+        }
+    }
+    return result;
+}

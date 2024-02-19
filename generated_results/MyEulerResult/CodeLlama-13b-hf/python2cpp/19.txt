@@ -1,0 +1,21 @@
+int factorialDigitSum(int n) {
+    vector<int> digits = {1};
+    for (int i = 1; i <= n; i++) {
+        int carry = 0;
+        for (int j = 0; j < digits.size(); j++) {
+            digits[j] *= i;
+            digits[j] += carry;
+            carry = digits[j] / 10;
+            digits[j] %= 10;
+        }
+        while (carry) {
+            digits.push_back(carry % 10);
+            carry /= 10;
+        }
+    }
+    int result = 0;
+    for (int digit : digits) {
+        result += digit;
+    }
+    return result;
+}

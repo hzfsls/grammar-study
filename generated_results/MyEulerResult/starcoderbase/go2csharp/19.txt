@@ -1,0 +1,22 @@
+class Global {
+    public static int FactorialDigitSum(int n) {
+        IList<int> digits = new List<int> { 1 };
+        for (int i = 1; i <= n; i++) {
+            int carry = 0;
+            for (int j = 0; j < digits.Count; j++) {
+                digits[j] = digits[j] * i + carry;
+                carry = digits[j] / 10;
+                digits[j] %= 10;
+            }
+            while (carry!= 0) {
+                digits.Add(carry % 10);
+                carry /= 10;
+            }
+        }
+        int result = 0;
+        foreach (int digit in digits) {
+            result += digit;
+        }
+        return result;
+    }
+}

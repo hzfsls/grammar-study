@@ -1,0 +1,13 @@
+class Global {
+    public static int MaximumPathSumI(IList<IList<int>> triangle) {
+        IList<int> curr = new List<int>(triangle[triangle.Count - 1]);
+        for (int i = triangle.Count - 2; i >= 0; i--) {
+            IList<int> next = new List<int>(triangle[i]);
+            for (int j = 0; j < next.Count; j++) {
+                next[j] += Math.Max(curr[j], curr[j + 1]);
+            }
+            curr = next;
+        }
+        return curr[0];
+    }
+}

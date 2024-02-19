@@ -1,0 +1,26 @@
+func PrimeFactors(n int) int {
+    num := n
+    factors := []int{}
+    i := 2
+    for i*i <= num {
+        if num%i != 0 {
+            i++
+        } else {
+            num /= i
+            factors = append(factors, i)
+        }
+    }
+    if num > 1 {
+        factors = append(factors, num)
+    }
+    return len(factors)
+}
+
+func DistinctPrimesFactors(n int) int {
+    for i := n; i < 1000000; i++ {
+        if PrimeFactors(i) == 4 && PrimeFactors(i+1) == 4 && PrimeFactors(i+2) == 4 && PrimeFactors(i+3) == 4 {
+            return i
+        }
+    }
+    return -1
+}

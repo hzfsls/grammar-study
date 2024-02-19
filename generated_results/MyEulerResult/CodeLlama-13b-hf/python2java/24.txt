@@ -1,0 +1,28 @@
+class Global {
+    public static int nDigitFibonacciNumber(int n) {
+        List<Integer> a = new ArrayList<>();
+        a.add(1);
+        List<Integer> b = new ArrayList<>();
+        b.add(1);
+        int i = 2;
+        while (b.size() < n) {
+            int carry = 0;
+            List<Integer> c = new ArrayList<>(b);
+            for (int j = 0; j < b.size(); j++) {
+                if (j < a.size()) {
+                    b.set(j, a.get(j) + b.get(j) + carry);
+                } else {
+                    b.set(j, b.get(j) + carry);
+                }
+                carry = b.get(j) / 10;
+                b.set(j, b.get(j) % 10);
+            }
+            if (carry) {
+                b.add(carry);
+            }
+            a = c;
+            i = i + 1;
+        }
+        return i;
+    }
+}

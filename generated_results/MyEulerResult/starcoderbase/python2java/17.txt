@@ -1,0 +1,13 @@
+class Global {
+    public static int maximumPathSumI(List<List<Integer>> triangle) {
+        List<Integer> curr = new ArrayList<>(triangle.get(triangle.size() - 1));
+        for (int i = triangle.size() - 2; i >= 0; i--) {
+            List<Integer> next = new ArrayList<>(triangle.get(i));
+            for (int j = 0; j < next.size(); j++) {
+                next.set(j, next.get(j) + Math.max(curr.get(j), curr.get(j + 1)));
+            }
+            curr = next;
+        }
+        return curr.get(0);
+    }
+}

@@ -1,0 +1,1 @@
+python code/check_euler.py --problem "./data/euler.ped" --input "./data/euler_sol_1.json" --output "./result/euler_res.json"

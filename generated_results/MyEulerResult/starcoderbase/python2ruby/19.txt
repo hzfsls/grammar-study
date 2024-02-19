@@ -1,0 +1,19 @@
+def factorial_digit_sum(n)
+    digits = [1]
+    (1...n+1).each do |i|
+        carry = 0
+        digits.each_with_index do |digit, j|
+            digits[j] = digit * i + carry
+            carry = digits[j] / 10
+            digits[j] %= 10
+        end
+        while carry > 0
+            digits.push(carry % 10)
+            carry /= 10
+    end
+    result = 0
+    digits.each do |digit|
+        result += digit
+    end
+    result
+end

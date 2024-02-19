@@ -1,0 +1,53 @@
+class Global {
+    public static bool IsPrime(int n) {
+        if (n < 2) {
+            return false;
+        }
+        if (n == 2) {
+            return true;
+        }
+        if (n % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i < Math.Sqrt(n) + 1; i += 2) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static IList<string> GenPermutations(string s) {
+        if (s.Length <= 1) {
+            return s;
+        }
+        IList<string> result = new List<string>();
+        foreach (string perm in GenPermutations(s.Substring(1))) {
+            for (int i = 0; i < s.Length; i++) {
+                result.Add(perm.Substring(0, i) + s.Substring(0, 1) + perm.Substring(i));
+            }
+        }
+        return result;
+    }
+
+    public static string PrimePermutations(int n) {
+        for (int i = n; i >= 999; i -= 1) {
+            if (IsPrime(i)) {
+                IList<string> permutations = GenPermutations(i.ToString());
+                ISet<int> candidates = new HashSet<int>();
+                foreach (string j in permutations) {
+                    int candidate = int.Parse(j);
+                    if (candidate > i && IsPrime(candidate)) {
+                        candidates.Add(candidate);
+                    }
+                }
+                foreach (int m in candidates) {
+                    if (m + (m - i) in candidates) {
+                        return i.ToString() + m.ToString() + (m + (m - i)).ToString();
+                    }
+                }
+            }
+        }
+        return "";
+    }
+}

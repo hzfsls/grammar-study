@@ -1,0 +1,17 @@
+def pentagon_numbers(n)
+    pentagon = Set.new
+    (1...n).each do |i|
+        pentagon.add(i * (3 * i - 1) // 2)
+    end
+    result = -1
+    pentagon.each do |j|
+        pentagon.each do |k|
+            if pentagon.include?(j + k) && pentagon.include?(k - j)
+                if result == -1 || k - j < result
+                    result = k - j
+                end
+            end
+        end
+    end
+    result
+end

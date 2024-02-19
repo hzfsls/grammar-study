@@ -1,0 +1,51 @@
+def isPrime(n: Int): Boolean = {
+  if (n < 2) {
+    return false
+  }
+  if (n == 2) {
+    return true
+  }
+  if (n % 2 == 0) {
+    return false
+  }
+  for (i <- 3 to math.sqrt(n).toInt by 2) {
+    if (n % i == 0) {
+      return false
+    }
+  }
+  true
+}
+
+def genPermutations(s: String): collection.Seq[String] = {
+  if (s.length <= 1) {
+    return collection.Seq(s)
+  }
+  val result = collection.mutable.ArrayBuffer[String]()
+  for (perm <- genPermutations(s.substring(1))) {
+    for (i <- 0 until s.length) {
+      result += perm.substring(0, i) + s.charAt(0) + perm.substring(i)
+    }
+  }
+  result
+}
+
+def primePermutations(n: Int): String = {
+  for (i <- n to 999 by -1) {
+    if (isPrime(i)) {
+      val permutations = genPermutations(i.toString)
+      val candidates = collection.mutable.Map[Int, Boolean]()
+      for (j <- permutations) {
+        val candidate = j.toInt
+        if (candidate > i && isPrime(candidate)) {
+          candidates(candidate) = true
+        }
+      }
+      for (m <- candidates.keys) {
+        if (candidates(m + (m - i))) {
+          return i.toString + m.toString + (m + (m - i)).toString
+        }
+      }
+    }
+  }
+  ""
+}

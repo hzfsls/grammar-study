@@ -1,0 +1,20 @@
+class Global {
+    public static int NamesScores(IList<string> names, IList<string> queries) {
+        IList<string> sNames = new List<string>(names);
+        sNames.Sort();
+        int result = 0;
+        for (int i = 0; i < sNames.Count; i++) {
+            int x = 0;
+            foreach (char c in sNames[i]) {
+                x += (int)c - 64;
+            }
+            foreach (string query in queries) {
+                if (query == sNames[i]) {
+                    result += x * (i + 1);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+}

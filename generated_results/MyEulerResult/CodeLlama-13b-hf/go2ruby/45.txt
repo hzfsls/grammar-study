@@ -1,0 +1,25 @@
+def is_prime(n)
+    return false if n < 2
+    return true if n == 2
+    return false if n % 2 == 0
+    (3...Math.sqrt(n).to_i).step(2).each do |i|
+        return false if n % i == 0
+    end
+    true
+end
+
+def goldbachs_other_conjecture(n)
+    result = -1
+    (9999...n).step(-2).each do |i|
+        upper = Math.sqrt(i / 2).to_i
+        flag = false
+        (0...upper).each do |j|
+            if is_prime(i - 2 * j * j)
+                flag = true
+                break
+            end
+        end
+        result = i if !flag
+    end
+    result
+end

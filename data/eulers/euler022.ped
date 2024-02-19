@@ -1,0 +1,16 @@
+problem Euler022 {
+    code {
+        func names_scores(names: list<string>, queries: list<string>) -> int
+    }
+    tests {
+        template nse {
+            (["ALEX", "LUIS", "JAMES", "BRIAN", "PAMELA"], ["PAMELA"]) -> 240
+            (["ALEX", "LUIS", "JAMES", "BRIAN", "PAMELA"], ["BRIAN", "PAMELA"]) -> 328
+            (["ALEX", "LUIS", "JAMES", "BRIAN", "PAMELA"], ["ALEX", "LUIS", "JAMES", "BRIAN", "PAMELA"]) -> 758
+            (["FRITZ", "ROSENDO", "MILFORD", "CHRISTOPER", "ALFONZO", "LYMAN", "JOSIAH",
+                "BRANT", "WILTON", "RICO"], ["FRITZ"]) -> 316
+            (["FRITZ", "ROSENDO", "MILFORD", "CHRISTOPER", "ALFONZO", "LYMAN", "JOSIAH",
+                "BRANT", "WILTON", "RICO"], ["FRITZ", "ROSENDO", "MILFORD"]) -> 1665
+        }
+    }
+}

@@ -1,0 +1,14 @@
+problem Euler027 {
+    code {
+        func quadratic_primes(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000) -> -59231
+            (41) -> 0
+            (42) -> -41
+            (100) -> -1455
+            (200) -> -4925
+        }
+    }
+}

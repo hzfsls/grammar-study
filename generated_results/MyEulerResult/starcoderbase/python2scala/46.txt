@@ -1,0 +1,26 @@
+def primeFactors(n: Int): Int = {
+  var num = n
+  var factors = collection.mutable.ArrayBuffer[Int]()
+  var i = 2
+  while (i * i <= num) {
+    if (num % i == 0) {
+      num /= i
+      factors += i
+    } else {
+      i += 1
+    }
+  }
+  if (num > 1) {
+    factors += num
+  }
+  factors.size
+}
+
+def distinctPrimesFactors(n: Int): Int = {
+  for (i <- n until 1000000) {
+    if (primeFactors(i) == 4 && primeFactors(i + 1) == 4 && primeFactors(i + 2) == 4 && primeFactors(i + 3) == 4) {
+      return i
+    }
+  }
+  -1
+}

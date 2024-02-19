@@ -1,0 +1,19 @@
+func PowerDigitSum(n int) int {
+    digits := []int{2}
+    for _ := 0; _ < n; _++ {
+        carry := 0
+        for j := range digits {
+            temp := digits[j] * 2 + carry
+            digits[j] = temp % 10
+            carry = temp / 10
+        }
+        if carry!= 0 {
+            digits = append(digits, carry)
+        }
+    }
+    result := 0
+    for _, digit := range digits {
+        result += digit
+    }
+    return result
+}

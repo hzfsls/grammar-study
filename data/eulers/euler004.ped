@@ -1,0 +1,14 @@
+problem Euler004 {
+    code {
+        func largest_palindrome_product(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000000) -> 906609
+            (10202) -> 10201
+            (100000) -> 99999
+            (300000) -> 299992
+            (700000) -> 698896
+        }
+    }
+}

@@ -1,0 +1,12 @@
+fn largest_prime_factor(n: i32) -> i32 {
+    let mut result = n;
+    let mut i = 2;
+    while i * i <= result {
+        if result % i == 0 {
+            result /= i;
+        } else {
+            i += 1;
+        }
+    }
+    result
+}

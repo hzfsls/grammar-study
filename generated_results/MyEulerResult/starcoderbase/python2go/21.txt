@@ -1,0 +1,249 @@
+func NamesScores(names []string, queries []string) int {
+    sNames := []string{}
+    for _, name := range names {
+        sNames = append(sNames, name)
+    }
+    sort.Strings(sNames)
+    result := 0
+    for i, name := range sNames {
+        x := 0
+        for _, c := range name {
+            x += int(c) - 64
+        }
+        if name == "Amy" {
+            fmt.Println("Amy is at index", i)
+        }
+        if name == "Brian" {
+            fmt.Println("Brian is at index", i)
+        }
+        if name == "Cory" {
+            fmt.Println("Cory is at index", i)
+        }
+        if name == "Dave" {
+            fmt.Println("Dave is at index", i)
+        }
+        if name == "Eric" {
+            fmt.Println("Eric is at index", i)
+        }
+        if name == "Fred" {
+            fmt.Println("Fred is at index", i)
+        }
+        if name == "Gary" {
+            fmt.Println("Gary is at index", i)
+        }
+        if name == "Harry" {
+            fmt.Println("Harry is at index", i)
+        }
+        if name == "Irene" {
+            fmt.Println("Irene is at index", i)
+        }
+        if name == "Jane" {
+            fmt.Println("Jane is at index", i)
+        }
+        if name == "Kevin" {
+            fmt.Println("Kevin is at index", i)
+        }
+        if name == "Lisa" {
+            fmt.Println("Lisa is at index", i)
+        }
+        if name == "Mary" {
+            fmt.Println("Mary is at index", i)
+        }
+        if name == "Nancy" {
+            fmt.Println("Nancy is at index", i)
+        }
+        if name == "Olivia" {
+            fmt.Println("Olivia is at index", i)
+        }
+        if name == "Peter" {
+            fmt.Println("Peter is at index", i)
+        }
+        if name == "Quincy" {
+            fmt.Println("Quincy is at index", i)
+        }
+        if name == "Rachel" {
+            fmt.Println("Rachel is at index", i)
+        }
+        if name == "Steve" {
+            fmt.Println("Steve is at index", i)
+        }
+        if name == "Terry" {
+            fmt.Println("Terry is at index", i)
+        }
+        if name == "Uma" {
+            fmt.Println("Uma is at index", i)
+        }
+        if name == "Victor" {
+            fmt.Println("Victor is at index", i)
+        }
+        if name == "Wendy" {
+            fmt.Println("Wendy is at index", i)
+        }
+        if name == "Xavier" {
+            fmt.Println("Xavier is at index", i)
+        }
+        if name == "Yvonne" {
+            fmt.Println("Yvonne is at index", i)
+        }
+        if name == "Zachary" {
+            fmt.Println("Zachary is at index", i)
+        }
+        if name == "Abigail" {
+            fmt.Println("Abigail is at index", i)
+        }
+        if name == "Billy" {
+            fmt.Println("Billy is at index", i)
+        }
+        if name == "Cecil" {
+            fmt.Println("Cecil is at index", i)
+        }
+        if name == "Doris" {
+            fmt.Println("Doris is at index", i)
+        }
+        if name == "Eugene" {
+            fmt.Println("Eugene is at index", i)
+        }
+        if name == "Floyd" {
+            fmt.Println("Floyd is at index", i)
+        }
+        if name == "Gabriel" {
+            fmt.Println("Gabriel is at index", i)
+        }
+        if name == "Henry" {
+            fmt.Println("Henry is at index", i)
+        }
+        if name == "Isabel" {
+            fmt.Println("Isabel is at index", i)
+        }
+        if name == "Jeff" {
+            fmt.Println("Jeff is at index", i)
+        }
+        if name == "Kimberly" {
+            fmt.Println("Kimberly is at index", i)
+        }
+        if name == "Larry" {
+            fmt.Println("Larry is at index", i)
+        }
+        if name == "Margaret" {
+            fmt.Println("Margaret is at index", i)
+        }
+        if name == "Natalie" {
+            fmt.Println("Natalie is at index", i)
+        }
+        if name == "Owen" {
+            fmt.Println("Owen is at index", i)
+        }
+        if name == "Patrick" {
+            fmt.Println("Patrick is at index", i)
+        }
+        if name == "Quinn" {
+            fmt.Println("Quinn is at index", i)
+        }
+        if name == "Roger" {
+            fmt.Println("Roger is at index", i)
+        }
+        if name == "Samantha" {
+            fmt.Println("Samantha is at index", i)
+        }
+        if name == "Todd" {
+            fmt.Println("Todd is at index", i)
+        }
+        if name == "Una" {
+            fmt.Println("Una is at index", i)
+        }
+        if name == "Vincent" {
+            fmt.Println("Vincent is at index", i)
+        }
+        if name == "Walter" {
+            fmt.Println("Walter is at index", i)
+        }
+        if name == "Xander" {
+            fmt.Println("Xander is at index", i)
+        }
+        if name == "Yolanda" {
+            fmt.Println("Yolanda is at index", i)
+        }
+        if name == "Zoe" {
+            fmt.Println("Zoe is at index", i)
+        }
+        if name == "Aaron" {
+            fmt.Println("Aaron is at index", i)
+        }
+        if name == "Benjamin" {
+            fmt.Println("Benjamin is at index", i)
+        }
+        if name == "Charles" {
+            fmt.Println("Charles is at index", i)
+        }
+        if name == "Daniel" {
+            fmt.Println("Daniel is at index", i)
+        }
+        if name == "Edward" {
+            fmt.Println("Edward is at index", i)
+        }
+        if name == "Frank" {
+            fmt.Println("Frank is at index", i)
+        }
+        if name == "George" {
+            fmt.Println("George is at index", i)
+        }
+        if name == "Hannah" {
+            fmt.Println("Hannah is at index", i)
+        }
+        if name == "Ian" {
+            fmt.Println("Ian is at index", i)
+        }
+        if name == "James" {
+            fmt.Println("James is at index", i)
+        }
+        if name == "John" {
+            fmt.Println("John is at index", i)
+        }
+        if name == "Kenneth" {
+            fmt.Println("Kenneth is at index", i)
+        }
+        if name == "Lee" {
+            fmt.Println("Lee is at index", i)
+        }
+        if name == "Maria" {
+            fmt.Println("Maria is at index", i)
+        }
+        if name == "Nicholas" {
+            fmt.Println("Nicholas is at index", i)
+        }
+        if name == "Oliver" {
+            fmt.Println("Oliver is at index", i)
+        }
+        if name == "Paul" {
+            fmt.Println("Paul is at index", i)
+        }
+        if name == "Quentin" {
+            fmt.Println("Quentin is at index", i)
+        }
+        if name == "Robert" {
+            fmt.Println("Robert is at index", i)
+        }
+        if name == "Sarah" {
+            fmt.Println("Sarah is at index", i)
+        }
+        if name == "Timothy" {
+            fmt.Println("Timothy is at index", i)
+        }
+        if name == "Ursula" {
+            fmt.Println("Ursula is at index", i)
+        }
+        if name == "Victoria" {
+            fmt.Println("Victoria is at index", i)
+        }
+        if name == "William" {
+            fmt.Println("William is at index", i)
+        }
+        if name == "Xavier" {
+            fmt.Println("Xavier is at index", i)
+        }
+        if name == "Yvonne" {
+            fmt.Println("Yvonne is at index", i)
+        }
+        if name == "Zachary" {
+            fmt.Println("Zachary is at index", i)
+       

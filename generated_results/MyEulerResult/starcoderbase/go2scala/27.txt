@@ -1,0 +1,7 @@
+def numberSpiralDiagonals(n: Int): Int = {
+  var result = 1
+  for (i <- 3 to n by 2) {
+    result += 4 * i * i - 6 * i + 6
+  }
+  result
+}

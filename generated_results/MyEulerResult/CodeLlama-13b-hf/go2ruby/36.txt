@@ -1,0 +1,31 @@
+def is_prime(n)
+    return false if n < 2
+    return true if n == 2
+    return false if n % 2 == 0
+    (3...Math.sqrt(n).to_i).step(2).each do |i|
+        return false if n % i == 0
+    end
+    true
+end
+
+def truncatable_primes(n)
+    result = 0
+    (10...n).each do |i|
+        if is_prime(i)
+            si = i.to_s
+            flag = true
+            (1...si.length).each do |j|
+                p1 = si[j..-1].to_i
+                p2 = si[0...si.length - j].to_i
+                if !is_prime(p1) || !is_prime(p2)
+                    flag = false
+                    break
+                end
+            end
+            if flag
+                result += i
+            end
+        end
+    end
+    result
+end

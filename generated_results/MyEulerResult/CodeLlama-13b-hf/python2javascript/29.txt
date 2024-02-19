@@ -1,0 +1,13 @@
+const digitNthPowers = (n) => {
+    let result = 0;
+    for (let i = 2; i < 4 * 10 ** n; i++) {
+        let digitsSum = 0;
+        for (let digit of i.toString()) {
+            digitsSum += parseInt(digit) ** n;
+        }
+        if (i === digitsSum) {
+            result += i;
+        }
+    }
+    return result;
+}

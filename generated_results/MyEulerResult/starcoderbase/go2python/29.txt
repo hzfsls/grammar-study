@@ -1,0 +1,9 @@
+def digit_nth_powers(n: int) -> int:
+    result = 0
+    for i in range(2, 4 * int(math.pow(10, float(n)))):
+        digits_sum = 0
+        for digit in str(i):
+            digits_sum += int(math.pow(float(digit), float(n)))
+        if i == digits_sum:
+            result += i
+    return result

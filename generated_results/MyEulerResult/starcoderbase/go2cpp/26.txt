@@ -1,0 +1,41 @@
+bool isPrime(int n) {
+    if (n < 2) {
+        return false;
+    }
+    if (n == 2) {
+        return true;
+    }
+    if (n % 2 == 0) {
+        return false;
+    }
+    for (int i = 3; i <= int(sqrt(n)); i += 2) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int quadraticPrimes(int n) {
+    int maxPrimes = 0;
+    int result = 0;
+    for (int a = -n + 1; a < n; a += 2) {
+        for (int b = -n + 1; b < n; b += 2) {
+            int x = 0;
+            for (;;) {
+                if (x * x + a * x + b < 2) {
+                    break;
+                }
+                if (!isPrime(x * x + a * x + b)) {
+                    break;
+                }
+                x++;
+            }
+            if (x > maxPrimes) {
+                maxPrimes = x;
+                result = a * b;
+            }
+        }
+    }
+    return result;
+}

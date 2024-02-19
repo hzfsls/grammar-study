@@ -1,0 +1,24 @@
+fn number_to_words(n: i32) -> String {
+    let ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    let teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+    let tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+    if n == 1000 {
+        return "one thousand".to_string();
+    } else if n >= 100 {
+        if n % 100 == 0 {
+            return ones[n / 100].to_string() + " hundred".to_string();
+        } else {
+            return ones[n / 100].to_string() + " hundred and ".to_string() + number_to_words(n % 100);
+        }
+    } else if n >= 20 {
+        let mut suf = "".to_string();
+        if n % 10!= 0 {
+            suf = " ".to_string() + ones[n % 10].to_string();
+        }
+        return tens[n / 10].to_string() + suf;
+    } else if n >= 10 {
+        return teens[n - 10].to_string();
+    } else {
+        return ones[n].to_string();
+    }
+}

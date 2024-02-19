@@ -1,0 +1,22 @@
+def pandigitalProducts(n: Int): Int = {
+  val products = collection.mutable.Map[Int, Boolean]()
+  var s = ""
+  for (i <- 1 to n) {
+    s += i.toString
+  }
+  for (a <- 1 until 100) {
+    for (b <- 1 until 10000) {
+      val c = a * b
+      val chars = s"$a$b$c".toCharArray
+      scala.util.Sorting.quickSort(chars)
+      if (s.toCharArray.sameElements(chars)) {
+        products(c) = true
+      }
+    }
+  }
+  var result = 0
+  for (product <- products.keys) {
+    result += product
+  }
+  result
+}

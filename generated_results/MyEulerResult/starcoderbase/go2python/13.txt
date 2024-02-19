@@ -1,0 +1,16 @@
+def longest_collatz_sequence(n: int) -> int:
+    longest = 0
+    result = 0
+    for i in range(1, n):
+        chain = 1
+        num = i
+        for num!= 1:
+            if num % 2 == 0:
+                num = num // 2
+            else:
+                num = 3 * num + 1
+            chain += 1
+        if chain > longest:
+            longest = chain
+            result = i
+    return result

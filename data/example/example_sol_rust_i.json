@@ -1,0 +1,6 @@
+{
+    "rust": {
+        "Example1" : "fn product_of_divisible(nums: &Vec<i32>, m: i32) -> i32 {\n    let mut result = 1;\n    for num in nums {\n        if num % m == 0 {\n            result *= num;\n        }\n    }\n    result\n}",
+        "Example2" : "fn gen_rotations(s: &String) -> Vec<String> {\n    let mut result = Vec::new();\n    for i in 1..s.len() {\n        result.push(s[i..].to_string() + &s[..i]);\n    }\n    result\n}\n\nfn sum_of_rotations(s: &String) -> i32 {\n    let mut result = 0;\n    for r in gen_rotations(s) {\n        result += r.parse::<i32>().unwrap();\n    }\n    result\n}"
+    }
+}

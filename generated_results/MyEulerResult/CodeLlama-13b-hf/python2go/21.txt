@@ -1,0 +1,16 @@
+func NamesScores(names []string, queries []string) int {
+    s_names := make([]string, len(names))
+    copy(s_names, names)
+    sort.Strings(s_names)
+    result := 0
+    for i, name := range s_names {
+        x := 0
+        for _, c := range name {
+            x += int(c) - 64
+        }
+        if strings.Contains(queries, name) {
+            result += x * (i + 1)
+        }
+    }
+    return result
+}

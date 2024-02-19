@@ -1,0 +1,24 @@
+int nDigitFibonacciNumber(int n) {
+    vector<int> a = {1};
+    vector<int> b = {1};
+    int i = 2;
+    while (b.size() < n) {
+        int carry = 0;
+        vector<int> c = b;
+        for (int j = 0; j < b.size(); j++) {
+            if (j < a.size()) {
+                b[j] = a[j] + b[j] + carry;
+            } else {
+                b[j] = b[j] + carry;
+            }
+            carry = b[j] / 10;
+            b[j] = b[j] % 10;
+        }
+        if (carry!= 0) {
+            b.push_back(carry);
+        }
+        a = c;
+        i = i + 1;
+    }
+    return i;
+}

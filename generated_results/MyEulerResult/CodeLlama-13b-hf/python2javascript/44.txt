@@ -1,0 +1,21 @@
+const triangularPentagonalAndHexagonal = (n) => {
+    let ps = new Set();
+    let i = 1;
+    let c = 0.5 * i * (3 * i - 1);
+    while (c < n) {
+        i += 1;
+        ps.add(c);
+        c = 0.5 * i * (3 * i - 1);
+    }
+    i = 1;
+    c = i * (2 * i - 1);
+    let result = -1;
+    while (c < n) {
+        i += 1;
+        if (ps.has(c)) {
+            result = c;
+        }
+        c = i * (2 * i - 1);
+    }
+    return result;
+}

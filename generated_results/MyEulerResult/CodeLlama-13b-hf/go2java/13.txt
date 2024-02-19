@@ -1,0 +1,23 @@
+class Global {
+    public static int longestCollatzSequence(int n) {
+        int longest = 0;
+        int result = 0;
+        for (int i = 1; i < n; i++) {
+            int chain = 1;
+            int num = i;
+            while (num != 1) {
+                if (num % 2 == 0) {
+                    num = num / 2;
+                } else {
+                    num = 3 * num + 1;
+                }
+                chain++;
+            }
+            if (chain > longest) {
+                longest = chain;
+                result = i;
+            }
+        }
+        return result;
+    }
+}

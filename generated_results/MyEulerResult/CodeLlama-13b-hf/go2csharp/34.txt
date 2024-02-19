@@ -1,0 +1,44 @@
+class Global {
+    public static bool IsPrime(int n) {
+        if (n < 2) {
+            return false;
+        }
+        if (n == 2) {
+            return true;
+        }
+        if (n % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i <= (int)Math.Sqrt(n); i += 2) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int CircularPrimes(int n) {
+        int count = 0;
+        for (int i = 2; i < n; i++) {
+            if (IsPrime(i)) {
+                Dictionary<int, object> rotations = new Dictionary<int, object>();
+                string str = i.ToString();
+                for (int j = 0; j < str.Length; j++) {
+                    int x = int.Parse(str.Substring(j) + str.Substring(0, j));
+                    rotations[x] = new object();
+                }
+                bool flag = true;
+                foreach (int x in rotations.Keys) {
+                    if (!IsPrime(x)) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}

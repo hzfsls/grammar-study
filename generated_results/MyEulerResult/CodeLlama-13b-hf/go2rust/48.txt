@@ -1,0 +1,51 @@
+fn is_prime(n: i32) -> bool {
+    if n < 2 {
+        return false;
+    }
+    if n == 2 {
+        return true;
+    }
+    if n % 2 == 0 {
+        return false;
+    }
+    for i in 3..=((n as f64).sqrt() as i32) {
+        if n % i == 0 {
+            return false;
+        }
+    }
+    true
+}
+
+fn gen_permutations(s: &String) -> Vec<String> {
+    if s.len() <= 1 {
+        return vec![s.to_string()];
+    }
+    let mut result = Vec::new();
+    for perm in gen_permutations(&s[1..]) {
+        for i in 0..s.len() {
+            result.push(perm[..i].to_string() + &s[0..1] + &perm[i..]);
+        }
+    }
+    result
+}
+
+fn prime_permutations(n: i32) -> String {
+    for i in (n..=999).rev() {
+        if is_prime(i) {
+            let permutations = gen_permutations(&i.to_string());
+            let mut candidates = HashMap::new();
+            for j in permutations {
+                let candidate = j.parse::<i32>().unwrap();
+                if candidate > i && is_prime(candidate) {
+                    candidates.insert(candidate, true);
+                }
+            }
+            for m in candidates.keys() {
+                if candidates[&(m + (m - i))] {
+                    return i.to_string() + &m.to_string() + &(m + (m - i)).to_string();
+                }
+            }
+        }
+    }
+    "".to_string()
+}

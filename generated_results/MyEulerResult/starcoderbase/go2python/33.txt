@@ -1,0 +1,12 @@
+def digit_factorials(n: int) -> int:
+    result = 0
+    for i in range(3, n):
+        fact_sum = 0
+        for digit in str(i):
+            fact = 1
+            for j in range(1, int(digit)):
+                fact *= j
+            fact_sum += fact
+        if i == fact_sum:
+            result += i
+    return result

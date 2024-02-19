@@ -1,0 +1,29 @@
+fun selfPowers(n: Int): String {
+    val digits = IntArray(10)
+    for (i in 1..n) {
+        val tempDigits = IntArray(10)
+        tempDigits[0] = 1
+        for (j in 0 until i) {
+            var carry = 0
+            for (k in 0 until 10) {
+                tempDigits[k] = tempDigits[k] * i + carry
+                carry = tempDigits[k] / 10
+                tempDigits[k] %= 10
+            }
+        }
+        for (j in 0 until 10) {
+            digits[j] += tempDigits[j]
+            if (digits[j] >= 10) {
+                digits[j] -= 10
+                if (j < 9) {
+                    digits[j + 1] += 1
+                }
+            }
+        }
+    }
+    var result = ""
+    for (i in 9 downTo 0) {
+        result += digits[i].toString()
+    }
+    return result
+}

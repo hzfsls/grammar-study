@@ -1,0 +1,6 @@
+{
+    "php": {
+        "Example1" : "function productOfDivisible($nums, $m) {\n    return array_reduce(\n        array_filter($nums, fn($num) => $num % $m === 0 )\n        , fn($a, $b) => $a * $b, 1);\n}",
+        "Example2" :"function genRotations($s) {\n    return array_map(\n        fn($i) => substr($s, $i) . substr($s, 0, $i),\n        range(1, strlen($s) - 1)\n    );\n}\n\nfunction sumOfRotations($s) {\n    return array_sum(array_map(fn($r) => intval($r), genRotations($s)));\n}"
+    }
+}

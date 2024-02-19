@@ -1,0 +1,47 @@
+{
+    "python": {
+        "Example1" : "def product_of_divisible(nums: list[int], m: int) -> int:\n    # ...",
+        "Example2" : "def gen_rotations(s: str) -> list[str]:\n    # ...\n\ndef sum_of_rotations(s: str) -> int:\n    # ..."
+    },
+    "cpp": {
+        "Example1" : "int productOfDivisible(const vector<int>& nums, int m) {\n    // ...\n}",
+        "Example2" : "vector<string> genRotations(const string& s) {\n    // ...\n}\n\nint sumOfRotations(const string& s) {\n    // ...\n}"
+    },
+    "csharp": {
+        "Example1" : "class Global {\n    public static int ProductOfDivisible(IList<int> nums, int m) {\n        // ...\n    }\n}",
+        "Example2" : "class Global {\n    public static IList<string> GenRotations(string s) {\n        // ...\n    }\n\n    public static int SumOfRotations(string s) {\n        // ...\n    }\n}"
+    },
+    "go": {
+        "Example1" : "func ProductOfDivisible(nums []int, m int) int {\n    // ...\n}",
+        "Example2" : "func GenRotations(s string) []string {\n    // ...\n}\n\nfunc SumOfRotations(s string) int {\n    // ...\n}"
+    },
+    "java": {
+        "Example1" : "class Global {\n    public static int productOfDivisible(List<Integer> nums, int m) {\n        // ...\n    }\n}",
+        "Example2" : "class Global {\n    public static List<String> genRotations(String s) {\n        // ...\n    }\n\n    public static int sumOfRotations(String s) {\n        // ...\n    }\n}"
+    },
+    "javascript": {
+        "Example1" : "const productOfDivisible = (nums, m) => {\n    // ...\n}",
+        "Example2" : "const genRotations = (s) => {\n    // ...\n}\n\nconst sumOfRotations = (s) => {\n    // ...\n}"
+    },
+    "kotlin": {
+        "Example1" : "fun productOfDivisible(nums: List<Int>, m: Int): Int {\n    // ...\n}",
+        "Example2" : "fun genRotations(s: String): List<String> {\n    // ...\n}\n\nfun sumOfRotations(s: String): Int {\n    // ...\n}"
+    },
+    "php": {
+        "Example1" : "function productOfDivisible($nums, $m) {\n    // ...\n}",
+        "Example2" :"function genRotations($s) {\n    // ...\n}\n\nfunction sumOfRotations($s) {\n    // ...\n}"
+    },
+    "ruby": {
+        "Example1" : "def product_of_divisible(nums, m)\n    # ...\nend",
+        "Example2" : "def gen_rotations(s)\n    # ...\nend\n\ndef sum_of_rotations(s)\n    # ...\nend"
+    },
+    "rust": {
+        "Example1" : "fn product_of_divisible(nums: &Vec<i32>, m: i32) -> i32 {\n    // ...\n}",
+        "Example2" : "fn gen_rotations(s: &String) -> Vec<String> {\n    // ...\n}\n\nfn sum_of_rotations(s: &String) -> i32{\n    // ...\n}"
+    },
+    "scala": {
+        "Example1" : "def productOfDivisible(nums: collection.Seq[Int], m: Int): Int = {\n    // ...\n}",
+        "Example2" : "def genRotations(s: String): collection.Seq[String] = {\n    // ...\n}\n  result\n}\n\ndef sumOfRotations(s: String): Int = {\n    // ...\n}"
+    }
+
+}

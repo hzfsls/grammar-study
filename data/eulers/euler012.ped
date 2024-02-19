@@ -1,0 +1,14 @@
+problem Euler012 {
+    code {
+        func highly_divisible_triangular_number(n: int) -> int
+    }
+    tests {
+        template nse {
+            (500) -> 76576500
+            (10) -> 120
+            (50) -> 25200
+            (100) -> 73920
+            (200) -> 2031120
+        }
+    }
+}

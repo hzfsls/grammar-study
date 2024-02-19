@@ -1,0 +1,23 @@
+class Global {
+    public static int reciprocalCycles(int n) {
+        int result = 0;
+        int max_length = 0;
+        for (int i = 1; i < n; i++) {
+            List<Integer> remainders = new ArrayList<>();
+            int remainder = 1;
+            while (remainder!= 0 &&!remainders.contains(remainder)) {
+                remainders.add(remainder);
+                remainder = (remainder * 10) % i;
+            }
+            int length = 0;
+            if (remainder!= 0) {
+                length = remainders.size() - remainders.indexOf(remainder);
+            }
+            if (length > max_length) {
+                max_length = length;
+                result = i;
+            }
+        }
+        return result;
+    }
+}

@@ -1,0 +1,24 @@
+fun nDigitFibonacciNumber(n: Int): Int {
+    var a = listOf(1)
+    var b = listOf(1)
+    var i = 2
+    while (b.size < n) {
+        var carry = 0
+        val c = b.toMutableList()
+        for (j in b.indices) {
+            if (j < a.size) {
+                b[j] = a[j] + b[j] + carry
+            } else {
+                b[j] = b[j] + carry
+            }
+            carry = b[j] / 10
+            b[j] = b[j] % 10
+        }
+        if (carry != 0) {
+            b.add(carry)
+        }
+        a = c
+        i = i + 1
+    }
+    return i
+}

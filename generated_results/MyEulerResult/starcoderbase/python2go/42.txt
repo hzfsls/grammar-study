@@ -1,0 +1,32 @@
+func GenPermutations(s string) []string {
+    if len(s) <= 1 {
+        return []string{s}
+    }
+    result := []string{}
+    for _, perm := range GenPermutations(s[1:]) {
+        for i := 0; i < len(s); i++ {
+            result = append(result, perm[:i] + s[0:1] + perm[i:])
+        }
+    }
+    return result
+}
+
+func SubStringDivisibility(n int) int {
+    result := 0
+    primes := []int{2, 3, 5, 7, 11, 13, 17}
+    s := strings.Join(strings.Split(strconv.Itoa(n + 1), ""), "")
+    for _, i := range GenPermutations(s) {
+        flag := true
+        for j := 1; j < n - 1; j++ {
+            if int(i[j:j + 3]) % primes[j - 1]!= 0 {
+                flag = false
+                break
+            }
+        }
+        if flag {
+            num, _ := strconv.Atoi(i)
+            result += num
+        }
+    }
+    return result
+}

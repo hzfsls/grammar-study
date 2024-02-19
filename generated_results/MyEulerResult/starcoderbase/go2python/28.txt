@@ -1,0 +1,19 @@
+def distinct_powers(n: int) -> int:
+    result = 0
+    xs = {}
+    for i in range(2, n + 1):
+        primes = [2, 3, 5, 7]
+        powers = [0, 0, 0, 0]
+        num = i
+        for j in range(len(primes)):
+            for num % primes[j] == 0:
+                num //= primes[j]
+                powers[j] += 1
+        if num!= 1:
+            result += n - 1
+            continue
+        for j in range(2, n + 1):
+            pstr = f"{powers[0] * j}-{powers[1] * j}-{powers[2] * j}-{powers[3] * j}"
+            xs[pstr] = True
+    result += len(xs)
+    return result

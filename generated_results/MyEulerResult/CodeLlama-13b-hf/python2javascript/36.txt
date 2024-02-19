@@ -1,0 +1,39 @@
+const isPrime = (n) => {
+    if (n < 2) {
+        return false;
+    }
+    if (n == 2) {
+        return true;
+    }
+    if (n % 2 == 0) {
+        return false;
+    }
+    for (let i = 3; i <= Math.sqrt(n) + 1; i += 2) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const truncatablePrimes = (n) => {
+    let result = 0;
+    for (let i = 10; i < n; i++) {
+        if (isPrime(i)) {
+            let si = i.toString();
+            let flag = true;
+            for (let j = 1; j < si.length; j++) {
+                let p1 = parseInt(si.substring(j));
+                let p2 = parseInt(si.substring(0, si.length - j));
+                if (!isPrime(p1) || !isPrime(p2)) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                result += i;
+            }
+        }
+    }
+    return result;
+}

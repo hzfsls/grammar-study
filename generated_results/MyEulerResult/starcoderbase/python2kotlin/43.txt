@@ -1,0 +1,17 @@
+fun pentagonNumbers(n: Int): Int {
+    val pentagon = mutableSetOf<Int>()
+    for (i in 1 until n) {
+        pentagon.add(i * (3 * i - 1) / 2)
+    }
+    var result = -1
+    for (j in pentagon) {
+        for (k in pentagon) {
+            if (j + k in pentagon && k - j in pentagon) {
+                if (result == -1 || k - j < result) {
+                    result = k - j
+                }
+            }
+        }
+    }
+    return result
+}

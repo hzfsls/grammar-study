@@ -1,0 +1,13 @@
+problem Euler030 {
+    code {
+        func digit_nth_powers(n: int) -> int
+    }
+    tests {
+        template nse {
+            (5) -> 443839
+            (3) -> 1301
+            (4) -> 19316
+            (6) -> 548834
+        }
+    }
+}

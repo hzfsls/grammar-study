@@ -1,0 +1,16 @@
+def pandigital_multiples(n: int) -> int:
+    result = -1
+    for i in range(2, n + 1):
+        cprod = ""
+        for j in range(1, 10):
+            cprod += str(i * j)
+            if len(cprod) == 9:
+                chars = cprod.split("")
+                chars.sort()
+                if "".join(chars) == "123456789":
+                    cprod_int = int(cprod)
+                    result = max(result, cprod_int)
+                    break
+            elif len(cprod) > 9:
+                break
+    return result

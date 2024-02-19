@@ -1,0 +1,11 @@
+fn champernowne_constant(b: i32) -> i32 {
+    let mut s = String::new();
+    for i in 1..b.pow(6) {
+        s.push_str(&i.to_string());
+    }
+    let mut result = 1;
+    for i in 0..7 {
+        result *= s[b.pow(i) - 1..].parse::<i32>().unwrap();
+    }
+    result
+}

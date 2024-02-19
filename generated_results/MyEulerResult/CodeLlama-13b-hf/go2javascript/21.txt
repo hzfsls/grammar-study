@@ -1,0 +1,19 @@
+const namesScores = (names, queries) => {
+    let sNames = slices.clone(names);
+    slices.sort(sNames);
+    let result = 0;
+    for (let i = 0; i < sNames.length; i++) {
+        let name = sNames[i];
+        let x = 0;
+        for (let c of name) {
+            x += c.charCodeAt(0) - 64;
+        }
+        for (let query of queries) {
+            if (query === name) {
+                result += x * (i + 1);
+                break;
+            }
+        }
+    }
+    return result;
+}

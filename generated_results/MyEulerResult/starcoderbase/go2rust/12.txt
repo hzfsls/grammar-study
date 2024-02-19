@@ -1,0 +1,30 @@
+fn large_sum(numbers: &Vec<String>) -> String {
+    let mut digits = vec![0; 60];
+    for i in 0..50 {
+        let mut tmp = 0;
+        for num in numbers {
+            tmp += num.chars().nth(49 - i).unwrap() as i32 - '0' as i32;
+        }
+        for j in i..60 {
+            digits[j] += tmp % 10;
+            if digits[j] >= 10 {
+                digits[j + 1] += digits[j] / 10;
+                digits[j] %= 10;
+            }
+            tmp /= 10;
+            if tmp == 0 {
+                break;
+            }
+        }
+    }
+    for i in (0..60).rev() {
+        if digits[i]!= 0 {
+            let mut result = String::new();
+            for j in i..i + 10 {
+                result.push_str(&digits[j].to_string());
+            }
+            return result;
+        }
+    }
+    String::new()
+}

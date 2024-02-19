@@ -1,0 +1,19 @@
+function powerDigitSum($n) {
+    $digits = [2];
+    for ($i = 1; $i < $n; $i++) {
+        $carry = 0;
+        for ($j = 0; $j < count($digits); $j++) {
+            $temp = $digits[$j] * 2 + $carry;
+            $digits[$j] = $temp % 10;
+            $carry = $temp / 10;
+        }
+        if ($carry != 0) {
+            array_push($digits, $carry);
+        }
+    }
+    $result = 0;
+    foreach ($digits as $digit) {
+        $result += $digit;
+    }
+    return $result;
+}

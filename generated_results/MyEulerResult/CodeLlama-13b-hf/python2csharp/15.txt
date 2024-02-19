@@ -1,0 +1,21 @@
+class Global {
+    public static int PowerDigitSum(int n) {
+        IList<int> digits = new List<int> { 2 };
+        for (int _ = 1; _ < n; _++) {
+            int carry = 0;
+            for (int j = 0; j < digits.Count; j++) {
+                int temp = digits[j] * 2 + carry;
+                digits[j] = temp % 10;
+                carry = temp / 10;
+            }
+            if (carry != 0) {
+                digits.Add(carry);
+            }
+        }
+        int result = 0;
+        foreach (int digit in digits) {
+            result += digit;
+        }
+        return result;
+    }
+}

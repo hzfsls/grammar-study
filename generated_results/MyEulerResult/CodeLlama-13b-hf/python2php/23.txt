@@ -1,0 +1,16 @@
+function lexicographicPermutations($n) {
+    $result = '';
+    $digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    $x = $n - 1;
+    for ($i = 10; $i > 0; $i--) {
+        $fact = 1;
+        for ($j = 1; $j < $i; $j++) {
+            $fact *= $j;
+        }
+        $idx = $x / $fact;
+        $result .= strval($digits[$idx]);
+        array_splice($digits, $idx, 1);
+        $x -= $idx * $fact;
+    }
+    return $result;
+}

@@ -1,0 +1,15 @@
+fn names_scores(names: &Vec<String>, queries: &Vec<String>) -> i32 {
+    let mut s_names = names.clone();
+    s_names.sort();
+    let mut result = 0;
+    for (i, name) in s_names.iter().enumerate() {
+        let mut x = 0;
+        for c in name.chars() {
+            x += c as i32 - 64;
+        }
+        if queries.contains(name) {
+            result += x * (i + 1)
+        }
+    }
+    result
+}

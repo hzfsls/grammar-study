@@ -1,0 +1,21 @@
+function pandigitalMultiples($n) {
+    $result = -1;
+    for ($i = 2; $i <= $n; $i++) {
+        $cprod = "";
+        for ($j = 1; $j < 10; $j++) {
+            $cprod.= strval($i * $j);
+            if (strlen($cprod) === 9) {
+                $chars = explode("", $cprod);
+                sort($chars);
+                if (implode("", $chars) === "123456789") {
+                    $cprodInt = intval($cprod);
+                    $result = max($result, $cprodInt);
+                    break;
+                }
+            } else if (strlen($cprod) > 9) {
+                break;
+            }
+        }
+    }
+    return $result;
+}

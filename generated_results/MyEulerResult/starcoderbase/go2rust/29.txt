@@ -1,0 +1,13 @@
+fn digit_nth_powers(n: i32) -> i32 {
+    let mut result = 0;
+    for i in 2..4 * (10 as f64).powi(n) as i32 {
+        let mut digits_sum = 0;
+        for digit in i.to_string().chars() {
+            digits_sum += (digit as i32).pow(n);
+        }
+        if i == digits_sum {
+            result += i;
+        }
+    }
+    result
+}

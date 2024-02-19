@@ -1,0 +1,30 @@
+fun largeSum(numbers: List<String>): String {
+    val digits = IntArray(60)
+    for (i in 0 until 50) {
+        var tmp = 0
+        for (num in numbers) {
+            tmp += num[49 - i] - '0'.toInt()
+        }
+        for (j in i until 60) {
+            digits[j] += tmp % 10
+            if (digits[j] >= 10) {
+                digits[j + 1] += digits[j] / 10
+                digits[j] %= 10
+            }
+            tmp /= 10
+            if (tmp == 0) {
+                break
+            }
+        }
+    }
+    for (i in 59 downTo 0) {
+        if (digits[i] != 0) {
+            var result = ""
+            for (j in i downTo i - 10) {
+                result += digits[j].toString()
+            }
+            return result
+        }
+    }
+    return ""
+}

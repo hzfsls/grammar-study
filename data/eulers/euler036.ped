@@ -1,0 +1,14 @@
+problem Euler036 {
+    code {
+        func double_base_palindromes(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000000) -> 872187
+            (100) -> 157
+            (1000) -> 1772
+            (10000) -> 18228
+            (100000) -> 286602
+        }
+    }
+}

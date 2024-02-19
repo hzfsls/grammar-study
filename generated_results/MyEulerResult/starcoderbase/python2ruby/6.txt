@@ -1,0 +1,16 @@
+def nth_prime(n)
+    primes = [2]
+    i = 3
+    while primes.length < n
+        for p in primes
+            if i % p == 0
+                break
+            end
+            if p * p > i
+                primes.push(i)
+                break
+        end
+        i += 2
+    end
+    primes[-1]
+end

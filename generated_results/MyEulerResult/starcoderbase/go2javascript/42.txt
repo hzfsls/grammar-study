@@ -1,0 +1,34 @@
+const genPermutations = (s) => {
+    if (s.length <= 1) {
+        return [s];
+    }
+    let result = [];
+    for (let perm of genPermutations(s.substring(1))) {
+        for (let i = 0; i < s.length; i++) {
+            result.push(perm.substring(0, i) + s[0] + perm.substring(i));
+        }
+    }
+    return result;
+}
+
+const subStringDivisibility = (n) => {
+    let result = 0;
+    let primes = [2, 3, 5, 7, 11, 13, 17];
+    let s = "";
+    for (let i = 0; i <= n; i++) {
+        s += i;
+    }
+    for (let i of genPermutations(s)) {
+        let flag = true;
+        for (let j = 1; j < n - 1; j++) {
+            if (parseInt(i.substring(j, j + 3)) % primes[j - 1]!== 0) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            result += parseInt(i);
+        }
+    }
+    return result;
+}

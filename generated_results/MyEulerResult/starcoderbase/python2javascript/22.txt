@@ -1,0 +1,37 @@
+const isAbundant = (n) => {
+    if (n < 12) {
+        return false;
+    }
+    let sumDivisors = 1;
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) {
+            sumDivisors += i;
+            if (i!== n / i) {
+                sumDivisors += n / i;
+            }
+        }
+    }
+    return sumDivisors > n;
+}
+
+const nonAbundantSums = (n) => {
+    let abundants = [];
+    for (let i = 12; i <= n; i++) {
+        if (isAbundant(i)) {
+            abundants.push(i);
+        }
+    }
+    let abundantSums = new Set();
+    for (let i of abundants) {
+        for (let j of abundants) {
+            abundantSums.add(i + j);
+        }
+    }
+    let result = 0;
+    for (let i = 0; i < n; i++) {
+        if (!abundantSums.has(i)) {
+            result += i;
+        }
+    }
+    return result;
+}

@@ -1,0 +1,20 @@
+function factorialDigitSum($n) {
+    $digits = [1];
+    for ($i = 1; $i <= $n; $i++) {
+        $carry = 0;
+        for ($j = 0; $j < count($digits); $j++) {
+            $digits[$j] = $digits[$j] * $i + $carry;
+            $carry = $digits[$j] / 10;
+            $digits[$j] %= 10;
+        }
+        while ($carry != 0) {
+            array_push($digits, $carry % 10);
+            $carry /= 10;
+        }
+    }
+    $result = 0;
+    foreach ($digits as $digit) {
+        $result += $digit;
+    }
+    return $result;
+}

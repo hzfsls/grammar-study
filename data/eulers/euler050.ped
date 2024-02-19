@@ -1,0 +1,14 @@
+problem Euler050 {
+    code {
+        func consecutive_prime_sum(limit: int) -> int
+    }
+    tests {
+        template nse {
+            (1000000) -> 997651
+            (100) -> 41
+            (1000) -> 953
+            (10000) -> 9521
+            (100000) -> 92951
+        }
+    }
+}

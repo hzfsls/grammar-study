@@ -1,0 +1,20 @@
+fn factorial_digit_sum(n: i32) -> i32 {
+    let mut digits = vec![1];
+    for i in 1..=n {
+        let mut carry = 0;
+        for j in 0..digits.len() {
+            digits[j] = digits[j] * i + carry;
+            carry = digits[j] / 10;
+            digits[j] %= 10;
+        }
+        while carry != 0 {
+            digits.push(carry % 10);
+            carry /= 10;
+        }
+    }
+    let mut result = 0;
+    for digit in digits {
+        result += digit;
+    }
+    result
+}

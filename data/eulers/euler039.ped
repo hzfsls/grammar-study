@@ -1,0 +1,14 @@
+problem Euler039 {
+    code {
+        func integer_right_triangles(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000) -> 840
+            (12) -> 12
+            (80) -> 60
+            (200) -> 120
+            (500) -> 420
+        }
+    }
+}

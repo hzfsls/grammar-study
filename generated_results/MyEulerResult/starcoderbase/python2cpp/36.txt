@@ -1,0 +1,39 @@
+bool isPrime(int n) {
+    if (n < 2) {
+        return false;
+    }
+    if (n == 2) {
+        return true;
+    }
+    if (n % 2 == 0) {
+        return false;
+    }
+    for (int i = 3; i <= int(sqrt(n)); i += 2) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int truncatablePrimes(int n) {
+    int result = 0;
+    for (int i = 10; i < n; i++) {
+        if (isPrime(i)) {
+            string si = to_string(i);
+            bool flag = true;
+            for (int j = 1; j < si.size(); j++) {
+                int p1 = stoi(si.substr(j));
+                int p2 = stoi(si.substr(0, j));
+                if (!isPrime(p1) ||!isPrime(p2)) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                result += i;
+            }
+        }
+    }
+    return result;
+}

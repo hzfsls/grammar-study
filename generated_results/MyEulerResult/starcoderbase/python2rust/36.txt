@@ -1,0 +1,39 @@
+fn is_prime(n: i32) -> bool {
+    if n < 2 {
+        return false;
+    }
+    if n == 2 {
+        return true;
+    }
+    if n % 2 == 0 {
+        return false;
+    }
+    for i in 3..(n as f64).sqrt() as i32 + 1 {
+        if n % i == 0 {
+            return false;
+        }
+    }
+    true
+}
+
+fn truncatable_primes(n: i32) -> i32 {
+    let mut result = 0;
+    for i in 10..n {
+        if is_prime(i) {
+            let si = i.to_string();
+            let mut flag = true;
+            for j in 1..si.len() {
+                let p1 = si[j..].parse::<i32>().unwrap();
+                let p2 = si[..si.len() - j].parse::<i32>().unwrap();
+                if!is_prime(p1) ||!is_prime(p2) {
+                    flag = false;
+                    break;
+                }
+            }
+            if flag {
+                result += i;
+            }
+        }
+    }
+    result
+}

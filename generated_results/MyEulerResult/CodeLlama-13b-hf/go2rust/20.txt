@@ -1,0 +1,23 @@
+fn d(n: i32) -> i32 {
+    let mut result = 1;
+    for i in 2..=n.sqrt() as i32 {
+        if n % i == 0 {
+            result += i;
+            if i != n / i {
+                result += n / i;
+            }
+        }
+    }
+    result
+}
+
+fn amicable_numbers(n: i32) -> i32 {
+    let mut result = 0;
+    for a in 2..n {
+        let b = d(a);
+        if a != b && a == d(b) {
+            result += a;
+        }
+    }
+    result
+}

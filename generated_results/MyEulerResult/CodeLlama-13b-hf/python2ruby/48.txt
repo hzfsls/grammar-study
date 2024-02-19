@@ -1,0 +1,38 @@
+def is_prime(n)
+    return false if n < 2
+    return true if n == 2
+    return false if n % 2 == 0
+    (3...Math.sqrt(n).to_i + 1).step(2).each do |i|
+        return false if n % i == 0
+    end
+    true
+end
+
+def gen_permutations(s)
+    return s if s.length <= 1
+    result = []
+    gen_permutations(s[1..-1]).each do |perm|
+        (0...s.length).each do |i|
+            result.push(perm[0...i] + s[0] + perm[i..-1])
+        end
+    end
+    result
+end
+
+def prime_permutations(n)
+    (n...999).step(-1).each do |i|
+        next unless is_prime(i)
+        permutations = gen_permutations(i.to_s)
+        candidates = Set.new
+        permutations.each do |j|
+            candidate = j.to_i
+            next unless is_prime(candidate)
+            candidates.add(candidate)
+        end
+        candidates.each do |m|
+            next unless m + (m - i) in candidates
+            return i.to_s + m.to_s + (m + (m - i)).to_s
+        end
+    end
+    ''
+end

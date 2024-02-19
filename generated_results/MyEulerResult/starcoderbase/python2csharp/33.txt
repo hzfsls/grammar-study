@@ -1,0 +1,19 @@
+class Global {
+    public static int DigitFactorials(int n) {
+        int result = 0;
+        for (int i = 3; i < n; i++) {
+            int factSum = 0;
+            foreach (char digit in i.ToString()) {
+                int fact = 1;
+                for (int j = 1; j < int.Parse(digit.ToString()); j++) {
+                    fact *= j;
+                }
+                factSum += fact;
+            }
+            if (i == factSum) {
+                result += i;
+            }
+        }
+        return result;
+    }
+}

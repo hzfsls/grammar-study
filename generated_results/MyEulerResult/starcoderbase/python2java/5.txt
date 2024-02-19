@@ -1,0 +1,11 @@
+class Global {
+    public static int sumSquareDifference(int n) {
+        int sqrSum = 0;
+        int numSum = 0;
+        for (int i = 1; i <= n; i++) {
+            sqrSum += i * i;
+            numSum += i;
+        }
+        return numSum * numSum - sqrSum;
+    }
+}

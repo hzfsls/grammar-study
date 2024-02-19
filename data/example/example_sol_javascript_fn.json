@@ -1,0 +1,6 @@
+{
+    "javascript": {
+        "Example1" : "const productOfDivisible = (nums, m) => {\n    return nums.filter(num => num % m === 0).reduce((a, b) => a * b, 1);\n}",
+        "Example2" : "const genRotations = (s) => {\n    return Array.from({length: s.length - 1}, (_, i) => s.substring(i + 1) + s.substring(0, i + 1));\n}\n\nconst sumOfRotations = (s) =>{\n    return genRotations(s).map(r => parseInt(r)).reduce((a, b) => a + b);\n}"
+    }
+}

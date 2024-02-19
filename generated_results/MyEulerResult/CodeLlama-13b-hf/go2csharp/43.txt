@@ -1,0 +1,19 @@
+class Global {
+    public static int PentagonNumbers(int n) {
+        Dictionary<int, bool> pentagon = new Dictionary<int, bool>();
+        for (int i = 1; i < n; i++) {
+            pentagon[i * (3 * i - 1) / 2] = true;
+        }
+        int result = -1;
+        foreach (int j in pentagon.Keys) {
+            foreach (int k in pentagon.Keys) {
+                if (pentagon[j + k] && pentagon[k - j]) {
+                    if (result == -1 || k - j < result) {
+                        result = k - j;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+}

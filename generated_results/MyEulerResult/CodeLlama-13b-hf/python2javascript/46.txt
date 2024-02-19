@@ -1,0 +1,26 @@
+const primeFactors = (n) => {
+    let num = n;
+    let factors = [];
+    let i = 2;
+    while (i * i <= num) {
+        if (num % i) {
+            i += 1;
+        } else {
+            num = Math.floor(num / i);
+            factors.push(i);
+        }
+    }
+    if (num > 1) {
+        factors.push(num);
+    }
+    return factors.length;
+}
+
+const distinctPrimesFactors = (n) => {
+    for (let i = n; i < 1000000; i++) {
+        if (primeFactors(i) === 4 && primeFactors(i + 1) === 4 && primeFactors(i + 2) === 4 && primeFactors(i + 3) === 4) {
+            return i;
+        }
+    }
+    return -1;
+}

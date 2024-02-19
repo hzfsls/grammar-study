@@ -1,0 +1,37 @@
+fun isAbundant(n: Int): Boolean {
+    if (n < 12) {
+        return false
+    }
+    var sumDivisors = 1
+    for (i in 2..(n / i).toInt()) {
+        if (n % i == 0) {
+            sumDivisors += i
+            if (i != n / i) {
+                sumDivisors += n / i
+            }
+        }
+    }
+    return sumDivisors > n
+}
+
+fun nonAbundantSums(n: Int): Int {
+    val abundants = mutableListOf<Int>()
+    for (i in 12 until n) {
+        if (isAbundant(i)) {
+            abundants.add(i)
+        }
+    }
+    val abundantSums = mutableSetOf<Int>()
+    for (i in abundants) {
+        for (j in abundants) {
+            abundantSums.add(i + j)
+        }
+    }
+    var result = 0
+    for (i in 0 until n) {
+        if (i !in abundantSums) {
+            result += i
+        }
+    }
+    return result
+}

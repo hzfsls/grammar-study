@@ -1,0 +1,6 @@
+{
+    "ruby": {
+        "Example1" : "def product_of_divisible(nums, m)\n    result = 1\n    nums.each do |num|\n        if num % m == 0\n            result *= num\n        end\n    end\n    result\nend",
+        "Example2" : "def gen_rotations(s)\n    result = []\n    (1...s.length).each do |i|\n        result.push(s[i..-1] + s[0...i])\n    end\n    result\nend\n\ndef sum_of_rotations(s)\n    result = 0\n    gen_rotations(s).each do |r|\n        result += r.to_i\n    end\n    result\nend"
+    }
+}

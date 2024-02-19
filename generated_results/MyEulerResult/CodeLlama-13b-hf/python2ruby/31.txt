@@ -1,0 +1,18 @@
+def pandigital_products(n)
+    products = Set.new
+    s = (1..n).map { |i| i.to_s }.join
+    (1..99).each do |a|
+        (1..9999).each do |b|
+            c = a * b
+            chars = [a.to_s, b.to_s, c.to_s].sort
+            if chars.join == s
+                products.add(c)
+            end
+        end
+    end
+    result = 0
+    products.each do |product|
+        result += product
+    end
+    result
+end

@@ -1,0 +1,19 @@
+const powerDigitSum = (n) => {
+    let digits = [2];
+    for (let _ = 0; _ < n; _++) {
+        let carry = 0;
+        for (let j = 0; j < digits.length; j++) {
+            let temp = digits[j] * 2 + carry;
+            digits[j] = temp % 10;
+            carry = temp / 10 | 0;
+        }
+        if (carry) {
+            digits.push(carry);
+        }
+    }
+    let result = 0;
+    for (let digit of digits) {
+        result += digit;
+    }
+    return result;
+}

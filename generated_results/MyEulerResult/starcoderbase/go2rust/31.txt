@@ -1,0 +1,22 @@
+fn pandigital_products(n: i32) -> i32 {
+    let mut products = HashMap::new();
+    let mut s = String::new();
+    for i in 1..=n {
+        s.push_str(&i.to_string());
+    }
+    for a in 1..100 {
+        for b in 1..10000 {
+            let c = a * b;
+            let chars: Vec<char> = s.chars().collect();
+            chars.sort();
+            if chars.iter().collect::<String>() == s {
+                products.insert(c, true);
+            }
+        }
+    }
+    let mut result = 0;
+    for product in products.keys() {
+        result += product;
+    }
+    result
+}

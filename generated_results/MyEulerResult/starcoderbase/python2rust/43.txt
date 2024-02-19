@@ -1,0 +1,17 @@
+fn pentagon_numbers(n: i32) -> i32 {
+    let mut pentagon = HashSet::new();
+    for i in 1..n {
+        pentagon.insert(i * (3 * i - 1) / 2);
+    }
+    let mut result = -1;
+    for j in pentagon {
+        for k in pentagon.clone() {
+            if j + k == k - j && k - j!= 0 {
+                if result == -1 || k - j < result {
+                    result = k - j;
+                }
+            }
+        }
+    }
+    result
+}

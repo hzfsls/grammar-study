@@ -1,0 +1,19 @@
+class Global {
+    public static int NthPrime(int n) {
+        IList<int> primes = new List<int> { 2 };
+        int i = 3;
+        while (primes.Count < n) {
+            foreach (int p in primes) {
+                if (i % p == 0) {
+                    break;
+                }
+                if (p * p > i) {
+                    primes.Add(i);
+                    break;
+                }
+            }
+            i += 2;
+        }
+        return primes[primes.Count - 1];
+    }
+}

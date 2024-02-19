@@ -1,0 +1,21 @@
+fun isPalindrome(s: String): Boolean {
+    for (i in 0 until s.length / 2) {
+        if (s[i]!= s[s.length - i - 1]) {
+            return false
+        }
+    }
+    return true
+}
+
+fun largestPalindromeProduct(n: Int): Int {
+    var result = 0
+    for (i in 100..999) {
+        for (j in i..999) {
+            val prod = i * j
+            if (isPalindrome(prod.toString()) && prod > result && prod < n) {
+                result = prod
+            }
+        }
+    }
+    return result
+}

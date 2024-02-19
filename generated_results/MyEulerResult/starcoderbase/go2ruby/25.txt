@@ -1,0 +1,21 @@
+def reciprocal_cycles(n)
+    result = 0
+    maxLength = 0
+    (1...n).each do |i|
+        remainders = []
+        remainder = 1
+        while remainder!= 0 &&!remainders.include?(remainder)
+            remainders.push(remainder)
+            remainder = (remainder * 10) % i
+        end
+        length = 0
+        if remainder!= 0
+            length = remainders.length - remainders.index(remainder)
+        end
+        if length > maxLength
+            maxLength = length
+            result = i
+        end
+    end
+    result
+end

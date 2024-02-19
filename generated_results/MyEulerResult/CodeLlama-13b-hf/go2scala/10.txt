@@ -1,0 +1,22 @@
+def largestProductInAGrid(grid: collection.Seq[collection.Seq[Int]]): Int = {
+  var result = 0
+  for (i <- 0 until grid.length - 3) {
+    for (j <- 0 until grid(i).length - 3) {
+      var p1, p2, p3, p4 = 1, 1, 1, 1
+      for (k <- 0 until 4) {
+        p1 *= grid(i + k)(j)
+      }
+      for (k <- 0 until 4) {
+        p2 *= grid(i)(j + k)
+      }
+      for (k <- 0 until 4) {
+        p3 *= grid(i + k)(j + k)
+      }
+      for (k <- 0 until 4) {
+        p4 *= grid(i + k)(j + 3 - k)
+      }
+      result = math.max(result, p1, p2, p3, p4)
+    }
+  }
+  result
+}

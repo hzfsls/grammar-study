@@ -1,0 +1,13 @@
+func DigitNthPowers(n int) int {
+    result := 0
+    for i := 2; i < 4 * 10 ** n; i++ {
+        digitsSum := 0
+        for _, digit := range strconv.Itoa(i) {
+            digitsSum += int(digit) ** n
+        }
+        if i == digitsSum {
+            result += i
+        }
+    }
+    return result
+}

@@ -1,0 +1,19 @@
+int powerDigitSum(int n) {
+    vector<int> digits = {2};
+    for (int i = 1; i < n; i++) {
+        int carry = 0;
+        for (int j = 0; j < digits.size(); j++) {
+            int temp = digits[j]*2 + carry;
+            digits[j] = temp % 10;
+            carry = temp / 10;
+        }
+        if (carry != 0) {
+            digits.push_back(carry);
+        }
+    }
+    int result = 0;
+    for (int digit : digits) {
+        result += digit;
+    }
+    return result;
+}

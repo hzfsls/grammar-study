@@ -1,0 +1,24 @@
+function nDigitFibonacciNumber($n) {
+    $a = [1];
+    $b = [1];
+    $i = 2;
+    while (count($b) < $n) {
+        $carry = 0;
+        $c = $b;
+        for ($j = 0; $j < count($b); $j++) {
+            if ($j < count($a)) {
+                $b[$j] = $a[$j] + $b[$j] + $carry;
+            } else {
+                $b[$j] = $b[$j] + $carry;
+            }
+            $carry = $b[$j] / 10;
+            $b[$j] = $b[$j] % 10;
+        }
+        if ($carry) {
+            array_push($b, $carry);
+        }
+        $a = $c;
+        $i = $i + 1;
+    }
+    return $i;
+}

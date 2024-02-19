@@ -1,0 +1,9 @@
+func SumSquareDifference(n int) int {
+    sqrSum := 0
+    numSum := 0
+    for i := 1; i < n + 1; i++ {
+        sqrSum += i * i
+        numSum += i
+    }
+    return numSum * numSum - sqrSum
+}

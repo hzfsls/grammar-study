@@ -1,0 +1,30 @@
+function primeFactors($n) {
+    $num = $n;
+    $factors = [];
+    $i = 2;
+    while ($i * $i <= $num) {
+        if ($num % $i != 0) {
+            $i++;
+        } else {
+            $num /= $i;
+            array_push($factors, $i);
+        }
+    }
+    if ($num > 1) {
+        array_push($factors, $num);
+    }
+    $s = [];
+    foreach ($factors as $v) {
+        $s[$v] = true;
+    }
+    return count($s);
+}
+
+function distinctPrimesFactors($n) {
+    for ($i = $n; $i < 1000000; $i++) {
+        if (primeFactors($i) == 4 && primeFactors($i + 1) == 4 && primeFactors($i + 2) == 4 && primeFactors($i + 3) == 4) {
+            return $i;
+        }
+    }
+    return -1;
+}

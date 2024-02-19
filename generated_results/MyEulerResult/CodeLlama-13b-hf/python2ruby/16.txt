@@ -1,0 +1,24 @@
+def number_to_words(n)
+    ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+    tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    if n == 1000
+        return "one thousand"
+    elsif n >= 100
+        if n % 100 == 0
+            return ones[n // 100] + " hundred"
+        else
+            return ones[n // 100] + " hundred and " + number_to_words(n % 100)
+        end
+    elsif n >= 20
+        suf = ""
+        if n % 10 != 0
+            suf = " " + ones[n % 10]
+        end
+        return tens[n // 10] + suf
+    elsif n >= 10
+        return teens[n - 10]
+    else
+        return ones[n]
+    end
+end

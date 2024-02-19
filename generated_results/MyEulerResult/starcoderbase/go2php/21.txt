@@ -1,0 +1,18 @@
+function namesScores($names, $queries) {
+    $sNames = clone $names;
+    sort($sNames);
+    $result = 0;
+    for ($i = 0; $i < count($sNames); $i++) {
+        $x = 0;
+        foreach (str_split($sNames[$i]) as $c) {
+            $x += ord($c) - 64;
+        }
+        foreach ($queries as $query) {
+            if ($query === $sNames[$i]) {
+                $result += $x * ($i + 1);
+                break;
+            }
+        }
+    }
+    return $result;
+}

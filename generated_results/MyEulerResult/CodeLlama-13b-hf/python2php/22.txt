@@ -1,0 +1,37 @@
+function isAbundant($n) {
+    if ($n < 12) {
+        return false;
+    }
+    $sum_divisors = 1;
+    for ($i = 2; $i <= intval(sqrt($n)) + 1; $i++) {
+        if ($n % $i == 0) {
+            $sum_divisors += $i;
+            if ($i != $n / $i) {
+                $sum_divisors += $n / $i;
+            }
+        }
+    }
+    return $sum_divisors > $n;
+}
+
+function nonAbundantSums($n) {
+    $abundants = [];
+    for ($i = 12; $i < $n; $i++) {
+        if (isAbundant($i)) {
+            array_push($abundants, $i);
+        }
+    }
+    $abundant_sums = [];
+    foreach ($abundants as $i) {
+        foreach ($abundants as $j) {
+            array_push($abundant_sums, $i + $j);
+        }
+    }
+    $result = 0;
+    for ($i = 0; $i < $n; $i++) {
+        if (!in_array($i, $abundant_sums)) {
+            $result += $i;
+        }
+    }
+    return $result;
+}

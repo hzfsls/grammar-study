@@ -1,0 +1,22 @@
+class Global {
+    public static int PandigitalMultiples(int n) {
+        int result = -1;
+        for (int i = 2; i <= n; i++) {
+            string cprod = "";
+            for (int j = 1; j < 10; j++) {
+                cprod += i * j;
+                if (cprod.Length == 9) {
+                    char[] chars = cprod.ToCharArray();
+                    Array.Sort(chars);
+                    if (new string(chars) == "123456789") {
+                        result = Math.Max(result, int.Parse(cprod));
+                        break;
+                    }
+                } else if (cprod.Length > 9) {
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+}

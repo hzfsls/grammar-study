@@ -1,0 +1,30 @@
+const largeSum = (numbers) => {
+    let digits = new Array(60).fill(0);
+    for (let i = 0; i < 50; i++) {
+        let tmp = 0;
+        for (let num of numbers) {
+            tmp += parseInt(num[49 - i] - '0');
+        }
+        for (let j = i; j < 60; j++) {
+            digits[j] += tmp % 10;
+            if (digits[j] >= 10) {
+                digits[j + 1] += Math.floor(digits[j] / 10);
+                digits[j] %= 10;
+            }
+            tmp = Math.floor(tmp / 10);
+            if (tmp == 0) {
+                break;
+            }
+        }
+    }
+    for (let i = 59; i >= 0; i--) {
+        if (digits[i] != 0) {
+            let result = "";
+            for (let j = i; j > i - 10; j--) {
+                result += digits[j].toString();
+            }
+            return result;
+        }
+    }
+    return "";
+}

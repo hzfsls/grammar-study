@@ -1,0 +1,21 @@
+int triangularPentagonalAndHexagonal(int n) {
+    set<int> ps;
+    int i = 1;
+    int c = 0.5 * i * (3 * i - 1);
+    while (c < n) {
+        i += 1;
+        ps.insert(c);
+        c = 0.5 * i * (3 * i - 1);
+    }
+    i = 1;
+    c = i * (2 * i - 1);
+    int result = -1;
+    while (c < n) {
+        i += 1;
+        if (ps.find(c) != ps.end()) {
+            result = c;
+        }
+        c = i * (2 * i - 1);
+    }
+    return result;
+}

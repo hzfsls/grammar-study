@@ -1,0 +1,14 @@
+def smallest_multiple(n)
+    result = 1
+    (1...n + 1).each do |i|
+        if result % i!= 0
+            (1...n + 1).each do |j|
+                if (result * j) % i == 0
+                    result *= j
+                    break
+                end
+            end
+        end
+    end
+    result
+end

@@ -1,0 +1,41 @@
+const isPrime = (n) => {
+    if (n < 2) {
+        return false;
+    }
+    if (n === 2) {
+        return true;
+    }
+    if (n % 2 === 0) {
+        return false;
+    }
+    for (let i = 3; i <= Math.sqrt(n); i += 2) {
+        if (n % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const quadraticPrimes = (n) => {
+    let maxPrimes = 0;
+    let result = 0;
+    for (let a = -n + 1; a < n; a += 2) {
+        for (let b = -n + 1; b < n; b += 2) {
+            let x = 0;
+            while (true) {
+                if (x * x + a * x + b < 2) {
+                    break;
+                }
+                if (!isPrime(x * x + a * x + b)) {
+                    break;
+                }
+                x++;
+            }
+            if (x > maxPrimes) {
+                maxPrimes = x;
+                result = a * b;
+            }
+        }
+    }
+    return result;
+}

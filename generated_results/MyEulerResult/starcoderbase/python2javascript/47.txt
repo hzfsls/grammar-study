@@ -1,0 +1,29 @@
+const selfPowers = (n) => {
+    let digits = [0] * 10;
+    for (let i = 1; i <= n; i++) {
+        let tempDigits = [0] * 10;
+        tempDigits[0] = 1;
+        for (let j = 0; j < i; j++) {
+            let carry = 0;
+            for (let k = 0; k < 10; k++) {
+                tempDigits[k] = tempDigits[k] * i + carry;
+                carry = Math.floor(tempDigits[k] / 10);
+                tempDigits[k] %= 10;
+            }
+        }
+        for (let j = 0; j < 10; j++) {
+            digits[j] += tempDigits[j];
+            if (digits[j] >= 10) {
+                digits[j] -= 10;
+                if (j < 9) {
+                    digits[j + 1] += 1;
+                }
+            }
+        }
+    }
+    let result = "";
+    for (let i = 9; i >= 0; i--) {
+        result += digits[i].toString();
+    }
+    return result;
+}

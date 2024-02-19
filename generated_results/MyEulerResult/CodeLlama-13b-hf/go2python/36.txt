@@ -1,0 +1,27 @@
+def is_prime(n: int) -> bool:
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+def truncatable_primes(n: int) -> int:
+    result = 0
+    for i in range(10, n):
+        if is_prime(i):
+            si = str(i)
+            flag = True
+            for j in range(1, len(si)):
+                p1 = int(si[j:])
+                p2 = int(si[:len(si) - j])
+                if not is_prime(p1) or not is_prime(p2):
+                    flag = False
+                    break
+            if flag:
+                result += i
+    return result

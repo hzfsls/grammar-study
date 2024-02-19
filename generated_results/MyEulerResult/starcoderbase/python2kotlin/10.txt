@@ -1,0 +1,13 @@
+fun largestProductInAGrid(grid: List<List<Int>>): Int {
+    var result = 0
+    for (i in grid.indices - 3) {
+        for (j in grid[i].indices - 3) {
+            val p1 = grid[i][j] * grid[i + 1][j] * grid[i + 2][j] * grid[i + 3][j]
+            val p2 = grid[i][j] * grid[i][j + 1] * grid[i][j + 2] * grid[i][j + 3]
+            val p3 = grid[i][j] * grid[i + 1][j + 1] * grid[i + 2][j + 2] * grid[i + 3][j + 3]
+            val p4 = grid[i][j] * grid[i + 1][j + 2] * grid[i + 2][j + 1] * grid[i + 3][j]
+            result = maxOf(result, p1, p2, p3, p4)
+        }
+    }
+    return result
+}

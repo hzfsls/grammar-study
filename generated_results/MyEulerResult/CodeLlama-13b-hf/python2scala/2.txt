@@ -1,0 +1,12 @@
+def largestPrimeFactor(n: Int): Int = {
+  var result = n
+  var i = 2
+  while (i * i <= result) {
+    if (result % i != 0) {
+      i += 1
+    } else {
+      result /= i
+    }
+  }
+  result
+}

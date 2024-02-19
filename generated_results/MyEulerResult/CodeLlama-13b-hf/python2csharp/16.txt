@@ -1,0 +1,26 @@
+class Global {
+    public static string NumberToWords(int n) {
+        string[] ones = new string[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+        string[] teens = new string[] { "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+        string[] tens = new string[] { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+        if (n == 1000) {
+            return "one thousand";
+        } else if (n >= 100) {
+            if (n % 100 == 0) {
+                return ones[n / 100] + " hundred";
+            } else {
+                return ones[n / 100] + " hundred and " + NumberToWords(n % 100);
+            }
+        } else if (n >= 20) {
+            string suf = "";
+            if (n % 10 != 0) {
+                suf = " " + ones[n % 10];
+            }
+            return tens[n / 10] + suf;
+        } else if (n >= 10) {
+            return teens[n - 10];
+        } else {
+            return ones[n];
+        }
+    }
+}

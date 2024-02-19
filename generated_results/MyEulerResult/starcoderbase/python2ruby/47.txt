@@ -1,0 +1,26 @@
+def self_powers(n)
+    digits = [0] * 10
+    (1..n).each do |i|
+        temp_digits = [0] * 10
+        temp_digits[0] = 1
+        (0...i).each do |j|
+            carry = 0
+            (0...10).each do |k|
+                temp_digits[k] = temp_digits[k] * i + carry
+                carry = temp_digits[k] / 10
+                temp_digits[k] %= 10
+        end
+        (0...10).each do |j|
+            digits[j] += temp_digits[j]
+            if digits[j] >= 10
+                digits[j] -= 10
+                if j < 9
+                    digits[j + 1] += 1
+        end
+    end
+    result = ""
+    (9...0).each do |i|
+        result += digits[i].to_s
+    end
+    result
+end

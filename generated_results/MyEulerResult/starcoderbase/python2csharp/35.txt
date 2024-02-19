@@ -1,0 +1,22 @@
+class Global {
+    public static bool IsPalindrome(string s) {
+        for (int i = 0; i < s.Length / 2; i++) {
+            if (s[i]!= s[s.Length - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int DoubleBasePalindromes(int n) {
+        int result = 0;
+        for (int i = 1; i < n; i++) {
+            string str_i = i.ToString();
+            string bin_i = Convert.ToString(i, 2);
+            if (IsPalindrome(str_i) && IsPalindrome(bin_i)) {
+                result += i;
+            }
+        }
+        return result;
+    }
+}

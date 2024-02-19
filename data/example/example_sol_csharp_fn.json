@@ -1,0 +1,6 @@
+{
+    "csharp": {
+        "Example1" : "class Global {\n    public static int ProductOfDivisible(IList<int> nums, int m) {\n        return nums.Where(num => num % m == 0).Aggregate(1, (a, b) => a * b);\n    }\n}",
+        "Example2" : "class Global {\n    public static IList<string> GenRotations(string s) {\n        return Enumerable.Range(1, s.Length - 1).Select(i => s.Substring(i) + s.Substring(0, i)).ToList();\n    }\n\n    public static int SumOfRotations(string s) {\n        return GenRotations(s).Select(r => int.Parse(r)).Sum();\n    }\n}"
+    }
+}

@@ -1,0 +1,166 @@
+# imperative solution
+
+# 1
+
+def product_of_divisible(nums: list[int], m: int) -> int:
+    result = 1
+    for num in nums:
+        if num % m == 0:
+            result *= num
+    return result
+
+# 2
+
+def gen_rotations(s: str) -> list[str]:
+    result = []
+    for i in range(1, len(s)):
+        result.append(s[i:] + s[:i])
+    return result
+
+def sum_of_rotations(s: str) -> int:
+    result = 0
+    for r in gen_rotations(s):
+        result += int(r)
+    return result
+
+# functional solution
+
+# 1
+
+def product_of_divisible(nums: list[int], m: int) -> int:
+    return reduce(lambda x, y: x * y, filter(lambda x: x % m == 0, nums))
+
+# 2
+
+def gen_rotations(s: str) -> list[str]:
+    return list(map(lambda i: s[i:] + s[:i], range(1, len(s))))
+
+def sum_of_rotations(s: str) -> int:
+    return sum(map(lambda r: int(r), gen_rotations(s)))
+
+# list comprehension solution
+
+# 1
+
+def product_of_divisible(nums: list[int], m: int) -> int:
+    return reduce(lambda x, y: x * y, [num for num in nums if num % m == 0])
+
+# 2
+
+def gen_rotations(s: str) -> list[str]:
+    return [s[i:] + s[:i] for i in range(1, len(s))]
+
+def sum_of_rotations(s: str) -> int:
+    return sum([int(r) for r in gen_rotations(s)])
+
+// Translate to C#
+
+// imperative solution
+
+// 1
+
+class Global {
+    public static int ProductOfDivisible(IList<int> nums, int m) {
+        int result = 1;
+        foreach (int num in nums) {
+            if (num % m == 0) {
+                result *= num;
+            }
+        }
+        return result;
+    }
+}
+
+// 2
+
+class Global {
+    public static IList<string> GenRotations(string s) {
+        IList<string> result = new List<string>();
+        for (int i = 1; i < s.Length; i++) {
+            result.Add(s.Substring(i) + s.Substring(0, i));
+        }
+        return result;
+    }
+
+    public static int SumOfRotations(string s) {
+        int result = 0;
+        foreach (string r in GenRotations(s)) {
+            result += int.Parse(r);
+        }
+        return result;
+    }
+}
+
+// functional solution
+
+// 1
+
+class Global {
+    public static int ProductOfDivisible(IList<int> nums, int m) {
+        return nums.Where(x => x % m == 0).Aggregate(1, (x, y) => x * y);
+    }
+}
+
+// 2
+
+class Global {
+    public static IList<string> GenRotations(string s) {
+        return Enumerable.Range(1, s.Length - 1).Select(i => s.Substring(i) + s.Substring(0, i)).ToList();
+    }
+
+    public static int SumOfRotations(string s) {
+        return GenRotations(s).Select(r => int.Parse(r)).Sum();
+    }
+}
+
+// Translate to Scala
+
+// imperative solution
+
+// 1
+
+def productOfDivisible(nums: collection.Seq[Int], m: Int): Int = {
+  var result = 1
+  for (num <- nums) {
+    if (num % m == 0) {
+      result *= num
+    }
+  }
+  result
+}
+
+// 2
+
+def genRotations(s: String): collection.Seq[String] = {
+  val result = collection.mutable.ArrayBuffer[String]()
+  for (i <- 1 until s.length) {
+    result += s.substring(i) + s.substring(0, i)
+  }
+  result
+}
+
+def sumOfRotations(s: String): Int = {
+  var result = 0
+  for (r <- genRotations(s)) {
+    result += r.toInt
+  }
+  result
+}
+
+// functional solution
+
+// 1
+
+def productOfDivisible(nums: collection.Seq[Int], m: Int): Int = {
+  nums.filter(_ % m == 0).product
+}
+
+// 2
+
+def genRotations(s: String): collection.Seq[String] = {
+  (1 until s.length).map(i => s.substring(i) + s.substring(0, i))
+}
+
+def sumOfRotations(s: String): Int = {
+  genRotations(s).map(_.toInt).sum
+}

@@ -1,0 +1,23 @@
+def countingSundays(y1: Int, y2: Int): Int = {
+  var day = 0
+  var count = 0
+  for (year <- 1900 to y2) {
+    for (month <- 1 to 12) {
+      if (year >= y1 && day % 7 == 6) {
+        count += 1
+      }
+      if (month == 4 || month == 6 || month == 9 || month == 11) {
+        day += 30
+      } else if (month == 2) {
+        if (year % 4 == 0 && (year % 100!= 0 || year % 400 == 0)) {
+          day += 29
+        } else {
+          day += 28
+        }
+      } else {
+        day += 31
+      }
+    }
+  }
+  count
+}

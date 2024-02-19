@@ -1,0 +1,24 @@
+class Global {
+    public static int PandigitalProducts(int n) {
+        Dictionary<int, bool> products = new Dictionary<int, bool>();
+        string s = "";
+        for (int i = 1; i <= n; i++) {
+            s += i.ToString();
+        }
+        for (int a = 1; a < 100; a++) {
+            for (int b = 1; b < 10000; b++) {
+                int c = a * b;
+                char[] chars = (a.ToString() + b.ToString() + c.ToString()).ToCharArray();
+                Array.Sort(chars);
+                if (new string(chars) == s) {
+                    products[c] = true;
+                }
+            }
+        }
+        int result = 0;
+        foreach (int product in products.Keys) {
+            result += product;
+        }
+        return result;
+    }
+}

@@ -1,0 +1,14 @@
+problem Euler031 {
+    code {
+        func coin_sums(n: int) -> int
+    }
+    tests {
+        template nse {
+            (200) -> 73682
+            (5) -> 4
+            (10) -> 11
+            (100) -> 4563
+            (1000) -> 321335886
+        }
+    }
+}

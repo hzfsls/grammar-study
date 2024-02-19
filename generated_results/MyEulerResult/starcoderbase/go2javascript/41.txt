@@ -1,0 +1,14 @@
+const codedTriangleNumbers = (words) => {
+    let result = 0;
+    for (let word of words) {
+        let value = 0;
+        for (let c of word) {
+            value += c.charCodeAt(0) - 64;
+        }
+        let n = Math.floor(Math.sqrt(value * 2));
+        if (n * (n + 1) === value * 2) {
+            result++;
+        }
+    }
+    return result;
+}

@@ -1,0 +1,6 @@
+{
+    "java": {
+        "Example1" : "class Global {\n    public static int productOfDivisible(List<Integer> nums, int m) {\n        int result = 1;\n        for (int num : nums) {\n            if (num % m == 0) {\n                result *= num;\n            }\n        }\n        return result;\n    }\n}",
+        "Example2" : "class Global {\n    public static List<String> genRotations(String s) {\n        List<String> result = new ArrayList<>();\n        for (int i = 1; i < s.length(); i++) {\n            result.add(s.substring(i) + s.substring(0, i));\n        }\n        return result;\n    }\n\n    public static int sumOfRotations(String s) {\n        int result = 0;\n        for (String r : genRotations(s)) {\n            result += Integer.parseInt(r);\n        }\n        return result;\n    }\n}"
+    }
+}

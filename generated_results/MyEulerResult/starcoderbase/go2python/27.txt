@@ -1,0 +1,5 @@
+def number_spiral_diagonals(n: int) -> int:
+    result = 1
+    for i in range(3, n + 1, 2):
+        result += 4 * i * i - 6 * i + 6
+    return result

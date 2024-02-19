@@ -1,0 +1,20 @@
+const factorialDigitSum = (n) => {
+    let digits = [1];
+    for (let i = 1; i <= n; i++) {
+        let carry = 0;
+        for (let j = 0; j < digits.length; j++) {
+            digits[j] = digits[j] * i + carry;
+            carry = Math.floor(digits[j] / 10);
+            digits[j] %= 10;
+        }
+        while (carry!= 0) {
+            digits.push(carry % 10);
+            carry = Math.floor(carry / 10);
+        }
+    }
+    let result = 0;
+    for (let digit of digits) {
+        result += digit;
+    }
+    return result;
+}

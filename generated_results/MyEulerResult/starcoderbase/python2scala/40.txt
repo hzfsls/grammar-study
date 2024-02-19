@@ -1,0 +1,40 @@
+def isPrime(n: Int): Boolean = {
+  if (n < 2) {
+    false
+  } else if (n == 2) {
+    true
+  } else if (n % 2 == 0) {
+    false
+  } else {
+    var i = 3
+    while (i <= math.sqrt(n).toInt) {
+      if (n % i == 0) {
+        return false
+      }
+      i += 2
+    }
+    true
+  }
+}
+
+def pandigitalPrime(n: Int): Int = {
+  var i = n - 1
+  while (i >= 1) {
+    if (isPrime(i)) {
+      val si = i.toString
+      val length = si.length
+      var flag = true
+      for (j <- 1 to length) {
+        if (j.toString.toInt.toString.contains(si)) {
+          flag = false
+          break
+        }
+      }
+      if (flag) {
+        return i
+      }
+    }
+    i -= 1
+  }
+  -1
+}

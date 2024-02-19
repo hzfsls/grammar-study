@@ -1,0 +1,14 @@
+problem Euler005 {
+    code {
+        func smallest_multiple(n: int) -> int
+    }
+    tests {
+        template nse {
+            (20) -> 232792560
+            (10) -> 2520
+            (12) -> 27720
+            (15) -> 360360
+            (17) -> 12252240
+        }
+    }
+}

@@ -1,0 +1,17 @@
+def pentagon_numbers(n)
+    pentagon = {}
+    (1...n).each do |i|
+        pentagon[i * (3 * i - 1) / 2] = true
+    end
+    result = -1
+    pentagon.each do |j, _|
+        pentagon.each do |k, _|
+            if pentagon[j + k] && pentagon[k - j]
+                if result == -1 || k - j < result
+                    result = k - j
+                end
+            end
+        end
+    end
+    result
+end

@@ -1,0 +1,23 @@
+func D(n int) int {
+    result := 1
+    for i := 2; i < int(math.Sqrt(float64(n))) + 1; i++ {
+        if n%i == 0 {
+            result += i
+            if i!= n/i {
+                result += n/i
+            }
+        }
+    }
+    return result
+}
+
+func AmicableNumbers(n int) int {
+    result := 0
+    for a := 2; a < n; a++ {
+        b := D(a)
+        if a!= b && a == D(b) {
+            result += a
+        }
+    }
+    return result
+}

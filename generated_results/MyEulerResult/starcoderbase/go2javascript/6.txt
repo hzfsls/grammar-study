@@ -1,0 +1,17 @@
+const nthPrime = (n) => {
+    let primes = [2];
+    let i = 3;
+    while (primes.length < n) {
+        for (let p of primes) {
+            if (i % p === 0) {
+                break;
+            }
+            if (p * p > i) {
+                primes.push(i);
+                break;
+            }
+        }
+        i += 2;
+    }
+    return primes[primes.length - 1];
+}

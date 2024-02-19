@@ -1,0 +1,24 @@
+class Global {
+    public static int pandigitalProducts(int n) {
+        Set<Integer> products = new HashSet<>();
+        String s = String.join("", Arrays.stream(new Integer[n]).map(i -> String.valueOf(i)).toArray(String[]::new));
+        for (int a = 1; a < 100; a++) {
+            for (int b = 1; b < 10000; b++) {
+                int c = a * b;
+                List<String> chars = new ArrayList<>();
+                chars.add(String.valueOf(a));
+                chars.add(String.valueOf(b));
+                chars.add(String.valueOf(c));
+                Collections.sort(chars);
+                if (String.join("", chars).equals(s)) {
+                    products.add(c);
+                }
+            }
+        }
+        int result = 0;
+        for (int product : products) {
+            result += product;
+        }
+        return result;
+    }
+}

@@ -1,0 +1,23 @@
+class Global {
+    public static bool IsPalindrome(string s) {
+        for (int i = 0; i < s.Length / 2; i++) {
+            if (s[i] != s[s.Length - i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int LargestPalindromeProduct(int n) {
+        int result = 0;
+        for (int i = 100; i < 1000; i++) {
+            for (int j = i; j < 1000; j++) {
+                int prod = i * j;
+                if (IsPalindrome(prod.ToString()) && prod > result && prod < n) {
+                    result = prod;
+                }
+            }
+        }
+        return result;
+    }
+}

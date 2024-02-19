@@ -1,0 +1,25 @@
+def distinct_powers(n)
+    result = 0
+    xs = {}
+    (2..n).each do |i|
+        primes = [2, 3, 5, 7]
+        powers = [0, 0, 0, 0]
+        num = i
+        (0...primes.length).each do |j|
+            while num % primes[j] == 0
+                num /= primes[j]
+                powers[j] += 1
+            end
+        end
+        if num != 1
+            result += n - 1
+            next
+        end
+        (2..n).each do |j|
+            pstr = "#{powers[0] * j}-#{powers[1] * j}-#{powers[2] * j}-#{powers[3] * j}"
+            xs[pstr] = true
+        end
+    end
+    result += xs.length
+    result
+end

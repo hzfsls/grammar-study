@@ -1,0 +1,14 @@
+problem Euler029 {
+    code {
+        func distinct_powers(n: int) -> int
+    }
+    tests {
+        template nse {
+            (5) -> 15                        
+            (10) -> 69
+            (20) -> 324
+            (50) -> 2184
+            (100) -> 9183
+        }
+    }
+}

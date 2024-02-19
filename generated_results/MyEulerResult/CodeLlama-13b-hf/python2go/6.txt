@@ -1,0 +1,17 @@
+func NthPrime(n int) int {
+    primes := []int{2}
+    i := 3
+    for len(primes) < n {
+        for _, p := range primes {
+            if i%p == 0 {
+                break
+            }
+            if p*p > i {
+                primes = append(primes, i)
+                break
+            }
+        }
+        i += 2
+    }
+    return primes[len(primes)-1]
+}

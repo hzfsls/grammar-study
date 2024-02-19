@@ -1,0 +1,30 @@
+fun primeFactors(n: Int): Int {
+    var num = n
+    val factors = mutableListOf<Int>()
+    var i = 2
+    while (i * i <= num) {
+        if (num % i != 0) {
+            i++
+        } else {
+            num /= i
+            factors.add(i)
+        }
+    }
+    if (num > 1) {
+        factors.add(num)
+    }
+    val s = mutableMapOf<Int, Boolean>()
+    for (v in factors) {
+        s[v] = true
+    }
+    return s.size
+}
+
+fun distinctPrimesFactors(n: Int): Int {
+    for (i in n until 1000000) {
+        if (primeFactors(i) == 4 && primeFactors(i + 1) == 4 && primeFactors(i + 2) == 4 && primeFactors(i + 3) == 4) {
+            return i
+        }
+    }
+    return -1
+}

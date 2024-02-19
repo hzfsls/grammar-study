@@ -1,0 +1,14 @@
+problem Euler019 {
+    code {
+        func counting_sundays(y1: int, y2: int) -> int
+    }
+    tests {
+        template nse {
+            (1901, 2000) -> 171
+            (1901, 1910) -> 17
+            (2001, 2100) -> 172
+            (1901, 1930) -> 51
+            (1901, 2900) -> 1719
+        }
+    }
+}

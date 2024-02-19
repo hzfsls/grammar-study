@@ -1,0 +1,22 @@
+class Global {
+    public static int integerRightTriangles(int n) {
+        int maxSol = 0;
+        int result = 0;
+        for (int p = 3; p <= n; p++) {
+            int sol = 0;
+            for (int a = 1; a < p / 2; a++) {
+                for (int b = a; b < p / 2; b++) {
+                    int c = p - a - b;
+                    if (a * a + b * b == c * c) {
+                        sol++;
+                    }
+                }
+            }
+            if (sol > maxSol) {
+                maxSol = sol;
+                result = p;
+            }
+        }
+        return result;
+    }
+}

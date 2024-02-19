@@ -1,0 +1,15 @@
+class Global {
+    public static int digitNthPowers(int n) {
+        int result = 0;
+        for (int i = 2; i < 4 * (int) Math.pow(10, n); i++) {
+            int digitsSum = 0;
+            for (char digit : Integer.toString(i).toCharArray()) {
+                digitsSum += (int) Math.pow(digit - '0', n);
+            }
+            if (i == digitsSum) {
+                result += i;
+            }
+        }
+        return result;
+    }
+}

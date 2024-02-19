@@ -1,0 +1,14 @@
+problem Euler023 {
+    code {
+        func non_abundant_sums(n: int) -> int
+    }
+    tests {
+        template nse {
+            (100) -> 2766
+            (200) -> 10266
+            (500) -> 62766
+            (1000) -> 240492
+            (5000) -> 2035227
+        }
+    }
+}

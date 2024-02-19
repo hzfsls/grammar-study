@@ -1,0 +1,27 @@
+def large_sum(numbers)
+    digits = [0] * 60
+    (0...50).each do |i|
+        tmp = 0
+        numbers.each do |num|
+            tmp += num[49 - i].to_i
+        end
+        (i...60).each do |j|
+            digits[j] += tmp % 10
+            if digits[j] >= 10
+                digits[j + 1] += digits[j] // 10
+                digits[j] %= 10
+            end
+            tmp //= 10
+            break if tmp == 0
+        end
+    end
+    result = ''
+    (59...0).step(-1) do |i|
+        if digits[i]!= 0
+            (i...i - 10).step(-1) do |j|
+                result += digits[j].to_s
+            end
+            return result
+        end
+    end
+end

@@ -1,0 +1,14 @@
+def names_scores(names, queries)
+    s_names = names.sort
+    result = 0
+    s_names.each_with_index do |name, i|
+        x = 0
+        name.each_char do |c|
+            x += c.ord - 64
+        end
+        if name in queries
+            result += x * (i + 1)
+        end
+    end
+    result
+end

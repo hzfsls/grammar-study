@@ -1,0 +1,26 @@
+class Global {
+    public static int NDigitFibonacciNumber(int n) {
+        IList<int> a = new List<int> { 1 };
+        IList<int> b = new List<int> { 1 };
+        int i = 2;
+        while (b.Count < n) {
+            int carry = 0;
+            IList<int> c = b.ToList();
+            for (int j = 0; j < b.Count; j++) {
+                if (j < a.Count) {
+                    b[j] = a[j] + b[j] + carry;
+                } else {
+                    b[j] = b[j] + carry;
+                }
+                carry = b[j] / 10;
+                b[j] = b[j] % 10;
+            }
+            if (carry > 0) {
+                b.Add(carry);
+            }
+            a = c;
+            i = i + 1;
+        }
+        return i;
+    }
+}

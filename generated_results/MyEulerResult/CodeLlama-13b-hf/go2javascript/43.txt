@@ -1,0 +1,17 @@
+const pentagonNumbers = (n) => {
+    let pentagon = {};
+    for (let i = 1; i < n; i++) {
+        pentagon[i * (3 * i - 1) / 2] = true;
+    }
+    let result = -1;
+    for (let j in pentagon) {
+        for (let k in pentagon) {
+            if (pentagon[j + k] && pentagon[k - j]) {
+                if (result == -1 || k - j < result) {
+                    result = k - j;
+                }
+            }
+        }
+    }
+    return result;
+}

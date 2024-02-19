@@ -1,0 +1,14 @@
+problem Euler038 {
+    code {
+        func pandigital_multiples(n: int) -> int
+    }
+    tests {
+        template nse {
+            (9327) -> 932718654
+            (8) -> -1
+            (9) -> 918273645
+            (9267) -> 926718534
+            (9273) -> 927318546
+        }
+    }
+}

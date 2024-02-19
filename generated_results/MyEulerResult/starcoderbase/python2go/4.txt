@@ -1,0 +1,14 @@
+func SmallestMultiple(n int) int {
+    result := 1
+    for i := 1; i <= n; i++ {
+        if result % i!= 0 {
+            for j := 1; j <= n; j++ {
+                if (result * j) % i == 0 {
+                    result *= j
+                    break
+                }
+            }
+        }
+    }
+    return result
+}

@@ -1,0 +1,14 @@
+int codedTriangleNumbers(const vector<string>& words) {
+    int result = 0;
+    for (const string& word : words) {
+        int value = 0;
+        for (char c : word) {
+            value += c - 'A' + 1;
+        }
+        int n = static_cast<int>(sqrt(value * 2));
+        if (n * (n + 1) == value * 2) {
+            result += 1;
+        }
+    }
+    return result;
+}

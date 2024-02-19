@@ -1,0 +1,22 @@
+fn reciprocal_cycles(n: i32) -> i32 {
+    let mut result = 0;
+    let mut max_length = 0;
+    for i in 1..n {
+        let mut remainders = Vec::new();
+        let mut remainder = 1;
+        while remainder!= 0 &&!remainders.contains(&remainder) {
+            remainders.push(remainder);
+            remainder = (remainder * 10) % i;
+        }
+        let length = if remainder!= 0 {
+            remainders.len() - remainders.iter().position(|&r| r == remainder).unwrap()
+        } else {
+            0
+        };
+        if length > max_length {
+            max_length = length;
+            result = i;
+        }
+    }
+    result
+}

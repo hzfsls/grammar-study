@@ -1,0 +1,11 @@
+fun specialPythagoreanTriplet(n: Int): Int {
+    for (a in 1 until n) {
+        for (b in a until n) {
+            val c = n - a - b
+            if (a * a + b * b == c * c) {
+                return a * b * c
+            }
+        }
+    }
+    return -1
+}

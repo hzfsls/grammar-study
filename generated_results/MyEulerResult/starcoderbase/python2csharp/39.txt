@@ -1,0 +1,13 @@
+class Global {
+    public static int ChampernowneConstant(int b) {
+        string s = "";
+        for (int i = 1; i < b * b * b * b * b * b; i++) {
+            s += i.ToString();
+        }
+        int result = 1;
+        for (int i = 0; i < 7; i++) {
+            result *= int.Parse(s[b * b * b * b * b * i]);
+        }
+        return result;
+    }
+}

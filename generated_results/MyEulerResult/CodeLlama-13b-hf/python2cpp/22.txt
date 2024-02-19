@@ -1,0 +1,37 @@
+bool isAbundant(int n) {
+    if (n < 12) {
+        return false;
+    }
+    int sum_divisors = 1;
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0) {
+            sum_divisors += i;
+            if (i != n / i) {
+                sum_divisors += n / i;
+            }
+        }
+    }
+    return sum_divisors > n;
+}
+
+int nonAbundantSums(int n) {
+    vector<int> abundants;
+    for (int i = 12; i < n; i++) {
+        if (isAbundant(i)) {
+            abundants.push_back(i);
+        }
+    }
+    set<int> abundant_sums;
+    for (int i : abundants) {
+        for (int j : abundants) {
+            abundant_sums.insert(i + j);
+        }
+    }
+    int result = 0;
+    for (int i = 0; i < n; i++) {
+        if (abundant_sums.find(i) == abundant_sums.end()) {
+            result += i;
+        }
+    }
+    return result;
+}

@@ -1,0 +1,6 @@
+{
+    "php": {
+        "Example1" : "function productOfDivisible($nums, $m) {\n    $result = 1;\n    foreach ($nums as $num) {\n        if ($num % $m === 0) {\n            $result *= $num;\n        }\n    }\n    return $result;\n}",
+        "Example2" : "function genRotations($s) {\n    $result = [];\n    for ($i = 1; $i < strlen($s); $i++) {\n        array_push($result, substr($s, $i) . substr($s, 0, $i));\n    }\n    return $result;\n}\n\nfunction sumOfRotations($s) {\n    $result = 0;\n    foreach (genRotations($s) as $r) {\n        $result += intval($r);\n    }\n    return $result;\n}"
+    }
+}

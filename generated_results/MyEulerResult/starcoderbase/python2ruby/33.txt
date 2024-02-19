@@ -1,0 +1,17 @@
+def digit_factorials(n)
+    result = 0
+    (3...n).each do |i|
+        fact_sum = 0
+        str(i).each_char do |digit|
+            fact = 1
+            (1...digit.to_i).each do |j|
+                fact *= j
+            end
+            fact_sum += fact
+        end
+        if i == fact_sum
+            result += i
+        end
+    end
+    result
+end

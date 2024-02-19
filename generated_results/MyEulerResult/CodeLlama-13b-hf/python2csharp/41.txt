@@ -1,0 +1,16 @@
+class Global {
+    public static int CodedTriangleNumbers(IList<string> words) {
+        int result = 0;
+        foreach (string word in words) {
+            int value = 0;
+            foreach (char c in word) {
+                value += (int)c - 64;
+            }
+            int n = (int)Math.Sqrt(value * 2);
+            if (n * (n + 1) == value * 2) {
+                result += 1;
+            }
+        }
+        return result;
+    }
+}

@@ -1,0 +1,34 @@
+fn gen_permutations(s: &String) -> Vec<String> {
+    if s.len() <= 1 {
+        return vec![s.to_string()];
+    }
+    let mut result = Vec::new();
+    for perm in gen_permutations(&s[1..]) {
+        for i in 0..s.len() {
+            result.push(perm[..i].to_string() + &s[0..1] + &perm[i..]);
+        }
+    }
+    result
+}
+
+fn sub_string_divisibility(n: i32) -> i32 {
+    let mut result = 0;
+    let primes = vec![2, 3, 5, 7, 11, 13, 17];
+    let mut s = String::new();
+    for i in 0..=n {
+        s.push_str(&i.to_string());
+    }
+    for i in gen_permutations(&s) {
+        let mut flag = true;
+        for j in 1..n - 1 {
+            if i[j..j + 3].parse::<i32>().unwrap() % primes[j - 1] != 0 {
+                flag = false;
+                break;
+            }
+        }
+        if flag {
+            result += i.parse::<i32>().unwrap();
+        }
+    }
+    result
+}

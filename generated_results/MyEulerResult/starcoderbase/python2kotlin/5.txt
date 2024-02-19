@@ -1,0 +1,9 @@
+fun sumSquareDifference(n: Int): Int {
+    var sqrSum = 0
+    var numSum = 0
+    for (i in 1..n) {
+        sqrSum += i * i
+        numSum += i
+    }
+    return numSum * numSum - sqrSum
+}

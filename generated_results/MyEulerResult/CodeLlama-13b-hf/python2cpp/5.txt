@@ -1,0 +1,9 @@
+int sumSquareDifference(int n) {
+    int sqr_sum = 0;
+    int num_sum = 0;
+    for (int i = 1; i <= n; i++) {
+        sqr_sum += i * i;
+        num_sum += i;
+    }
+    return num_sum * num_sum - sqr_sum;
+}

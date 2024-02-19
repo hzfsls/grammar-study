@@ -1,0 +1,21 @@
+const summationOfPrimes = (n) => {
+    let primes = [2];
+    let i = 3;
+    while (i <= n) {
+        for (let p of primes) {
+            if (i % p === 0) {
+                break;
+            }
+            if (p * p > i) {
+                primes.push(i);
+                break;
+            }
+        }
+        i += 2;
+    }
+    let result = 0;
+    for (let prime of primes) {
+        result += prime;
+    }
+    return result;
+}

@@ -1,0 +1,16 @@
+def factorialDigitSum(n: Int): Int = {
+  val digits = collection.mutable.ArrayBuffer[Int](1)
+  for (i <- 1 until n + 1) {
+    var carry = 0
+    for (j <- digits.indices) {
+      digits(j) = digits(j) * i + carry
+      carry = digits(j) / 10
+      digits(j) %= 10
+    }
+    while (carry > 0) {
+      digits += carry % 10
+      carry /= 10
+    }
+  }
+  digits.sum
+}

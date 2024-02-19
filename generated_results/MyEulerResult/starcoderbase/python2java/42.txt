@@ -1,0 +1,33 @@
+class Global {
+    public static List<String> genPermutations(String s) {
+        if (s.length() <= 1) {
+            return s;
+        }
+        List<String> result = new ArrayList<>();
+        for (String perm : genPermutations(s.substring(1))) {
+            for (int i = 0; i < s.length(); i++) {
+                result.add(perm.substring(0, i) + s.substring(0, 1) + perm.substring(i));
+            }
+        }
+        return result;
+    }
+
+    public static int subStringDivisibility(int n) {
+        int result = 0;
+        List<Integer> primes = Arrays.asList(2, 3, 5, 7, 11, 13, 17);
+        String s = String.join("", Collections.nCopies(n + 1, "0"));
+        for (String i : genPermutations(s)) {
+            boolean flag = true;
+            for (int j = 1; j < n - 1; j++) {
+                if (Integer.parseInt(i.substring(j, j + 3)) % primes.get(j - 1)!= 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                result += Integer.parseInt(i);
+            }
+        }
+        return result;
+    }
+}

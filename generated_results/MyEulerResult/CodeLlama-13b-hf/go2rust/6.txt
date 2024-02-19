@@ -1,0 +1,17 @@
+fn nth_prime(n: i32) -> i32 {
+    let mut primes = vec![2];
+    let mut i = 3;
+    while primes.len() < n as usize {
+        for p in &primes {
+            if i % p == 0 {
+                break;
+            }
+            if p * p > i {
+                primes.push(i);
+                break;
+            }
+        }
+        i += 2;
+    }
+    primes[primes.len() - 1]
+}

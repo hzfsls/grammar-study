@@ -1,0 +1,22 @@
+def largest_product_in_a_grid(grid)
+    result = 0
+    (0...grid.length - 3).each do |i|
+        (0...grid[i].length - 3).each do |j|
+            p1, p2, p3, p4 = 1, 1, 1, 1
+            (0...4).each do |k|
+                p1 *= grid[i + k][j]
+            end
+            (0...4).each do |k|
+                p2 *= grid[i][j + k]
+            end
+            (0...4).each do |k|
+                p3 *= grid[i + k][j + k]
+            end
+            (0...4).each do |k|
+                p4 *= grid[i + k][j + 3 - k]
+            end
+            result = [result, p1, p2, p3, p4].max
+        end
+    end
+    result
+end

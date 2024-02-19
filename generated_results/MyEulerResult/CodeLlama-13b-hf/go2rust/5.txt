@@ -1,0 +1,9 @@
+fn sum_square_difference(n: i32) -> i32 {
+    let mut sqr_sum = 0;
+    let mut num_sum = 0;
+    for i in 1..=n {
+        sqr_sum += i * i;
+        num_sum += i;
+    }
+    num_sum * num_sum - sqr_sum
+}

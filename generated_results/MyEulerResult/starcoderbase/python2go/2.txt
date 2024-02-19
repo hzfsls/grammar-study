@@ -1,0 +1,12 @@
+func LargestPrimeFactor(n int) int {
+    result := n
+    i := 2
+    for i * i <= result {
+        if result % i == 0 {
+            result /= i
+        } else {
+            i++
+        }
+    }
+    return result
+}

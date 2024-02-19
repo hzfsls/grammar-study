@@ -1,0 +1,6 @@
+{
+    "cpp": {
+        "Example1" : "int productOfDivisible(const vector<int>& nums, int m) {\n    vector<int> tmp;\n    copy_if(nums.begin(), nums.end(), back_inserter(tmp), [m](int num) { return num % m == 0; });\n    return accumulate(tmp.begin(), tmp.end(), 1, [](int a, int b) { return a * b; });\n}",
+        "Example2" : "vector<string> genRotations(const string& s) {\n    vector<string> result;\n    for (int i = 1; i < s.size(); i++) {\n        result.push_back(s.substr(i) + s.substr(0, i));\n    }\n    return result;\n}\n\nint sumOfRotations(const string& s) {\n    vector<string> rotations = genRotations(s);\n    vector<int> tmp;\n    transform(rotations.begin(), rotations.end(), back_inserter(tmp), [](const string& r) { return stoi(r); });\n    return accumulate(tmp.begin(), tmp.end(), 0);\n}"
+    }
+}

@@ -1,0 +1,16 @@
+fn lexicographic_permutations(n: i32) -> String {
+    let mut result = String::new();
+    let mut digits = vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let mut x = n - 1;
+    for i in (1..=10).rev() {
+        let mut fact = 1;
+        for j in 1..i {
+            fact *= j;
+        }
+        let idx = x / fact;
+        result.push_str(&idx.to_string());
+        digits.remove(idx as usize);
+        x -= idx * fact;
+    }
+    result
+}

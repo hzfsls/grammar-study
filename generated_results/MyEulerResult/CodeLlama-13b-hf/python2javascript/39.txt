@@ -1,0 +1,11 @@
+const champernowneConstant = (b) => {
+    let s = '';
+    for (let i = 1; i < Math.pow(b, 6); i++) {
+        s += i.toString();
+    }
+    let result = 1;
+    for (let i = 0; i < 7; i++) {
+        result *= parseInt(s[Math.pow(b, i) - 1]);
+    }
+    return result;
+}

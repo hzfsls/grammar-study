@@ -1,0 +1,11 @@
+def largest_product_in_a_series(s, k)
+    result = 0
+    (0...(s.length - k)).each do |i|
+        product = 1
+        (0...k).each do |j|
+            product *= s[i + j].to_i
+        end
+        result = [result, product].max
+    end
+    result
+end

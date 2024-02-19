@@ -1,0 +1,22 @@
+def is_abundant(n: int) -> bool:
+    if n < 12:
+        return False
+    sumDivisors = 1
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            sumDivisors += i
+            if i != n // i:
+                sumDivisors += n // i
+    return sumDivisors > n
+
+def non_abundant_sums(n: int) -> int:
+    abundants = []
+    for i in range(12, n):
+        if is_abundant(i):
+            abundants.append(i)
+    abundantSums = {i + j for i in abundants for j in abundants}
+    result = 0
+    for i in range(n):
+        if i not in abundantSums:
+            result += i
+    return result

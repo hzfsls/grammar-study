@@ -1,0 +1,39 @@
+class Global {
+    public static bool IsAbundant(int n) {
+        if (n < 12) {
+            return false;
+        }
+        int sumDivisors = 1;
+        for (int i = 2; i <= (int)Math.Sqrt(n); i++) {
+            if (n % i == 0) {
+                sumDivisors += i;
+                if (i != n / i) {
+                    sumDivisors += n / i;
+                }
+            }
+        }
+        return sumDivisors > n;
+    }
+
+    public static int NonAbundantSums(int n) {
+        IList<int> abundants = new List<int>();
+        for (int i = 12; i < n; i++) {
+            if (IsAbundant(i)) {
+                abundants.Add(i);
+            }
+        }
+        ISet<int> abundantSums = new HashSet<int>();
+        foreach (int i in abundants) {
+            foreach (int j in abundants) {
+                abundantSums.Add(i + j);
+            }
+        }
+        int result = 0;
+        for (int i = 0; i < n; i++) {
+            if (!abundantSums.Contains(i)) {
+                result += i;
+            }
+        }
+        return result;
+    }
+}

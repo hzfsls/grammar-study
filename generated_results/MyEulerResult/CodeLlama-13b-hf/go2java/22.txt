@@ -1,0 +1,39 @@
+class Global {
+    public static boolean isAbundant(int n) {
+        if (n < 12) {
+            return false;
+        }
+        int sumDivisors = 1;
+        for (int i = 2; i <= (int) Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                sumDivisors += i;
+                if (i != n / i) {
+                    sumDivisors += n / i;
+                }
+            }
+        }
+        return sumDivisors > n;
+    }
+
+    public static int nonAbundantSums(int n) {
+        List<Integer> abundants = new ArrayList<>();
+        for (int i = 12; i < n; i++) {
+            if (isAbundant(i)) {
+                abundants.add(i);
+            }
+        }
+        Set<Integer> abundantSums = new HashSet<>();
+        for (int i : abundants) {
+            for (int j : abundants) {
+                abundantSums.add(i + j);
+            }
+        }
+        int result = 0;
+        for (int i = 0; i < n; i++) {
+            if (!abundantSums.contains(i)) {
+                result += i;
+            }
+        }
+        return result;
+    }
+}

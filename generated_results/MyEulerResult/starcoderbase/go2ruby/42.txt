@@ -1,0 +1,35 @@
+def gen_permutations(s)
+    if s.length <= 1
+        return [s]
+    end
+    result = []
+    gen_permutations(s[1..-1]).each do |perm|
+        (0...s.length).each do |i|
+            result.push(perm[0...i] + s[0].to_s + perm[i..-1])
+        end
+    end
+    result
+end
+
+def sub_string_divisibility(n)
+    result = 0
+    primes = [2, 3, 5, 7, 11, 13, 17]
+    s = ""
+    (0...n).each do |i|
+        s += i.to_s
+    end
+    gen_permutations(s).each do |i|
+        flag = true
+        (1...n - 1).each do |j|
+            if n, _ = i[j..j + 2].to_i; n % primes[j - 1]!= 0
+                flag = false
+                break
+            end
+        end
+        if flag
+            s0, _ = i.to_i
+            result += s0
+        end
+    end
+    result
+end

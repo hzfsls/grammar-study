@@ -1,0 +1,14 @@
+problem Euler020 {
+    code {
+        func factorial_digit_sum(n: int) -> int
+    }
+    tests {
+        template nse {
+            (100) -> 648
+            (10) -> 27
+            (20) -> 54
+            (50) -> 216
+            (300) -> 2466
+        }
+    }
+}

@@ -1,0 +1,18 @@
+def names_scores(names, queries)
+    sNames = names.clone
+    sNames.sort
+    result = 0
+    sNames.each_with_index do |name, i|
+        x = 0
+        name.each_byte do |c|
+            x += c - 64
+        end
+        queries.each do |query|
+            if query == name
+                result += x * (i + 1)
+                break
+            end
+        end
+    end
+    result
+end

@@ -1,0 +1,22 @@
+def prime_factors(n: int) -> int:
+    num = n
+    factors = []
+    i = 2
+    while i * i <= num:
+        if num % i!= 0:
+            i += 1
+        else:
+            num //= i
+            factors.append(i)
+    if num > 1:
+        factors.append(num)
+    s = set()
+    for v in factors:
+        s.add(v)
+    return len(s)
+
+def distinct_primes_factors(n: int) -> int:
+    for i in range(n, 1000000):
+        if prime_factors(i) == 4 and prime_factors(i + 1) == 4 and prime_factors(i + 2) == 4 and prime_factors(i + 3) == 4:
+            return i
+    return -1

@@ -1,0 +1,41 @@
+fn is_prime(n: i32) -> bool {
+    if n < 2 {
+        return false;
+    }
+    if n == 2 {
+        return true;
+    }
+    if n % 2 == 0 {
+        return false;
+    }
+    for i in 3..(n as f64).sqrt() as i32 + 1 {
+        if n % i == 0 {
+            return false;
+        }
+    }
+    true
+}
+
+fn quadratic_primes(n: i32) -> i32 {
+    let mut max_primes = 0;
+    let mut result = 0;
+    for a in -n + 1..n {
+        for b in -n + 1..n {
+            let mut x = 0;
+            loop {
+                if x*x + a*x + b < 2 {
+                    break;
+                }
+                if!is_prime(x*x + a*x + b) {
+                    break;
+                }
+                x += 1;
+            }
+            if x > max_primes {
+                max_primes = x;
+                result = a * b;
+            }
+        }
+    }
+    result
+}

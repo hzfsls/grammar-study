@@ -1,0 +1,20 @@
+fn integer_right_triangles(n: i32) -> i32 {
+    let mut max_sol = 0;
+    let mut result = 0;
+    for p in 3..=n {
+        let mut sol = 0;
+        for a in 1..=(p / 2) {
+            for b in a..=(p / 2) {
+                let c = p - a - b;
+                if a * a + b * b == c * c {
+                    sol += 1;
+                }
+            }
+        }
+        if sol > max_sol {
+            max_sol = sol;
+            result = p;
+        }
+    }
+    result
+}

@@ -1,0 +1,22 @@
+const pandigitalProducts = (n) => {
+    let products = {};
+    let s = "";
+    for (let i = 1; i <= n; i++) {
+        s += i.toString();
+    }
+    for (let a = 1; a < 100; a++) {
+        for (let b = 1; b < 10000; b++) {
+            let c = a * b;
+            let chars = a.toString() + b.toString() + c.toString();
+            chars.split("").sort();
+            if (chars === s) {
+                products[c] = true;
+            }
+        }
+    }
+    let result = 0;
+    for (let product of Object.keys(products)) {
+        result += parseInt(product);
+    }
+    return result;
+}

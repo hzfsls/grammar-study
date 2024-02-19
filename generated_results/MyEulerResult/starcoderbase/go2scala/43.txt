@@ -1,0 +1,17 @@
+def pentagonNumbers(n: Int): Int = {
+  val pentagon = collection.mutable.Map[Int, Boolean]()
+  for (i <- 1 until n) {
+    pentagon(i * (3 * i - 1) / 2) = true
+  }
+  var result = -1
+  for (j <- pentagon.keys) {
+    for (k <- pentagon.keys) {
+      if pentagon(j + k) && pentagon(k - j) {
+        if (result == -1 || k - j < result) {
+          result = k - j
+        }
+      }
+    }
+  }
+  result
+}

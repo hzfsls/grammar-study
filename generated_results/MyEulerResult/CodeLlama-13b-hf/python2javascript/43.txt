@@ -1,0 +1,17 @@
+const pentagonNumbers = (n) => {
+    let pentagon = new Set();
+    for (let i = 1; i < n; i++) {
+        pentagon.add(Math.floor((i * (3 * i - 1)) / 2));
+    }
+    let result = -1;
+    for (let j of pentagon) {
+        for (let k of pentagon) {
+            if (pentagon.has(j + k) && pentagon.has(k - j)) {
+                if (result == -1 || k - j < result) {
+                    result = k - j;
+                }
+            }
+        }
+    }
+    return result;
+}

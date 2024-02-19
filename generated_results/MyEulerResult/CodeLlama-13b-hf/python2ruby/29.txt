@@ -1,0 +1,13 @@
+def digit_nth_powers(n)
+    result = 0
+    (2...(4 * 10 ** n)).each do |i|
+        digits_sum = 0
+        i.to_s.each_char do |digit|
+            digits_sum += digit.to_i ** n
+        end
+        if i == digits_sum
+            result += i
+        end
+    end
+    result
+end

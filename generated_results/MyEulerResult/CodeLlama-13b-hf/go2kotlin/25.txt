@@ -1,0 +1,21 @@
+fun reciprocalCycles(n: Int): Int {
+    var result = 0
+    var maxLength = 0
+    for (i in 1 until n) {
+        val remainders = mutableListOf<Int>()
+        var remainder = 1
+        while (remainder != 0 && !remainders.contains(remainder)) {
+            remainders.add(remainder)
+            remainder = (remainder * 10) % i
+        }
+        var length = 0
+        if (remainder != 0) {
+            length = remainders.size - remainders.indexOf(remainder)
+        }
+        if (length > maxLength) {
+            maxLength = length
+            result = i
+        }
+    }
+    return result
+}

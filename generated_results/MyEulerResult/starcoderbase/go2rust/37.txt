@@ -1,0 +1,20 @@
+fn pandigital_multiples(n: i32) -> i32 {
+    let mut result = -1;
+    for i in 2..n+1 {
+        let mut cprod = String::new();
+        for j in 1..10 {
+            cprod.push_str(&i.to_string() * &j.to_string());
+            if cprod.len() == 9 {
+                let chars: Vec<char> = cprod.chars().collect();
+                chars.sort();
+                if chars.iter().collect::<String>() == "123456789" {
+                    result = max(result, cprod.parse::<i32>().unwrap());
+                    break;
+                }
+            } else if cprod.len() > 9 {
+                break;
+            }
+        }
+    }
+    result
+}

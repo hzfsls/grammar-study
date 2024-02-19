@@ -1,0 +1,26 @@
+def nDigitFibonacciNumber(n: Int): Int = {
+  var a = ArrayBuffer(1)
+  var b = ArrayBuffer(1)
+  var i = 2
+  while (b.length < n) {
+    var carry = 0
+    val c = ArrayBuffer[Int]()
+    c ++= b
+    for (j <- 0 until b.length) {
+      if (j < a.length) {
+        b(j) = a(j) + b(j) + carry
+      } else {
+        b(j) = b(j) + carry
+      }
+      carry = b(j) / 10
+      b(j) = b(j) % 10
+    }
+    if (carry != 0) {
+      b += carry
+    }
+    a = ArrayBuffer[Int]()
+    a ++= c
+    i = i + 1
+  }
+  i
+}

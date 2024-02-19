@@ -1,0 +1,14 @@
+problem Euler017 {
+    code {
+        func number_to_words(n: int) -> string
+    }
+    tests {
+        template nse {
+            (100) -> "one hundred"
+            (123) -> "one hundred and twenty three"
+            (312) -> "three hundred and twelve"
+            (997) -> "nine hundred and ninety seven"
+            (1000) -> "one thousand"
+        }
+    }
+}

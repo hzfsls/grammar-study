@@ -1,0 +1,11 @@
+fn maximum_path_sum_i(triangle: &Vec<Vec<i32>>) -> i32 {
+    let mut curr = triangle[triangle.len() - 1].clone();
+    for i in (0..triangle.len() - 1).rev() {
+        let mut next = Vec::new();
+        for j in 0..triangle[i].len() {
+            next.push(triangle[i][j] + int::max(curr[j], curr[j + 1]));
+        }
+        curr = next;
+    }
+    curr[0]
+}

@@ -1,0 +1,23 @@
+function d($n) {
+    $result = 1;
+    for ($i = 2; $i <= sqrt($n); $i++) {
+        if ($n % $i === 0) {
+            $result += $i;
+            if ($i!== $n / $i) {
+                $result += $n / $i;
+            }
+        }
+    }
+    return $result;
+}
+
+function amicableNumbers($n) {
+    $result = 0;
+    for ($a = 2; $a < $n; $a++) {
+        $b = d($a);
+        if ($a!== $b && $a === d($b)) {
+            $result += $a;
+        }
+    }
+    return $result;
+}

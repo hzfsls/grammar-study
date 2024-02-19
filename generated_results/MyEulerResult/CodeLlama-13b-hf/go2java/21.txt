@@ -1,0 +1,21 @@
+class Global {
+    public static int namesScores(List<String> names, List<String> queries) {
+        List<String> sNames = new ArrayList<>(names);
+        Collections.sort(sNames);
+        int result = 0;
+        for (int i = 0; i < sNames.size(); i++) {
+            String name = sNames.get(i);
+            int x = 0;
+            for (int j = 0; j < name.length(); j++) {
+                x += name.charAt(j) - 64;
+            }
+            for (String query : queries) {
+                if (query.equals(name)) {
+                    result += x * (i + 1);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+}

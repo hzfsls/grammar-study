@@ -1,0 +1,23 @@
+fun countingSundays(y1: Int, y2: Int): Int {
+    var day = 0
+    var count = 0
+    for (year in 1900 until y2 + 1) {
+        for (month in 1..12) {
+            if (year >= y1 && day % 7 == 6) {
+                count++
+            }
+            if (month in listOf(4, 6, 9, 11)) {
+                day += 30
+            } else if (month == 2) {
+                if (year % 4 == 0 && (year % 100!= 0 || year % 400 == 0)) {
+                    day += 29
+                } else {
+                    day += 28
+                }
+            } else {
+                day += 31
+            }
+        }
+    }
+    return count
+}

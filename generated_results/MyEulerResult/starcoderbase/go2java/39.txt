@@ -1,0 +1,14 @@
+class Global {
+    public static int champernowneConstant(int b) {
+        String s = "";
+        for (int i = 1; i < (int) Math.pow(b, 6); i++) {
+            s += Integer.toString(i);
+        }
+        int result = 1;
+        for (int i = 0; i < 7; i++) {
+            int n = Integer.parseInt(String.valueOf(s.charAt((int) Math.pow(b, i) - 1)));
+            result *= n;
+        }
+        return result;
+    }
+}

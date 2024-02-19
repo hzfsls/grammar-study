@@ -1,0 +1,21 @@
+def summationOfPrimes(n: Int): Int = {
+  val primes = collection.mutable.ArrayBuffer[Int](2)
+  var i = 3
+  while (i <= n) {
+    for (p <- primes) {
+      if (i % p == 0) {
+        break
+      }
+      if (p * p > i) {
+        primes += i
+        break
+      }
+    }
+    i += 2
+  }
+  var result = 0
+  for (prime <- primes) {
+    result += prime
+  }
+  result
+}

@@ -1,0 +1,21 @@
+fun triangularPentagonalAndHexagonal(n: Int): Int {
+    val ps = mutableSetOf<Int>()
+    var i = 1
+    var c = 0.5 * i * (3 * i - 1)
+    while (c < n) {
+        i += 1
+        ps.add(c)
+        c = 0.5 * i * (3 * i - 1)
+    }
+    i = 1
+    c = i * (2 * i - 1)
+    var result = -1
+    while (c < n) {
+        i += 1
+        if (c in ps) {
+            result = c
+        }
+        c = i * (2 * i - 1)
+    }
+    return result
+}

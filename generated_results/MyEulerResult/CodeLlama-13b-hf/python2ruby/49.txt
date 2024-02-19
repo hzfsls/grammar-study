@@ -1,0 +1,27 @@
+def consecutive_prime_sum(limit)
+    sieve = [true] * limit
+    primes = []
+    (2...limit).each do |i|
+        if sieve[i]
+            primes.push(i)
+            (i * 2...limit).step(i) do |j|
+                sieve[j] = false
+            end
+        end
+    end
+    max_length = 0
+    max_prime = 0
+    (0...primes.length).each do |i|
+        (i + max_length...primes.length).each do |j|
+            s = primes[i..j].sum
+            if s >= limit
+                break
+            end
+            if sieve[s] && j - i > max_length
+                max_length = j - i
+                max_prime = s
+            end
+        end
+    end
+    max_prime
+end

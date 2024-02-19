@@ -1,0 +1,25 @@
+fn distinct_powers(n: i32) -> i32 {
+    let mut result = 0;
+    let mut xs = std::collections::HashMap::new();
+    for i in 2..=n {
+        let mut primes = vec![2, 3, 5, 7];
+        let mut powers = vec![0, 0, 0, 0];
+        let mut num = i;
+        for j in 0..primes.len() {
+            while num % primes[j] == 0 {
+                num /= primes[j];
+                powers[j] += 1;
+            }
+        }
+        if num != 1 {
+            result += n - 1;
+            continue;
+        }
+        for j in 2..=n {
+            let pstr = format!("{}-{}-{}-{}", powers[0] * j, powers[1] * j, powers[2] * j, powers[3] * j);
+            xs.insert(pstr, true);
+        }
+    }
+    result += xs.len() as i32;
+    result
+}

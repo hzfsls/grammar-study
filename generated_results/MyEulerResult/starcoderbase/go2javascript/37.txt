@@ -1,0 +1,21 @@
+const pandigitalMultiples = (n) => {
+    let result = -1;
+    for (let i = 2; i <= n; i++) {
+        let cprod = "";
+        for (let j = 1; j < 10; j++) {
+            cprod += i * j;
+            if (cprod.length === 9) {
+                let chars = cprod.split("");
+                chars.sort();
+                if (chars.join("") === "123456789") {
+                    cprodInt = parseInt(cprod);
+                    result = Math.max(result, cprodInt);
+                    break;
+                }
+            } else if (cprod.length > 9) {
+                break;
+            }
+        }
+    }
+    return result;
+}

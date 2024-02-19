@@ -1,0 +1,30 @@
+int consecutivePrimeSum(int limit) {
+    vector<bool> sieve(limit, true);
+    vector<int> primes;
+    for (int i = 2; i < limit; i++) {
+        if (sieve[i]) {
+            primes.push_back(i);
+            for (int j = i * 2; j < limit; j += i) {
+                sieve[j] = false;
+            }
+        }
+    }
+    int max_length = 0;
+    int max_prime = 0;
+    for (int i = 0; i < primes.size(); i++) {
+        for (int j = i + max_length; j < primes.size(); j++) {
+            int s = 0;
+            for (int k = i; k < j; k++) {
+                s += primes[k];
+            }
+            if (s >= limit) {
+                break;
+            }
+            if (sieve[s] && j - i > max_length) {
+                max_length = j - i;
+                max_prime = s;
+            }
+        }
+    }
+    return max_prime;
+}

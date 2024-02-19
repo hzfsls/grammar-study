@@ -1,0 +1,21 @@
+def longest_collatz_sequence(n)
+    longest = 0
+    result = 0
+    (1...n).each do |i|
+        chain = 1
+        num = i
+        while num != 1
+            if num % 2 == 0
+                num = num / 2
+            else
+                num = 3 * num + 1
+            end
+            chain += 1
+            if chain > longest
+                longest = chain
+                result = i
+            end
+        end
+    end
+    result
+end

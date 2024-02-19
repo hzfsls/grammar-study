@@ -1,0 +1,19 @@
+class Global {
+    public static int pentagonNumbers(int n) {
+        Set<Integer> pentagon = new HashSet<>();
+        for (int i = 1; i < n; i++) {
+            pentagon.add(i * (3 * i - 1) / 2);
+        }
+        int result = -1;
+        for (int j : pentagon) {
+            for (int k : pentagon) {
+                if (pentagon.contains(j + k) && pentagon.contains(k - j)) {
+                    if (result == -1 || k - j < result) {
+                        result = k - j;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+}

@@ -1,0 +1,23 @@
+const d = (n) => {
+    let result = 1;
+    for (let i = 2; i <= Math.sqrt(n) + 1; i++) {
+        if (n % i === 0) {
+            result += i;
+            if (i !== n / i) {
+                result += n / i;
+            }
+        }
+    }
+    return result;
+}
+
+const amicableNumbers = (n) => {
+    let result = 0;
+    for (let a = 2; a < n; a++) {
+        let b = d(a);
+        if (a !== b && a === d(b)) {
+            result += a;
+        }
+    }
+    return result;
+}

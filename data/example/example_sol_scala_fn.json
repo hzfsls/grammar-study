@@ -1,0 +1,6 @@
+{
+    "scala": {
+        "Example1" : "def productOfDivisible(nums: collection.Seq[Int], m: Int): Int = {\n  nums.filter(num => num % m == 0).fold(1)((a, b) => a * b)\n}",
+        "Example2" : "def genRotations(s: String): collection.Seq[String] = {\n  (1 until s.length).map(i => s.substring(i) + s.substring(0, i))\n}\n\ndef sumOfRotations(s: String): Int = {\n  genRotations(s).map(r => r.toInt).sum\n}"
+    }
+}

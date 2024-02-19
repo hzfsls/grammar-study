@@ -1,0 +1,21 @@
+function isPalindrome($s) {
+    for ($i = 0; $i < strlen($s) / 2; $i++) {
+        if ($s[$i] != $s[strlen($s) - $i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function largestPalindromeProduct($n) {
+    $result = 0;
+    for ($i = 100; $i < 1000; $i++) {
+        for ($j = $i; $j < 1000; $j++) {
+            $prod = $i * $j;
+            if (isPalindrome(strval($prod)) && $prod > $result && $prod < $n) {
+                $result = $prod;
+            }
+        }
+    }
+    return $result;
+}

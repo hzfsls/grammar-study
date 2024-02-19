@@ -1,0 +1,8 @@
+def maximum_path_sum_i(triangle: list[list[int]]) -> int:
+    curr = triangle[len(triangle) - 1][:]
+    for i in range(len(triangle) - 2, -1, -1):
+        next = triangle[i][:]
+        for j in range(len(next)):
+            next[j] += max(curr[j], curr[j + 1])
+        curr = next
+    return curr[0]

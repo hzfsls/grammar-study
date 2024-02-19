@@ -1,0 +1,14 @@
+problem Euler045 {
+    code {
+        func triangular_pentagonal_and_hexagonal(n: int) -> int
+    }
+    tests {
+        template nse {
+            (2000000000) -> 1533776805
+            (1000) -> 1
+            (40755) -> 1
+            (40756) -> 40755
+            (1533776805) -> 40755
+        }
+    }
+}

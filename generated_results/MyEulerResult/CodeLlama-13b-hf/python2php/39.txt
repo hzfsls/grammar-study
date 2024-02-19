@@ -1,0 +1,11 @@
+function champernowneConstant($b) {
+    $s = '';
+    for ($i = 1; $i < pow($b, 6); $i++) {
+        $s .= strval($i);
+    }
+    $result = 1;
+    for ($i = 7; $i < strlen($s); $i++) {
+        $result *= intval(substr($s, $i, 1));
+    }
+    return $result;
+}

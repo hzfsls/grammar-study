@@ -1,0 +1,39 @@
+func IsPrime(n int) bool {
+    if n < 2 {
+        return false
+    }
+    if n == 2 {
+        return true
+    }
+    if n % 2 == 0 {
+        return false
+    }
+    for i := 3; i < int(math.Sqrt(float64(n)))+1; i += 2 {
+        if n%i == 0 {
+            return false
+        }
+    }
+    return true
+}
+
+func TruncatablePrimes(n int) int {
+    result := 0
+    for i := 10; i < n; i++ {
+        if IsPrime(i) {
+            si := strconv.Itoa(i)
+            flag := true
+            for j := 1; j < len(si); j++ {
+                p1, _ := strconv.Atoi(si[j:])
+                p2, _ := strconv.Atoi(si[:j])
+                if!IsPrime(p1) ||!IsPrime(p2) {
+                    flag = false
+                    break
+                }
+            }
+            if flag {
+                result += i
+            }
+        }
+    }
+    return result
+}

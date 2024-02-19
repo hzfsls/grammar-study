@@ -1,0 +1,17 @@
+fn digit_factorials(n: i32) -> i32 {
+    let mut result = 0;
+    for i in 3..n {
+        let mut fact_sum = 0;
+        for digit in i.to_string().chars() {
+            let mut fact = 1;
+            for j in 1..=digit.to_digit(10).unwrap() {
+                fact *= j;
+            }
+            fact_sum += fact;
+        }
+        if i == fact_sum {
+            result += i;
+        }
+    }
+    result
+}

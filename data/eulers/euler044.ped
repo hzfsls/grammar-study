@@ -1,0 +1,14 @@
+problem Euler044 {
+    code {
+        func pentagon_numbers(n: int) -> int
+    }
+    tests {
+        template nse {
+            (3000) -> 5482660
+            (100) -> -1
+            (1000) -> -1
+            (2395) -> -1
+            (2396) -> 5482660
+        }
+    }
+}

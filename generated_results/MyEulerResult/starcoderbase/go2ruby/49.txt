@@ -1,0 +1,30 @@
+def consecutive_prime_sum(limit)
+    sieve = Array.new(limit, true)
+    primes = []
+    for i in 2...limit
+        if sieve[i]
+            primes.push(i)
+            for j in (i * 2)...limit
+                sieve[j] = false
+            end
+        end
+    end
+    maxLength = 0
+    maxPrime = 0
+    for i in 0...primes.length
+        for j in (i + maxLength)...primes.length
+            s = 0
+            for k in i...j
+                s += primes[k]
+            end
+            if s >= limit
+                break
+            end
+            if sieve[s] && j - i > maxLength
+                maxLength = j - i
+                maxPrime = s
+            end
+        end
+    end
+    maxPrime
+end

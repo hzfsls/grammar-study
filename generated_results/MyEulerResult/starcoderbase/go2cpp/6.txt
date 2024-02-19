@@ -1,0 +1,17 @@
+int nthPrime(int n) {
+    vector<int> primes = {2};
+    int i = 3;
+    while (primes.size() < n) {
+        for (int p : primes) {
+            if (i % p == 0) {
+                break;
+            }
+            if (p * p > i) {
+                primes.push_back(i);
+                break;
+            }
+        }
+        i += 2;
+    }
+    return primes[primes.size() - 1];
+}

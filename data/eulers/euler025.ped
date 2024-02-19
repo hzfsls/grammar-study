@@ -1,0 +1,14 @@
+problem Euler025 {
+    code {
+        func n_digit_fibonacci_number(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000) -> 4782
+            (10) -> 45
+            (100) -> 476
+            (200) -> 954
+            (500) -> 2390
+        }
+    }
+}

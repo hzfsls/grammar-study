@@ -1,0 +1,11 @@
+function maximumPathSumI($triangle) {
+    $curr = $triangle[count($triangle) - 1];
+    for ($i = count($triangle) - 2; $i >= 0; $i--) {
+        $next = $triangle[$i];
+        for ($j = 0; $j < count($next); $j++) {
+            $next[$j] += max($curr[$j], $curr[$j + 1]);
+        }
+        $curr = $next;
+    }
+    return $curr[0];
+}

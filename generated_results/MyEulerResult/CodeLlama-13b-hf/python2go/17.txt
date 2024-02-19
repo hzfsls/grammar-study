@@ -1,0 +1,13 @@
+func MaximumPathSumI(triangle [][]int) int {
+    curr := make([]int, len(triangle[len(triangle)-1]))
+    copy(curr, triangle[len(triangle)-1])
+    for i := len(triangle) - 2; i >= 0; i-- {
+        next := make([]int, len(triangle[i]))
+        copy(next, triangle[i])
+        for j := range next {
+            next[j] += max(curr[j], curr[j+1])
+        }
+        curr = next
+    }
+    return curr[0]
+}

@@ -1,0 +1,19 @@
+class Global {
+    public static int digitFactorials(int n) {
+        int result = 0;
+        for (int i = 3; i < n; i++) {
+            int factSum = 0;
+            for (char digit : Integer.toString(i).toCharArray()) {
+                int fact = 1;
+                for (int j = 1; j < digit; j++) {
+                    fact *= j;
+                }
+                factSum += fact;
+            }
+            if (i == factSum) {
+                result += i;
+            }
+        }
+        return result;
+    }
+}

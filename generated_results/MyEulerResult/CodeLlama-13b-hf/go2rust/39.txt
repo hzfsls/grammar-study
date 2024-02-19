@@ -1,0 +1,11 @@
+fn champernowne_constant(b: i32) -> i32 {
+    let mut s = String::new();
+    for i in 1..(b as f64).powi(6) {
+        s.push_str(&i.to_string());
+    }
+    let mut result = 1;
+    for i in 0..7 {
+        result *= s[((b as f64).powi(i) - 1) as usize].to_digit(b as u32).unwrap() as i32;
+    }
+    result
+}

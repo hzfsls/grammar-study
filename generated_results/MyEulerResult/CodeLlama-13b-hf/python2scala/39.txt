@@ -1,0 +1,11 @@
+def champernowneConstant(b: Int): Int = {
+  val s = new StringBuilder()
+  for (i <- 1 until math.pow(b, 6).toInt) {
+    s.append(i.toString)
+  }
+  var result = 1
+  for (i <- 0 until 7) {
+    result *= s.charAt(math.pow(b, i).toInt - 1).toString.toInt
+  }
+  result
+}

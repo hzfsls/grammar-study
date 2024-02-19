@@ -1,0 +1,11 @@
+function specialPythagoreanTriplet($n) {
+    for ($a = 1; $a < $n; $a++) {
+        for ($b = $a; $b < $n; $b++) {
+            $c = $n - $a - $b;
+            if ($a * $a + $b * $b === $c * $c) {
+                return $a * $b * $c;
+            }
+        }
+    }
+    return -1;
+}

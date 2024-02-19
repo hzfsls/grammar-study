@@ -1,0 +1,9 @@
+function sumSquareDifference($n) {
+    $sqr_sum = 0;
+    $num_sum = 0;
+    for ($i = 1; $i <= $n; $i++) {
+        $sqr_sum += $i * $i;
+        $num_sum += $i;
+    }
+    return $num_sum * $num_sum - $sqr_sum;
+}

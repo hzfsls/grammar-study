@@ -1,0 +1,51 @@
+const isPrime = (n) => {
+    if (n < 2) {
+        return false;
+    }
+    if (n === 2) {
+        return true;
+    }
+    if (n % 2 === 0) {
+        return false;
+    }
+    for (let i = 3; i <= Math.sqrt(n); i += 2) {
+        if (n % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const genPermutations = (s) => {
+    if (s.length <= 1) {
+        return [s];
+    }
+    let result = [];
+    for (let perm of genPermutations(s.substring(1))) {
+        for (let i = 0; i < s.length; i++) {
+            result.push(perm.substring(0, i) + s[0] + perm.substring(i));
+        }
+    }
+    return result;
+}
+
+const primePermutations = (n) => {
+    for (let i = n; i > 999; i--) {
+        if (isPrime(i)) {
+            let permutations = genPermutations(i.toString());
+            let candidates = {};
+            for (let j of permutations) {
+                let candidate = parseInt(j);
+                if (candidate > i && isPrime(candidate)) {
+                    candidates[candidate] = true;
+                }
+            }
+            for (let m in candidates) {
+                if (candidates[m + (m - i)]) {
+                    return i.toString() + m.toString() + (m + (m - i)).toString();
+                }
+            }
+        }
+    }
+    return "";
+}

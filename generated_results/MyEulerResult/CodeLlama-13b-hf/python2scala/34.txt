@@ -1,0 +1,40 @@
+def isPrime(n: Int): Boolean = {
+  if (n < 2) {
+    return false
+  }
+  if (n == 2) {
+    return true
+  }
+  if (n % 2 == 0) {
+    return false
+  }
+  for (i <- 3 to math.sqrt(n).toInt + 1 by 2) {
+    if (n % i == 0) {
+      return false
+    }
+  }
+  true
+}
+
+def circularPrimes(n: Int): Int = {
+  var count = 0
+  for (i <- 2 until n) {
+    if (isPrime(i)) {
+      val rotations = collection.mutable.Set[Int]()
+      for (j <- 0 until i.toString.length) {
+        rotations += i.toString.substring(j).toInt + i.toString.substring(0, j).toInt
+      }
+      var flag = true
+      for (x <- rotations) {
+        if (!isPrime(x)) {
+          flag = false
+          break
+        }
+      }
+      if (flag) {
+        count += 1
+      }
+    }
+  }
+  count
+}

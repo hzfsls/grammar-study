@@ -1,0 +1,21 @@
+const pandigitalProducts = (n) => {
+    let products = new Set();
+    let s = '';
+    for (let i = 1; i <= n; i++) {
+        s += i;
+    }
+    for (let a = 1; a < 100; a++) {
+        for (let b = 1; b < 10000; b++) {
+            let c = a * b;
+            let chars = [a, b, c].map(i => i.toString()).sort();
+            if (chars.join('') === s) {
+                products.add(c);
+            }
+        }
+    }
+    let result = 0;
+    for (let product of products) {
+        result += product;
+    }
+    return result;
+}

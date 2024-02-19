@@ -1,0 +1,17 @@
+def nthPrime(n: Int): Int = {
+  val primes = collection.mutable.ArrayBuffer[Int](2)
+  var i = 3
+  while (primes.length < n) {
+    for (p <- primes) {
+      if (i % p == 0) {
+        break
+      }
+      if (p * p > i) {
+        primes += i
+        break
+      }
+    }
+    i += 2
+  }
+  primes.last
+}

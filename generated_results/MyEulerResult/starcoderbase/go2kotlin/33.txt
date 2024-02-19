@@ -1,0 +1,17 @@
+fun digitFactorials(n: Int): Int {
+    var result = 0
+    for (i in 3 until n) {
+        var factSum = 0
+        for (digit in i.toString()) {
+            var fact = 1
+            for (j in 1..(digit - '0').toInt()) {
+                fact *= j
+            }
+            factSum += fact
+        }
+        if (i == factSum) {
+            result += i
+        }
+    }
+    return result
+}

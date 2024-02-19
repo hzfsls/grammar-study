@@ -1,0 +1,17 @@
+function pentagonNumbers($n) {
+    $pentagon = [];
+    for ($i = 1; $i < $n; $i++) {
+        $pentagon[$i * ($i * 3 - 1) / 2] = true;
+    }
+    $result = -1;
+    foreach ($pentagon as $j => $v) {
+        foreach ($pentagon as $k => $v) {
+            if ($pentagon[$j + $k] && $pentagon[$k - $j]) {
+                if ($result === -1 || $k - $j < $result) {
+                    $result = $k - $j;
+                }
+            }
+        }
+    }
+    return $result;
+}

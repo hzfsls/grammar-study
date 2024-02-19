@@ -1,0 +1,9 @@
+def sum_square_difference(n)
+    sqr_sum = 0
+    num_sum = 0
+    (1..n).each do |i|
+        sqr_sum += i * i
+        num_sum += i
+    end
+    num_sum * num_sum - sqr_sum
+end

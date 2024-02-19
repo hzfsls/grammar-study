@@ -1,0 +1,11 @@
+def champernowne_constant(b)
+    s = ''
+    (1...b**6).each do |i|
+        s += i.to_s
+    end
+    result = 1
+    (0...7).each do |i|
+        result *= s[b**i - 1].to_i
+    end
+    result
+end

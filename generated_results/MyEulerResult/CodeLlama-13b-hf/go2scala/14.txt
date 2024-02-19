@@ -1,0 +1,15 @@
+def latticePaths(m: Int, n: Int): Int = {
+  val grid = Array.ofDim[Int](m + 1, n + 1)
+  for (i <- 0 to m) {
+    grid(i)(0) = 1
+  }
+  for (j <- 0 to n) {
+    grid(0)(j) = 1
+  }
+  for (i <- 1 to m) {
+    for (j <- 1 to n) {
+      grid(i)(j) = grid(i - 1)(j) + grid(i)(j - 1)
+    }
+  }
+  grid(m)(n)
+}

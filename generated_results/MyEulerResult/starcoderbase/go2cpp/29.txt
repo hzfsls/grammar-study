@@ -1,0 +1,13 @@
+int digitNthPowers(int n) {
+    int result = 0;
+    for (int i = 2; i < 4 * pow(10, n); i++) {
+        int digitsSum = 0;
+        for (char digit : to_string(i)) {
+            digitsSum += pow(digit - '0', n);
+        }
+        if (i == digitsSum) {
+            result += i;
+        }
+    }
+    return result;
+}

@@ -1,0 +1,23 @@
+class Global {
+    public static int ReciprocalCycles(int n) {
+        int result = 0;
+        int maxLength = 0;
+        for (int i = 1; i < n; i++) {
+            IList<int> remainders = new List<int>();
+            int remainder = 1;
+            while (remainder!= 0 &&!remainders.Contains(remainder)) {
+                remainders.Add(remainder);
+                remainder = (remainder * 10) % i;
+            }
+            int length = 0;
+            if (remainder!= 0) {
+                length = remainders.Count - remainders.IndexOf(remainder);
+            }
+            if (length > maxLength) {
+                maxLength = length;
+                result = i;
+            }
+        }
+        return result;
+    }
+}

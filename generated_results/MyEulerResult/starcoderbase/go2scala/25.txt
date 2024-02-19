@@ -1,0 +1,21 @@
+def reciprocalCycles(n: Int): Int = {
+  var result = 0
+  var maxLength = 0
+  for (i <- 1 until n) {
+    var remainders = collection.mutable.ArrayBuffer[Int]()
+    var remainder = 1
+    while (remainder!= 0 &&!remainders.contains(remainder)) {
+      remainders += remainder
+      remainder = (remainder * 10) % i
+    }
+    var length = 0
+    if (remainder!= 0) {
+      length = remainders.length - remainders.indexOf(remainder)
+    }
+    if (length > maxLength) {
+      maxLength = length
+      result = i
+    }
+  }
+  result
+}

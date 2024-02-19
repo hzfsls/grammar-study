@@ -1,0 +1,21 @@
+const reciprocalCycles = (n) => {
+    let result = 0;
+    let maxLength = 0;
+    for (let i = 1; i < n; i++) {
+        let remainders = [];
+        let remainder = 1;
+        while (remainder !== 0 && remainders.indexOf(remainder) === -1) {
+            remainders.push(remainder);
+            remainder = (remainder * 10) % i;
+        }
+        let length = 0;
+        if (remainder !== 0) {
+            length = remainders.length - remainders.indexOf(remainder);
+        }
+        if (length > maxLength) {
+            maxLength = length;
+            result = i;
+        }
+    }
+    return result;
+}

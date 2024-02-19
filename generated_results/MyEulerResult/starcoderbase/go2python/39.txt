@@ -1,0 +1,9 @@
+def champernowne_constant(b: int) -> int:
+    s = ""
+    for i in range(1, int(math.pow(b, 6))):
+        s += str(i)
+    result = 1
+    for i in range(0, 7):
+        n = int(s[int(math.pow(b, i)) - 1])
+        result *= n
+    return result

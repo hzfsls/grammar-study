@@ -1,0 +1,27 @@
+function consecutivePrimeSum($limit) {
+    $sieve = array_fill(0, $limit, true);
+    $primes = [];
+    for ($i = 2; $i < $limit; $i++) {
+        if ($sieve[$i]) {
+            array_push($primes, $i);
+            for ($j = $i * 2; $j < $limit; $j += $i) {
+                $sieve[$j] = false;
+            }
+        }
+    }
+    $maxLength = 0;
+    $maxPrime = 0;
+    for ($i = 0; $i < count($primes); $i++) {
+        for ($j = $i + $maxLength; $j < count($primes); $j++) {
+            $s = array_sum(array_slice($primes, $i, $j - $i + 1));
+            if ($s >= $limit) {
+                break;
+            }
+            if ($sieve[$s] && $j - $i > $maxLength) {
+                $maxLength = $j - $i;
+                $maxPrime = $s;
+            }
+        }
+    }
+    return $maxPrime;
+}

@@ -1,0 +1,14 @@
+problem Euler015 {
+    code {
+        func lattice_paths(m: int, n: int) -> int
+    }
+    tests {
+        template nse {
+            (3, 3) -> 20
+            (5, 7) -> 792
+            (16, 12) -> 30421755
+            (8, 16) -> 735471
+            (16, 16) -> 601080390
+        }
+    }
+}

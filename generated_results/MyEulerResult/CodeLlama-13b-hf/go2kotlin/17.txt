@@ -1,0 +1,11 @@
+fun maximumPathSumI(triangle: List<List<Int>>): Int {
+    var curr = triangle[triangle.size - 1].toMutableList()
+    for (i in triangle.size - 2 downTo 0) {
+        val next = triangle[i].toMutableList()
+        for (j in 0 until next.size) {
+            next[j] += maxOf(curr[j], curr[j + 1])
+        }
+        curr = next
+    }
+    return curr[0]
+}

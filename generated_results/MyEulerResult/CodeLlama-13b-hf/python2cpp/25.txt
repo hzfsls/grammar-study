@@ -1,0 +1,21 @@
+int reciprocalCycles(int n) {
+    int result = 0;
+    int max_length = 0;
+    for (int i = 1; i < n; i++) {
+        vector<int> remainders;
+        int remainder = 1;
+        while (remainder != 0 && find(remainders.begin(), remainders.end(), remainder) == remainders.end()) {
+            remainders.push_back(remainder);
+            remainder = (remainder * 10) % i;
+        }
+        int length = 0;
+        if (remainder != 0) {
+            length = remainders.size() - remainders.end() - remainders.begin();
+        }
+        if (length > max_length) {
+            max_length = length;
+            result = i;
+        }
+    }
+    return result;
+}

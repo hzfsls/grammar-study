@@ -1,0 +1,11 @@
+def coinSums(n: Int): Int = {
+  val coins = Array(1, 2, 5, 10, 20, 50, 100, 200)
+  val ways = Array.fill(n + 1)(0)
+  ways(0) = 1
+  for (coin <- coins) {
+    for (i <- coin until n + 1) {
+      ways(i) += ways(i - coin)
+    }
+  }
+  ways(n)
+}

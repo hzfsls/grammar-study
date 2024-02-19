@@ -1,0 +1,22 @@
+class Global {
+    public static int powerDigitSum(int n) {
+        List<Integer> digits = new ArrayList<>();
+        digits.add(2);
+        for (int i = 1; i < n; i++) {
+            int carry = 0;
+            for (int j = 0; j < digits.size(); j++) {
+                int temp = digits.get(j)*2 + carry;
+                digits.set(j, temp % 10);
+                carry = temp / 10;
+            }
+            if (carry!= 0) {
+                digits.add(carry);
+            }
+        }
+        int result = 0;
+        for (int digit : digits) {
+            result += digit;
+        }
+        return result;
+    }
+}

@@ -1,0 +1,19 @@
+fun powerDigitSum(n: Int): Int {
+    val digits = mutableListOf(2)
+    for (_ in 1 until n) {
+        var carry = 0
+        for (j in digits.indices) {
+            val temp = digits[j] * 2 + carry
+            digits[j] = temp % 10
+            carry = temp / 10
+        }
+        if (carry!= 0) {
+            digits.add(carry)
+        }
+    }
+    var result = 0
+    for (digit in digits) {
+        result += digit
+    }
+    return result
+}

@@ -1,0 +1,21 @@
+function reciprocalCycles($n) {
+    $result = 0;
+    $maxLength = 0;
+    for ($i = 1; $i < $n; $i++) {
+        $remainders = [];
+        $remainder = 1;
+        while ($remainder!== 0 &&!in_array($remainder, $remainders)) {
+            array_push($remainders, $remainder);
+            $remainder = ($remainder * 10) % $i;
+        }
+        $length = 0;
+        if ($remainder!== 0) {
+            $length = count($remainders) - array_search($remainder, $remainders);
+        }
+        if ($length > $maxLength) {
+            $maxLength = $length;
+            $result = $i;
+        }
+    }
+    return $result;
+}

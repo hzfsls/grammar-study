@@ -1,0 +1,6 @@
+{
+    "python": {
+        "Example1" : "def product_of_divisible(nums: list[int], m: int) -> int:\n    return reduce(lambda a, b: a * b, filter(lambda num: num % m == 0, nums), 1)",
+        "Example2" : "def gen_rotations(s: str) -> list[str]:\n    return list(map(lambda i: s[i:] + s[:i], range(1, len(s))))\n\ndef sum_of_rotations(s: str) -> int:\n    return sum(map(lambda r: int(r), gen_rotations(s)))"
+    }
+}

@@ -1,0 +1,21 @@
+def summation_of_primes(n)
+    primes = [2]
+    i = 3
+    while i <= n
+        primes.each do |p|
+            if i % p == 0
+                break
+            end
+            if p * p > i
+                primes.push(i)
+                break
+            end
+        end
+        i += 2
+    end
+    result = 0
+    primes.each do |prime|
+        result += prime
+    end
+    result
+end

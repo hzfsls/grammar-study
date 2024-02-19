@@ -1,0 +1,25 @@
+def distinctPowers(n: Int): Int = {
+  var result = 0
+  val xs = collection.mutable.Map[String, Boolean]()
+  for (i <- 2 to n) {
+    val primes = Array(2, 3, 5, 7)
+    val powers = Array(0, 0, 0, 0)
+    var num = i
+    for (j <- 0 until primes.length) {
+      while (num % primes(j) == 0) {
+        num /= primes(j)
+        powers(j) += 1
+      }
+    }
+    if (num != 1) {
+      result += n - 1
+      continue
+    }
+    for (j <- 2 to n) {
+      val pstr = s"${powers(0) * j}-${powers(1) * j}-${powers(2) * j}-${powers(3) * j}"
+      xs(pstr) = true
+    }
+  }
+  result += xs.size
+  result
+}

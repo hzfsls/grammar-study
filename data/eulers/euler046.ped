@@ -1,0 +1,14 @@
+problem Euler046 {
+    code {
+        func goldbachs_other_conjecture(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1) -> 5777
+            (5775) -> 5777
+            (5777) -> 5993
+            (5991) -> 5993
+            (5993) -> -1
+        }
+    }
+}

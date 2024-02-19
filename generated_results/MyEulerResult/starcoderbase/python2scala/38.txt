@@ -1,0 +1,20 @@
+def integerRightTriangles(n: Int): Int = {
+  var maxSol = 0
+  var result = 0
+  for (p <- 3 to n) {
+    var sol = 0
+    for (a <- 1 to p / 2) {
+      for (b <- a to p / 2) {
+        val c = p - a - b
+        if (a * a + b * b == c * c) {
+          sol += 1
+        }
+      }
+    }
+    if (sol > maxSol) {
+      maxSol = sol
+      result = p
+    }
+  }
+  result
+}

@@ -1,0 +1,14 @@
+problem Euler014 {
+    code {
+        func longest_collatz_sequence(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000) -> 871
+            (10000) -> 6171
+            (20000) -> 17647
+            (50000) -> 35655
+            (100000) -> 77031
+        }
+    }
+}

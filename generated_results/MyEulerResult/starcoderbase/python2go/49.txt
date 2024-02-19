@@ -1,0 +1,30 @@
+func ConsecutivePrimeSum(limit int) int {
+    sieve := make([]bool, limit)
+    primes := []int{}
+    for i := 2; i < limit; i++ {
+        if sieve[i] {
+            primes = append(primes, i)
+            for j := i * 2; j < limit; j += i {
+                sieve[j] = false
+            }
+        }
+    }
+    maxLength := 0
+    maxPrime := 0
+    for i := 0; i < len(primes); i++ {
+        for j := i + maxLength; j < len(primes); j++ {
+            s := 0
+            for _, p := range primes[i:j] {
+                s += p
+            }
+            if s >= limit {
+                break
+            }
+            if sieve[s] && j - i > maxLength {
+                maxLength = j - i
+                maxPrime = s
+            }
+        }
+    }
+    return maxPrime
+}

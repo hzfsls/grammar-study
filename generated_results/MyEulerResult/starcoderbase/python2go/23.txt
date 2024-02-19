@@ -1,0 +1,16 @@
+func LexicographicPermutations(n int) string {
+    result := ""
+    digits := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+    x := n - 1
+    for i := 10; i > 0; i-- {
+        fact := 1
+        for j := 1; j < i; j++ {
+            fact *= j
+        }
+        idx := x / fact
+        result += strconv.Itoa(digits[idx])
+        digits = append(digits[:idx], digits[idx+1:]...)
+        x -= idx * fact
+    }
+    return result
+}

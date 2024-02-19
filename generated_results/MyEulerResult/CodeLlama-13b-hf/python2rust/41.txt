@@ -1,0 +1,14 @@
+fn coded_triangle_numbers(words: &Vec<String>) -> i32 {
+    let mut result = 0;
+    for word in words {
+        let mut value = 0;
+        for c in word.chars() {
+            value += c as i32 - 64;
+        }
+        let n = (value as f64).sqrt() as i32;
+        if n * (n + 1) == value * 2 {
+            result += 1;
+        }
+    }
+    result
+}

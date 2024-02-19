@@ -1,0 +1,18 @@
+function pandigitalMultiples($n) {
+    $result = -1;
+    for ($i = 2; $i <= $n; $i++) {
+        $cprod = '';
+        for ($j = 1; $j <= 9; $j++) {
+            $cprod .= strval($i * $j);
+            if (strlen($cprod) == 9) {
+                if (join('', sort(str_split($cprod))) == '123456789') {
+                    $result = max($result, intval($cprod));
+                    break;
+                }
+            } elseif (strlen($cprod) > 9) {
+                break;
+            }
+        }
+    }
+    return $result;
+}

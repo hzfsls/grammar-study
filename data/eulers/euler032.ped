@@ -1,0 +1,14 @@
+problem Euler032 {
+    code {
+        func pandigital_products(n: int) -> int
+    }
+    tests {
+        template nse {
+            (9) -> 45228
+            (5) -> 52
+            (6) -> 162
+            (7) -> 0
+            (8) -> 13458
+        }
+    }
+}

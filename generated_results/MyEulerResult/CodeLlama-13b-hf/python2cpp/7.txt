@@ -1,0 +1,11 @@
+int largestProductInASeries(const string& s, int k) {
+    int result = 0;
+    for (int i = 0; i < s.size() - k; i++) {
+        int product = 1;
+        for (int j = 0; j < k; j++) {
+            product *= s[i + j] - '0';
+        }
+        result = max(result, product);
+    }
+    return result;
+}

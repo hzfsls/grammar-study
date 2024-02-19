@@ -1,0 +1,14 @@
+problem Euler042 {
+    code {
+        func coded_triangle_numbers(words: list<string>) -> int
+    }
+    tests {
+        template nse {
+            (["PICTURE", "FIELD", "DEBT", "CITY", "DAMAGE"]) -> 1
+            (["TRAFFIC", "ACHIEVE", "INTEND", "DECISION", "SMALL"]) -> 2
+            (["TITLE", "WHILST", "FEEL", "INFORM", "DOOR"]) -> 3
+            (["THREATEN", "EQUIPMENT", "UP", "MILK", "UPON"]) -> 4
+            (["WHETHER", "SOUTHERN", "MEET", "CONFIDENCE", "PROPORTION", "TERMS", "CONSTRUCTION", "SKILL", "FIGURE", "KEEP", "OPTION", "DOUBLE", "CONTRIBUTION", "CROWD", "FAIL", "LAW", "ESSENTIAL", "FUNCTION", "LENGTH", "REALLY"]) -> 7
+        }
+    }
+}

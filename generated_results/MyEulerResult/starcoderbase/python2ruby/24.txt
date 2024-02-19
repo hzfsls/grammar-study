@@ -1,0 +1,24 @@
+def n_digit_fibonacci_number(n)
+    a = [1]
+    b = [1]
+    i = 2
+    while b.length < n
+        carry = 0
+        c = b.dup
+        b.each_with_index do |b_j, j|
+            if j < a.length
+                b[j] = a[j] + b_j + carry
+            else
+                b[j] = b_j + carry
+            end
+            carry = b[j] / 10
+            b[j] = b[j] % 10
+        end
+        if carry > 0
+            b.push(carry)
+        end
+        a = c
+        i = i + 1
+    end
+    i
+end

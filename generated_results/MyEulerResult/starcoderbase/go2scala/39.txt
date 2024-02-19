@@ -1,0 +1,11 @@
+def champernowneConstant(b: Int): Int = {
+  var s = ""
+  for (i <- 1 until math.pow(b, 6).toInt) {
+    s += i.toString
+  }
+  var result = 1
+  for (i <- 0 until 7) {
+    result *= s(math.pow(b, i).toInt - 1).toString.toInt
+  }
+  result
+}

@@ -1,0 +1,23 @@
+class Global {
+    public static boolean isPalindrome(String s) {
+        for (int i = 0; i < s.length() / 2; i++) {
+            if (s.charAt(i)!= s.charAt(s.length() - i - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int largestPalindromeProduct(int n) {
+        int result = 0;
+        for (int i = 100; i < 1000; i++) {
+            for (int j = i; j < 1000; j++) {
+                int prod = i * j;
+                if (isPalindrome(Integer.toString(prod)) && prod > result && prod < n) {
+                    result = prod;
+                }
+            }
+        }
+        return result;
+    }
+}

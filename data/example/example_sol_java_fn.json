@@ -1,0 +1,6 @@
+{
+    "java": {
+        "Example1" : "class Global {\n    public static int productOfDivisible(List<Integer> nums, int m) {\n        return nums.stream().filter(num -> num % m == 0).reduce(1, (a, b) -> a * b);\n    }\n}",
+        "Example2" : "class Global {\n    public static List<String> genRotations(String s) {\n        return IntStream.range(1, s.length()).mapToObj(i -> s.substring(i) + s.substring(0, i)).collect(Collectors.toList());\n    }\n\n    public static int sumOfRotations(String s) {\n        return genRotations(s).stream().mapToInt(r -> Integer.parseInt(r)).sum();\n    }\n}"
+    }
+}

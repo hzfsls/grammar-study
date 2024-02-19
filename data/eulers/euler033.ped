@@ -1,0 +1,14 @@
+problem Euler033 {
+    code {
+        func digit_canceling_fractions(m: int) -> int
+    }
+    tests {
+        template nse {
+            (100) -> 100
+            (64) -> 1
+            (65) -> 4
+            (95) -> 10
+            (96) -> 50
+        }
+    }
+}

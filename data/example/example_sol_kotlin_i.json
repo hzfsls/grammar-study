@@ -1,0 +1,6 @@
+{
+    "kotlin": {
+        "Example1" : "fun productOfDivisible(nums: List<Int>, m: Int): Int {\n    var result = 1\n    for (num in nums) {\n        if (num % m == 0) {\n            result *= num\n        }\n    }\n    return result\n}",
+        "Example2" : "fun genRotations(s: String): List<String> {\n    val result = mutableListOf<String>()\n    for (i in 1 until s.length) {\n        result.add(s.substring(i) + s.substring(0, i))\n    }\n    return result\n}\n\nfun sumOfRotations(s: String): Int {\n    var result = 0\n    for (r in genRotations(s)) {\n        result += r.toInt()\n    }\n    return result\n}"
+    }
+}

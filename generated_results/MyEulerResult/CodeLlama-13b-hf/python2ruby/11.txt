@@ -1,0 +1,18 @@
+def highly_divisible_triangular_number(n)
+    (1...100000000).each do |i|
+        result = i * (i + 1) // 2
+        count = 0
+        (1...(Math.sqrt(result) + 1)).each do |j|
+            if result % j == 0
+                count += 2
+            end
+            if j * j == result
+                count -= 1
+            end
+        end
+        if count > n
+            return result
+        end
+    end
+    return -1
+end

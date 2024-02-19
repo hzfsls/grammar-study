@@ -1,0 +1,13 @@
+fun lexicographicPermutations(n: Int): String {
+    val result = StringBuilder()
+    val digits = listOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    var x = n - 1
+    for (i in 10 downTo 1) {
+        val fact = (1..i).fold(1) { acc, i -> acc * i }
+        val idx = x / fact
+        result.append(digits[idx])
+        digits.removeAt(idx)
+        x -= idx * fact
+    }
+    return result.toString()
+}

@@ -1,0 +1,15 @@
+def factorial_digit_sum(n: int) -> int:
+    digits = [1]
+    for i in range(1, n + 1):
+        carry = 0
+        for j in range(len(digits)):
+            digits[j] = digits[j] * i + carry
+            carry = digits[j] // 10
+            digits[j] %= 10
+        while carry != 0:
+            digits.append(carry % 10)
+            carry //= 10
+    result = 0
+    for digit in digits:
+        result += digit
+    return result

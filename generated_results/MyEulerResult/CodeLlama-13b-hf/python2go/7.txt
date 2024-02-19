@@ -1,0 +1,11 @@
+func LargestProductInASeries(s string, k int) int {
+    result := 0
+    for i := 0; i < len(s) - k; i++ {
+        product := 1
+        for j := 0; j < k; j++ {
+            product *= int(s[i + j])
+        }
+        result = max(result, product)
+    }
+    return result
+}

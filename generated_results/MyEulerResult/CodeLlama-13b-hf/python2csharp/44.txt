@@ -1,0 +1,23 @@
+class Global {
+    public static int TriangularPentagonalAndHexagonal(int n) {
+        HashSet<int> ps = new HashSet<int>();
+        int i = 1;
+        int c = (int) (0.5 * i * (3 * i - 1));
+        while (c < n) {
+            i += 1;
+            ps.Add(c);
+            c = (int) (0.5 * i * (3 * i - 1));
+        }
+        i = 1;
+        c = i * (2 * i - 1);
+        int result = -1;
+        while (c < n) {
+            i += 1;
+            if (ps.Contains(c)) {
+                result = c;
+            }
+            c = i * (2 * i - 1);
+        }
+        return result;
+    }
+}

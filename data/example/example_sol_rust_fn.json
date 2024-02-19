@@ -1,0 +1,6 @@
+{
+    "rust": {
+        "Example1" : "fn product_of_divisible(nums: &Vec<i32>, m: i32) -> i32 {\n    nums.iter().filter(|&num| num % m == 0).fold(1, |a, b| a * b)\n}",
+        "Example2" : "fn gen_rotations(s: &String) -> Vec<String> {\n    (1..s.len()).map(|i| s[i..].to_string() + &s[..i]).collect()\n}\n\nfn sum_of_rotations(s: &String) -> i32 {\n    gen_rotations(s).iter().map(|r| r.parse::<i32>().unwrap()).sum()\n}"
+    }
+}

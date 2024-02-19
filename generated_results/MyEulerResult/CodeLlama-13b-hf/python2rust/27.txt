@@ -1,0 +1,7 @@
+fn number_spiral_diagonals(n: i32) -> i32 {
+    let mut result = 1;
+    for i in 3..=n {
+        result += 4 * i * i - 6 * i + 6;
+    }
+    result
+}

@@ -1,0 +1,29 @@
+fn self_powers(n: i32) -> String {
+    let mut digits = [0; 10];
+    for i in 1..=n {
+        let mut temp_digits = [0; 10];
+        temp_digits[0] = 1;
+        for j in 0..i {
+            let mut carry = 0;
+            for k in 0..10 {
+                temp_digits[k] = temp_digits[k] * i + carry;
+                carry = temp_digits[k] / 10;
+                temp_digits[k] %= 10;
+            }
+        }
+        for j in 0..10 {
+            digits[j] += temp_digits[j];
+            if digits[j] >= 10 {
+                digits[j] -= 10;
+                if j < 9 {
+                    digits[j + 1] += 1;
+                }
+            }
+        }
+    }
+    let mut result = String::new();
+    for i in (0..10).rev() {
+        result.push_str(&digits[i].to_string());
+    }
+    result
+}

@@ -1,0 +1,6 @@
+{
+    "scala": {
+        "Example1" : "def productOfDivisible(nums: collection.Seq[Int], m: Int): Int = {\n  var result = 1\n  for (num <- nums) {\n    if (num % m == 0) {\n      result *= num\n    }\n  }\n  result\n}",
+        "Example2" : "def genRotations(s: String): collection.Seq[String] = {\n  val result = collection.mutable.ArrayBuffer[String]()\n  for (i <- 1 until s.length) {\n    result += s.substring(i) + s.substring(0, i)\n  }\n  result\n}\n\ndef sumOfRotations(s: String): Int = {\n  var result = 0\n  for (r <- genRotations(s)) {\n    result += r.toInt\n  }\n  result\n}"
+    }
+}

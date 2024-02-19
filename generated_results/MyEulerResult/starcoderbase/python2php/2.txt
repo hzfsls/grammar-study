@@ -1,0 +1,12 @@
+function largestPrimeFactor($n) {
+    $result = $n;
+    $i = 2;
+    while ($i * $i <= $result) {
+        if ($result % $i) {
+            $i += 1;
+        } else {
+            $result = intval($result / $i);
+        }
+    }
+    return $result;
+}

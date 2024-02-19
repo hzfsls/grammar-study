@@ -1,0 +1,18 @@
+fn names_scores(names: &Vec<String>, queries: &Vec<String>) -> i32 {
+    let mut s_names = names.clone();
+    s_names.sort();
+    let mut result = 0;
+    for i in 0..s_names.len() {
+        let mut x = 0;
+        for c in s_names[i].chars() {
+            x += c as i32 - 64;
+        }
+        for query in queries {
+            if query == &s_names[i] {
+                result += x * (i + 1);
+                break;
+            }
+        }
+    }
+    result
+}

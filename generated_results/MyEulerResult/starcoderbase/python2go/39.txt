@@ -1,0 +1,12 @@
+func ChampernowneConstant(b int) int {
+    s := ""
+    for i := 1; i < b**6; i++ {
+        s += strconv.Itoa(i)
+    }
+    result := 1
+    for i := 0; i < 7; i++ {
+        num, _ := strconv.Atoi(s[b**i - 1 : b**(i+1) - 1])
+        result *= num
+    }
+    return result
+}

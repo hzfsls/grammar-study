@@ -1,0 +1,17 @@
+def nth_prime(n)
+    primes = [2]
+    i = 3
+    while primes.length < n
+        primes.each do |p|
+            if i % p == 0
+                break
+            end
+            if p * p > i
+                primes.push(i)
+                break
+            end
+        end
+        i += 2
+    end
+    primes[-1]
+end

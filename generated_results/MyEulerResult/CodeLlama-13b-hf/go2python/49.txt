@@ -1,0 +1,19 @@
+def consecutive_prime_sum(limit: int) -> int:
+    sieve = [True] * limit
+    primes = []
+    for i in range(2, limit):
+        if sieve[i]:
+            primes.append(i)
+            for j in range(i * 2, limit, i):
+                sieve[j] = False
+    max_length = 0
+    max_prime = 0
+    for i in range(len(primes)):
+        for j in range(i + max_length, len(primes)):
+            s = sum(primes[i:j])
+            if s >= limit:
+                break
+            if sieve[s] and j - i > max_length:
+                max_length = j - i
+                max_prime = s
+    return max_prime

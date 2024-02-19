@@ -1,0 +1,30 @@
+def prime_factors(n)
+    num = n
+    factors = []
+    i = 2
+    while i * i <= num
+        if num % i!= 0
+            i += 1
+        else
+            num /= i
+            factors.push(i)
+        end
+    end
+    if num > 1
+        factors.push(num)
+    end
+    s = {}
+    factors.each do |v|
+        s[v] = true
+    end
+    s.length
+end
+
+def distinct_primes_factors(n)
+    for i in n..999999
+        if prime_factors(i) == 4 && prime_factors(i + 1) == 4 && prime_factors(i + 2) == 4 && prime_factors(i + 3) == 4
+            return i
+        end
+    end
+    -1
+end

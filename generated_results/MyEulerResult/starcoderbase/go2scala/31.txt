@@ -1,0 +1,25 @@
+def pandigitalProducts(n: Int): Int = {
+  val products = collection.mutable.Map[Int, Boolean]()
+  var s = ""
+  for (i <- 1 to n) {
+    s += i.toString
+  }
+  for (a <- 1 to 99) {
+    for (b <- 1 to 9999) {
+      val c = a * b
+      val chars = collection.mutable.ArrayBuffer[Char]()
+      chars ++= a.toString.toCharArray
+      chars ++= b.toString.toCharArray
+      chars ++= c.toString.toCharArray
+      chars.sortWith(_ < _)
+      if (chars.mkString == s) {
+        products(c) = true
+      }
+    }
+  }
+  var result = 0
+  for (product <- products) {
+    result += product
+  }
+  result
+}

@@ -1,0 +1,21 @@
+def pandigital_multiples(n)
+    result = -1
+    (2..n).each do |i|
+        cprod = ""
+        (1..9).each do |j|
+            cprod += i * j.to_s
+            if cprod.length == 9
+                chars = cprod.split("")
+                chars.sort!
+                if chars.join("") == "123456789"
+                    cprod_int = cprod.to_i
+                    result = [result, cprod_int].max
+                    break
+                end
+            elsif cprod.length > 9
+                break
+            end
+        end
+    end
+    result
+end

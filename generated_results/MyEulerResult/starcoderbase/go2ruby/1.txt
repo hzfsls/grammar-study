@@ -1,0 +1,14 @@
+def even_fibonacci_numbers(n)
+    result = 0
+    a = 1
+    b = 2
+    while a < n
+        if a % 2 == 0
+            result += a
+        end
+        tmp = a
+        a = b
+        b = tmp + b
+    end
+    result
+end

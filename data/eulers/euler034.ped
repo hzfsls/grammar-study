@@ -1,0 +1,14 @@
+problem Euler034 {
+    code {
+        func digit_factorials(n: int) -> int
+    }
+    tests {
+        template nse {
+            (100000) -> 40730
+            (145) -> 0
+            (146) -> 145
+            (40585) -> 145
+            (40586) -> 40730
+        }
+    }
+}

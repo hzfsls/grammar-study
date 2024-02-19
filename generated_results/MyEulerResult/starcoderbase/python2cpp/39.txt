@@ -1,0 +1,11 @@
+int champernowneConstant(int b) {
+    string s;
+    for (int i = 1; i < pow(b, 6); i++) {
+        s += to_string(i);
+    }
+    int result = 1;
+    for (int i = 7; i >= 0; i--) {
+        result *= stoi(s[pow(b, i) - 1]);
+    }
+    return result;
+}

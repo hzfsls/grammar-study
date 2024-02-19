@@ -1,0 +1,24 @@
+def numberToWords(n: Int): String = {
+  val ones = Array("", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+  val teens = Array("ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
+  val tens = Array("", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
+  if (n == 1000) {
+    return "one thousand"
+  } else if (n >= 100) {
+    if (n % 100 == 0) {
+      return ones(n / 100) + " hundred"
+    } else {
+      return ones(n / 100) + " hundred and " + numberToWords(n % 100)
+    }
+  } else if (n >= 20) {
+    var suf = ""
+    if (n % 10 != 0) {
+      suf = " " + ones(n % 10)
+    }
+    return tens(n / 10) + suf
+  } else if (n >= 10) {
+    return teens(n - 10)
+  } else {
+    return ones(n)
+  }
+}

@@ -1,0 +1,13 @@
+def names_scores(names: list[str], queries: list[str]) -> int:
+    s_names = slices.clone(names)
+    slices.sort(s_names)
+    result = 0
+    for i, name in enumerate(s_names):
+        x = 0
+        for c in name:
+            x += int(c) - 64
+        for query in queries:
+            if query == name:
+                result += x * (i + 1)
+                break
+    return result

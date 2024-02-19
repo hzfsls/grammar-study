@@ -1,0 +1,23 @@
+function countingSundays($y1, $y2) {
+    $day = 0;
+    $count = 0;
+    for ($year = 1900; $year <= $y2; $year++) {
+        for ($month = 1; $month <= 12; $month++) {
+            if ($year >= $y1 && $day % 7 == 6) {
+                $count++;
+            }
+            if ($month == 4 || $month == 6 || $month == 9 || $month == 11) {
+                $day += 30;
+            } else if ($month == 2) {
+                if ($year % 4 == 0 && ($year % 100 != 0 || $year % 400 == 0)) {
+                    $day += 29;
+                } else {
+                    $day += 28;
+                }
+            } else {
+                $day += 31;
+            }
+        }
+    }
+    return $count;
+}

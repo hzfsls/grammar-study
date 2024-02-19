@@ -1,0 +1,19 @@
+function pandigitalProducts($n) {
+    $products = [];
+    $s = implode('', array_map(function($i) { return strval($i); }, range(1, $n+1)));
+    for ($a = 1; $a < 100; $a++) {
+        for ($b = 1; $b < 10000; $b++) {
+            $c = $a * $b;
+            $chars = str_split(strval($a) . strval($b) . strval($c));
+            sort($chars);
+            if (implode('', $chars) == $s) {
+                array_push($products, $c);
+            }
+        }
+    }
+    $result = 0;
+    foreach ($products as $product) {
+        $result += $product;
+    }
+    return $result;
+}

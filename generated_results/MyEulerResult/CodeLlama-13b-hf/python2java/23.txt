@@ -1,0 +1,21 @@
+class Global {
+    public static String lexicographicPermutations(int n) {
+        String result = "";
+        List<Integer> digits = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            digits.add(i);
+        }
+        int x = n - 1;
+        for (int i = 10; i > 0; i--) {
+            int fact = 1;
+            for (int j = 1; j < i; j++) {
+                fact *= j;
+            }
+            int idx = x / fact;
+            result += String.valueOf(digits.get(idx));
+            digits.remove(idx);
+            x -= idx * fact;
+        }
+        return result;
+    }
+}

@@ -1,0 +1,18 @@
+func PandigitalMultiples(n int) int {
+    result := -1
+    for i := 2; i <= n; i++ {
+        cprod := ""
+        for j := 1; j <= 9; j++ {
+            cprod += strconv.Itoa(i * j)
+            if len(cprod) == 9 {
+                if strings.Join(sort.StringSlice(cprod), "") == "123456789" {
+                    result = max(result, strconv.Atoi(cprod))
+                    break
+                }
+            } else if len(cprod) > 9 {
+                break
+            }
+        }
+    }
+    return result
+}

@@ -1,0 +1,19 @@
+class Global {
+    public static int PentagonNumbers(int n) {
+        ISet<int> pentagon = new HashSet<int>();
+        for (int i = 1; i < n; i++) {
+            pentagon.Add(i * (3 * i - 1) / 2);
+        }
+        int result = -1;
+        foreach (int j in pentagon) {
+            foreach (int k in pentagon) {
+                if (pentagon.Contains(j + k) && pentagon.Contains(k - j)) {
+                    if (result == -1 || k - j < result) {
+                        result = k - j;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+}

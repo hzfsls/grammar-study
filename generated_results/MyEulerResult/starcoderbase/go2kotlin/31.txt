@@ -1,0 +1,34 @@
+fun pandigitalProducts(n: Int): Int {
+    val products = mutableMapOf<Int, Boolean>()
+    val s = (1..n).joinToString("")
+    for (a in 1..99) {
+        for (b in 1..9999) {
+            val c = a * b
+            val chars = chars(a, b, c)
+            if chars == s {
+                products[c] = true
+            }
+        }
+    }
+    var result = 0
+    for (product in products) {
+        result += product
+    }
+    return result
+}
+
+fun chars(a: Int, b: Int, c: Int): String {
+    return chars(a).chars(b).chars(c)
+}
+
+fun chars(a: Int, b: Int): String {
+    return chars(a).chars(b)
+}
+
+fun chars(a: Int): String {
+    return chars(a).chars()
+}
+
+fun chars(a: Int): CharArray {
+    return a.toString().toCharArray()
+}

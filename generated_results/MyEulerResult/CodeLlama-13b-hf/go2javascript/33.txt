@@ -1,0 +1,17 @@
+const digitFactorials = (n) => {
+    let result = 0;
+    for (let i = 3; i < n; i++) {
+        let factSum = 0;
+        for (let digit of i.toString()) {
+            let fact = 1;
+            for (let j = 1; j <= parseInt(digit); j++) {
+                fact *= j;
+            }
+            factSum += fact;
+        }
+        if (i == factSum) {
+            result += i;
+        }
+    }
+    return result;
+}

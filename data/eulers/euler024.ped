@@ -1,0 +1,14 @@
+problem Euler024 {
+    code {
+        func lexicographic_permutations(n: int) -> string
+    }
+    tests {
+        template nse {
+            (1000000) -> "2783915460"
+            (100) -> "0123495786"
+            (1000) -> "0124658793"
+            (10000) -> "0139846572"
+            (100000) -> "0358926471"
+        }
+    }
+}

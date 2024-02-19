@@ -1,0 +1,8 @@
+def largest_product_in_a_series(s: str, k: int) -> int:
+    result = 0
+    for i in range(len(s) - k):
+        product = 1
+        for j in range(k):
+            product *= int(s[i + j])
+        result = max(result, product)
+    return result

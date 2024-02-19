@@ -1,0 +1,16 @@
+class Global {
+    public static int codedTriangleNumbers(List<String> words) {
+        int result = 0;
+        for (String word : words) {
+            int value = 0;
+            for (char c : word.toCharArray()) {
+                value += c - 'A' + 1;
+            }
+            int n = (int) Math.sqrt(value * 2);
+            if (n * (n + 1) == value * 2) {
+                result++;
+            }
+        }
+        return result;
+    }
+}

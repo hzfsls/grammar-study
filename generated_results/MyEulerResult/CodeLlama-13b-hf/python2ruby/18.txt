@@ -1,0 +1,23 @@
+def counting_sundays(y1, y2)
+    day = 0
+    count = 0
+    (1900...(y2 + 1)).each do |year|
+        (1...13).each do |month|
+            if year >= y1 and day % 7 == 6
+                count += 1
+            end
+            if [4, 6, 9, 11].include?(month)
+                day += 30
+            elsif month == 2
+                if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+                    day += 29
+                else
+                    day += 28
+                end
+            else
+                day += 31
+            end
+        end
+    end
+    count
+end

@@ -1,0 +1,30 @@
+fn consecutive_prime_sum(limit: i32) -> i32 {
+    let mut sieve = vec![true; limit as usize];
+    let mut primes = Vec::new();
+    for i in 2..limit {
+        if sieve[i as usize] {
+            primes.push(i);
+            for j in (i * 2)..limit {
+                sieve[j as usize] = false;
+            }
+        }
+    }
+    let mut maxLength = 0;
+    let mut maxPrime = 0;
+    for i in 0..primes.len() {
+        for j in i + maxLength..primes.len() {
+            let mut s = 0;
+            for k in i..j {
+                s += primes[k];
+            }
+            if s >= limit {
+                break;
+            }
+            if sieve[s as usize] && j - i > maxLength {
+                maxLength = j - i;
+                maxPrime = s;
+            }
+        }
+    }
+    maxPrime
+}

@@ -1,0 +1,15 @@
+def largest_product_in_a_grid(grid: list[list[int]]) -> int:
+    result = 0
+    for i in range(0, len(grid) - 3):
+        for j in range(0, len(grid[i]) - 3):
+            p1, p2, p3, p4 = 1, 1, 1, 1
+            for k in range(0, 4):
+                p1 *= grid[i + k][j]
+            for k in range(0, 4):
+                p2 *= grid[i][j + k]
+            for k in range(0, 4):
+                p3 *= grid[i + k][j + k]
+            for k in range(0, 4):
+                p4 *= grid[i + k][j + 3 - k]
+            result = max(result, p1, p2, p3, p4)
+    return result

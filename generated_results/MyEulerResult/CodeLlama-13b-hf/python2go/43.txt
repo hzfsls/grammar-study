@@ -1,0 +1,17 @@
+func PentagonNumbers(n int) int {
+    pentagon := map[int]bool{}
+    for i := 1; i < n; i++ {
+        pentagon[i*(3*i-1)/2] = true
+    }
+    result := -1
+    for j := range pentagon {
+        for k := range pentagon {
+            if pentagon[j+k] && pentagon[k-j] {
+                if result == -1 || k-j < result {
+                    result = k - j
+                }
+            }
+        }
+    }
+    return result
+}

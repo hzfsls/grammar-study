@@ -1,0 +1,15 @@
+def pentagonNumbers(n: Int): Int = {
+  val pentagon = collection.mutable.Set[Int]()
+  for (i <- 1 until n) {
+    pentagon += (i * (3 * i - 1) / 2)
+  }
+  var result = -1
+  for (j <- pentagon) {
+    for (k <- pentagon) {
+      if (j + k) in pentagon && (k - j) in pentagon && (k - j) < result {
+        result = k - j
+      }
+    }
+  }
+  result
+}

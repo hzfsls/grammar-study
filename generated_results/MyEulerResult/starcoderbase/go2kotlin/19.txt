@@ -1,0 +1,20 @@
+fun factorialDigitSum(n: Int): Int {
+    var digits = listOf(1)
+    for (i in 1..n) {
+        var carry = 0
+        for (j in digits.indices) {
+            digits = digits.toMutableList().apply {
+                this[j] = this[j] * i + carry
+                carry = this[j] / 10
+                this[j] %= 10
+            }
+        }
+        while (carry!= 0) {
+            digits = digits.toMutableList().apply {
+                this.add(carry % 10)
+                carry /= 10
+            }
+        }
+    }
+    return digits.sum()
+}

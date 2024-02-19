@@ -1,0 +1,32 @@
+class Global {
+    public static int PrimeFactors(int n) {
+        int num = n;
+        IList<int> factors = new List<int>();
+        int i = 2;
+        while (i * i <= num) {
+            if (num % i!= 0) {
+                i++;
+            } else {
+                num /= i;
+                factors.Add(i);
+            }
+        }
+        if (num > 1) {
+            factors.Add(num);
+        }
+        IDictionary<int, bool> s = new Dictionary<int, bool>();
+        foreach (int v in factors) {
+            s[v] = true;
+        }
+        return s.Count;
+    }
+
+    public static int DistinctPrimesFactors(int n) {
+        for (int i = n; i < 1000000; i++) {
+            if (PrimeFactors(i) == 4 && PrimeFactors(i + 1) == 4 && PrimeFactors(i + 2) == 4 && PrimeFactors(i + 3) == 4) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}

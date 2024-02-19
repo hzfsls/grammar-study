@@ -1,0 +1,14 @@
+problem Euler003 {
+    code {
+        func largest_prime_factor(n: int) -> int
+    }
+    tests {
+        template nse {
+            (33843) -> 389
+            (58341) -> 19447
+            (193149) -> 1951
+            (2472813) -> 39251
+            (43534217) -> 12157
+        }
+    }
+}

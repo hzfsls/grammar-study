@@ -1,0 +1,25 @@
+class Global {
+    public static int d(int n) {
+        int result = 1;
+        for (int i = 2; i <= (int) Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                result += i;
+                if (i!= n / i) {
+                    result += n / i;
+                }
+            }
+        }
+        return result;
+    }
+
+    public static int amicableNumbers(int n) {
+        int result = 0;
+        for (int a = 2; a < n; a++) {
+            int b = d(a);
+            if (a!= b && a == d(b)) {
+                result += a;
+            }
+        }
+        return result;
+    }
+}

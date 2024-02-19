@@ -1,0 +1,39 @@
+fun isPrime(n: Int): Boolean {
+    if (n < 2) {
+        return false
+    }
+    if (n == 2) {
+        return true
+    }
+    if (n % 2 == 0) {
+        return false
+    }
+    for (i in 3..Math.sqrt(n.toDouble()).toInt() step 2) {
+        if (n % i == 0) {
+            return false
+        }
+    }
+    return true
+}
+
+fun truncatablePrimes(n: Int): Int {
+    var result = 0
+    for (i in 10 until n) {
+        if (isPrime(i)) {
+            val si = i.toString()
+            var flag = true
+            for (j in 1 until si.length) {
+                val p1 = si.substring(j).toInt()
+                val p2 = si.substring(0, si.length - j).toInt()
+                if (!isPrime(p1) || !isPrime(p2)) {
+                    flag = false
+                    break
+                }
+            }
+            if (flag) {
+                result += i
+            }
+        }
+    }
+    return result
+}

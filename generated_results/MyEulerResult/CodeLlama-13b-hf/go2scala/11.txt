@@ -1,0 +1,18 @@
+def highlyDivisibleTriangularNumber(n: Int): Int = {
+  for (i <- 1 until 100000000) {
+    val result = i * (i + 1) / 2
+    var count = 0
+    for (j <- 1 to math.sqrt(result).toInt) {
+      if (result % j == 0) {
+        count += 2
+      }
+      if (j * j == result) {
+        count -= 1
+      }
+    }
+    if (count > n) {
+      return result
+    }
+  }
+  -1
+}

@@ -1,0 +1,13 @@
+def digitNthPowers(n: Int): Int = {
+  var result = 0
+  for (i <- 2 until 4 * math.pow(10, n).toInt) {
+    var digitsSum = 0
+    for (digit <- i.toString) {
+      digitsSum += math.pow(digit.toInt, n).toInt
+    }
+    if (i == digitsSum) {
+      result += i
+    }
+  }
+  result
+}

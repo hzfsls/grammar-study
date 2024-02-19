@@ -1,0 +1,15 @@
+class Global {
+    public static int DigitNthPowers(int n) {
+        int result = 0;
+        for (int i = 2; i < 4 * 10 ** n; i++) {
+            int digitsSum = 0;
+            foreach (char digit in i.ToString()) {
+                digitsSum += int.Parse(digit.ToString()) ** n;
+            }
+            if (i == digitsSum) {
+                result += i;
+            }
+        }
+        return result;
+    }
+}

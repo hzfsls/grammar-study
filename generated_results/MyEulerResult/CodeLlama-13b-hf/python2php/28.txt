@@ -1,0 +1,25 @@
+function distinctPowers($n) {
+    $result = 0;
+    $xs = [];
+    for ($i = 2; $i <= $n; $i++) {
+        $primes = [2, 3, 5, 7];
+        $powers = [0, 0, 0, 0];
+        $num = $i;
+        for ($j = 0; $j < count($primes); $j++) {
+            while ($num % $primes[$j] == 0) {
+                $num /= $primes[$j];
+                $powers[$j] += 1;
+            }
+        }
+        if ($num != 1) {
+            $result += $n - 1;
+            continue;
+        }
+        for ($j = 2; $j <= $n; $j++) {
+            $pstr = $powers[0] * $j . "-" . $powers[1] * $j . "-" . $powers[2] * $j . "-" . $powers[3] * $j;
+            array_push($xs, $pstr);
+        }
+    }
+    $result += count(array_unique($xs));
+    return $result;
+}

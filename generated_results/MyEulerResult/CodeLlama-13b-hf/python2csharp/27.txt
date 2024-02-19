@@ -1,0 +1,9 @@
+class Global {
+    public static int NumberSpiralDiagonals(int n) {
+        int result = 1;
+        for (int i = 3; i <= n; i += 2) {
+            result += 4 * i * i - 6 * i + 6;
+        }
+        return result;
+    }
+}

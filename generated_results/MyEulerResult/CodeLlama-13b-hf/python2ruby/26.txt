@@ -1,0 +1,29 @@
+def is_prime(n)
+    return false if n < 2
+    return true if n == 2
+    return false if n % 2 == 0
+    (3...Math.sqrt(n).to_i + 1).step(2).each do |i|
+        return false if n % i == 0
+    end
+    true
+end
+
+def quadratic_primes(n)
+    max_primes = 0
+    result = 0
+    (-n + 1..n).step(2).each do |a|
+        (-n + 1..n).step(2).each do |b|
+            x = 0
+            while true
+                break if x * x + a * x + b < 2
+                break unless is_prime(x * x + a * x + b)
+                x += 1
+            end
+            if x > max_primes
+                max_primes = x
+                result = a * b
+            end
+        end
+    end
+    result
+end

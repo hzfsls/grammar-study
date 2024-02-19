@@ -1,0 +1,23 @@
+fn digit_canceling_fractions(m: i32) -> i32 {
+    let mut numer = 1;
+    let mut denom = 1;
+    for d in 10..m {
+        for n in 10..d {
+            let n0 = n % 10;
+            let n1 = n / 10;
+            let d0 = d % 10;
+            let d1 = d / 10;
+            if (n1 == d0 && n0 * d == n * d1) || (n0 == d1 && n1 * d == n * d0) {
+                numer *= n;
+                denom *= d;
+            }
+        }
+    }
+    let mut a = numer;
+    let mut b = denom;
+    while b!= 0 {
+        a %= b;
+        std::mem::swap(&mut a, &mut b);
+    }
+    denom / a
+}

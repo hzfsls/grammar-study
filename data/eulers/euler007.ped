@@ -1,0 +1,14 @@
+problem Euler007 {
+    code {
+        func nth_prime(n: int) -> int
+    }
+    tests {
+        template nse {
+            (10001) -> 104743
+            (11) -> 31
+            (101) -> 547
+            (1001) -> 7927
+            (5001) -> 48619
+        }
+    }
+}

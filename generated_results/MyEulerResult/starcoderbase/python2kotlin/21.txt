@@ -1,0 +1,14 @@
+fun namesScores(names: List<String>, queries: List<String>): Int {
+    val sNames = names.sorted()
+    var result = 0
+    for (i in sNames.indices) {
+        var x = 0
+        for (c in sNames[i]) {
+            x += c.toInt() - 64
+        }
+        if (sNames[i] in queries) {
+            result += x * (i + 1)
+        }
+    }
+    return result
+}

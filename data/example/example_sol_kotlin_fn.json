@@ -1,0 +1,6 @@
+{
+    "kotlin": {
+        "Example1" : "fun productOfDivisible(nums: List<Int>, m: Int): Int {\n    return nums.filter { num -> num % m == 0 }.fold(1) { a, b -> a * b }\n}",
+        "Example2" : "fun genRotations(s: String): List<String> {\n    return (1 until s.length).map { i -> s.substring(i) + s.substring(0, i) }\n}\n\nfun sumOfRotations(s: String): Int {\n    return genRotations(s).map { r -> r.toInt() }.sum()\n}"
+    }
+}

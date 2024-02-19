@@ -1,0 +1,6 @@
+{
+    "go": {
+        "Example1" : "func ProductOfDivisible(nums []int, m int) int {\n    result := 1\n    for _, num := range nums {\n        if num % m == 0 {\n            result *= num\n        }\n    }\n    return result\n}",
+        "Example2" : "func GenRotations(s string) []string {\n    result := []string{}\n    for i := 1; i < len(s); i++ {\n        result = append(result, s[i:] + s[:i])\n    }\n    return result\n}\n\nfunc SumOfRotations(s string) int {\n    result := 0\n    for _, r := range GenRotations(s) {\n        num, _ := strconv.Atoi(r)\n        result += num\n    }\n    return result\n}"
+    }
+}

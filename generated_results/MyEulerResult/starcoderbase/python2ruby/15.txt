@@ -1,0 +1,19 @@
+def power_digit_sum(n)
+    digits = [2]
+    (1...n).each do |_|
+        carry = 0
+        digits.each_with_index do |digit, j|
+            temp = digit * 2 + carry
+            digits[j] = temp % 10
+            carry = temp // 10
+        end
+        if carry > 0
+            digits.push(carry)
+        end
+    end
+    result = 0
+    digits.each do |digit|
+        result += digit
+    end
+    result
+end

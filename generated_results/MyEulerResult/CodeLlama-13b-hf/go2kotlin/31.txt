@@ -1,0 +1,22 @@
+fun pandigitalProducts(n: Int): Int {
+    val products = mutableMapOf<Int, Boolean>()
+    var s = ""
+    for (i in 1..n) {
+        s += i.toString()
+    }
+    for (a in 1 until 100) {
+        for (b in 1 until 10000) {
+            val c = a * b
+            val chars = s.toCharArray()
+            chars.sort()
+            if (String(chars) == s) {
+                products[c] = true
+            }
+        }
+    }
+    var result = 0
+    for (product in products.keys) {
+        result += product
+    }
+    return result
+}

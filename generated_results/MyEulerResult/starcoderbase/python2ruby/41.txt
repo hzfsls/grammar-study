@@ -1,0 +1,14 @@
+def coded_triangle_numbers(words)
+    result = 0
+    words.each do |word|
+        value = 0
+        word.each_char do |c|
+            value += c.ord - 64
+        end
+        n = Math.sqrt(value * 2).to_i
+        if n * (n + 1) == value * 2
+            result += 1
+        end
+    end
+    result
+end

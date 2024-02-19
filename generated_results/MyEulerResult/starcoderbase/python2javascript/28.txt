@@ -1,0 +1,25 @@
+const distinctPowers = (n) => {
+    let result = 0;
+    let xs = new Set();
+    for (let i = 2; i <= n; i++) {
+        let primes = [2, 3, 5, 7];
+        let powers = [0, 0, 0, 0];
+        let num = i;
+        for (let j = 0; j < primes.length; j++) {
+            while (num % primes[j] === 0) {
+                num //= primes[j];
+                powers[j] += 1;
+            }
+        }
+        if (num!== 1) {
+            result += n - 1;
+            continue;
+        }
+        for (let j = 2; j <= n; j++) {
+            let pstr = `${powers[0] * j}-${powers[1] * j}-${powers[2] * j}-${powers[3] * j}`;
+            xs.add(pstr);
+        }
+    }
+    result += xs.size;
+    return result;
+}

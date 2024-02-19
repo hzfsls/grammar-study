@@ -1,0 +1,18 @@
+const latticePaths = (m, n) => {
+    let grid = [];
+    for (let i = 0; i < m + 1; i++) {
+        grid.push([0] * (n + 1));
+    }
+    for (let i = 0; i < m + 1; i++) {
+        grid[i][0] = 1;
+    }
+    for (let j = 0; j < n + 1; j++) {
+        grid[0][j] = 1;
+    }
+    for (let i = 1; i < m + 1; i++) {
+        for (let j = 1; j < n + 1; j++) {
+            grid[i][j] = grid[i - 1][j] + grid[i][j - 1];
+        }
+    }
+    return grid[m][n];
+}

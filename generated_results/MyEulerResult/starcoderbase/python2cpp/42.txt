@@ -1,0 +1,34 @@
+vector<string> genPermutations(const string& s) {
+    if (s.size() <= 1) {
+        return {s};
+    }
+    vector<string> result;
+    for (const string& perm : genPermutations(s.substr(1))) {
+        for (int i = 0; i < s.size(); i++) {
+            result.push_back(perm.substr(0, i) + s.substr(0, 1) + perm.substr(i));
+        }
+    }
+    return result;
+}
+
+int subStringDivisibility(int n) {
+    int result = 0;
+    vector<int> primes = {2, 3, 5, 7, 11, 13, 17};
+    string s(n + 1, '0');
+    for (int i = 0; i <= n; i++) {
+        s[i] = i + '0';
+    }
+    for (const string& i : genPermutations(s)) {
+        bool flag = true;
+        for (int j = 1; j < n - 1; j++) {
+            if (stoi(i.substr(j, 3)) % primes[j - 1]!= 0) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            result += stoi(i);
+        }
+    }
+    return result;
+}

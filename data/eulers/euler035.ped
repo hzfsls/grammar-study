@@ -1,0 +1,14 @@
+problem Euler035 {
+    code {
+        func circular_primes(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000000) -> 55
+            (100) -> 13
+            (1000) -> 25
+            (10000) -> 33
+            (100000) -> 43
+        }
+    }
+}

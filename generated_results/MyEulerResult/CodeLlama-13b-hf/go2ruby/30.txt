@@ -1,0 +1,11 @@
+def coin_sums(n)
+    coins = [1, 2, 5, 10, 20, 50, 100, 200]
+    ways = Array.new(n + 1, 0)
+    ways[0] = 1
+    coins.each do |coin|
+        (coin...n + 1).each do |i|
+            ways[i] += ways[i - coin]
+        end
+    end
+    ways[n]
+end

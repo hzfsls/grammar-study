@@ -1,0 +1,37 @@
+fn is_abundant(n: i32) -> bool {
+    if n < 12 {
+        return false;
+    }
+    let mut sum_divisors = 1;
+    for i in 2..(n as f64).sqrt() as i32 + 1 {
+        if n % i == 0 {
+            sum_divisors += i;
+            if i!= n / i {
+                sum_divisors += n / i;
+            }
+        }
+    }
+    sum_divisors > n
+}
+
+fn non_abundant_sums(n: i32) -> i32 {
+    let mut abundants = Vec::new();
+    for i in 12..n {
+        if is_abundant(i) {
+            abundants.push(i);
+        }
+    }
+    let mut abundant_sums = HashSet::new();
+    for i in abundants {
+        for j in abundants {
+            abundant_sums.insert(i + j);
+        }
+    }
+    let mut result = 0;
+    for i in 0..n {
+        if!abundant_sums.contains(&i) {
+            result += i;
+        }
+    }
+    result
+}

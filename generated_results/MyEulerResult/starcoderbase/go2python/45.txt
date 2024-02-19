@@ -1,0 +1,24 @@
+def is_prime(n: int) -> bool:
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+def goldbachs_other_conjecture(n: int) -> int:
+    result = -1
+    for i in range(9999, n, -2):
+        upper = int(math.sqrt(i / 2))
+        flag = False
+        for j in range(0, upper + 1):
+            if is_prime(i - 2 * j * j):
+                flag = True
+                break
+        if not flag:
+            result = i
+    return result

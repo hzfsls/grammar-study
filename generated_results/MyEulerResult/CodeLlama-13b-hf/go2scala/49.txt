@@ -1,0 +1,30 @@
+def consecutivePrimeSum(limit: Int): Int = {
+  val sieve = Array.fill(limit)(true)
+  val primes = collection.mutable.ArrayBuffer[Int]()
+  for (i <- 2 until limit) {
+    if (sieve(i)) {
+      primes += i
+      for (j <- i * 2 until limit by i) {
+        sieve(j) = false
+      }
+    }
+  }
+  var maxLength = 0
+  var maxPrime = 0
+  for (i <- 0 until primes.length) {
+    for (j <- i + maxLength until primes.length) {
+      var s = 0
+      for (k <- i until j) {
+        s += primes(k)
+      }
+      if (s >= limit) {
+        break
+      }
+      if (sieve(s) && j - i > maxLength) {
+        maxLength = j - i
+        maxPrime = s
+      }
+    }
+  }
+  maxPrime
+}

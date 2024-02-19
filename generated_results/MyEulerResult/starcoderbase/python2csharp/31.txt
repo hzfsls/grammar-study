@@ -1,0 +1,21 @@
+class Global {
+    public static int PandigitalProducts(int n) {
+        ISet<int> products = new HashSet<int>();
+        string s = string.Join("", Enumerable.Range(1, n + 1));
+        for (int a = 1; a < 100; a++) {
+            for (int b = 1; b < 10000; b++) {
+                int c = a * b;
+                IList<char> chars = new List<char>(a.ToString() + b.ToString() + c.ToString());
+                chars.Sort();
+                if (string.Join("", chars) == s) {
+                    products.Add(c);
+                }
+            }
+        }
+        int result = 0;
+        foreach (int product in products) {
+            result += product;
+        }
+        return result;
+    }
+}

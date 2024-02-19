@@ -1,0 +1,21 @@
+function longestCollatzSequence($n) {
+    $longest = 0;
+    $result = 0;
+    for ($i = 1; $i < $n; $i++) {
+        $chain = 1;
+        $num = $i;
+        while ($num != 1) {
+            if ($num % 2 == 0) {
+                $num = $num / 2;
+            } else {
+                $num = 3 * $num + 1;
+            }
+            $chain += 1;
+        }
+        if ($chain > $longest) {
+            $longest = $chain;
+            $result = $i;
+        }
+    }
+    return $result;
+}

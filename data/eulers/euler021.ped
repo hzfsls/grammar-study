@@ -1,0 +1,14 @@
+problem Euler021 {
+    code {
+        func amicable_numbers(n: int) -> int
+    }
+    tests {
+        template nse {
+            (10000) -> 31626
+            (220) -> 0
+            (221) -> 220
+            (285) -> 504
+            (50000) -> 115818
+        }
+    }
+}

@@ -1,0 +1,14 @@
+problem Euler028 {
+    code {
+        func number_spiral_diagonals(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1001) -> 669171001
+            (7) -> 261
+            (57) -> 125161
+            (101) -> 692101
+            (501) -> 83960501
+        }
+    }
+}

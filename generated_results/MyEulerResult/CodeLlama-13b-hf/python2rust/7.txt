@@ -1,0 +1,11 @@
+fn largest_product_in_a_series(s: &String, k: i32) -> i32 {
+    let mut result = 0;
+    for i in 0..(s.len() - k as usize) {
+        let mut product = 1;
+        for j in 0..k as usize {
+            product *= s[i + j].parse::<i32>().unwrap();
+        }
+        result = std::cmp::max(result, product);
+    }
+    result
+}

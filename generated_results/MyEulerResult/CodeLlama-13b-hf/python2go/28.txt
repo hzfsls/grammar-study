@@ -1,0 +1,25 @@
+func DistinctPowers(n int) int {
+    result := 0
+    xs := map[string]bool{}
+    for i := 2; i <= n; i++ {
+        primes := []int{2, 3, 5, 7}
+        powers := []int{0, 0, 0, 0}
+        num := i
+        for j := 0; j < len(primes); j++ {
+            for num%primes[j] == 0 {
+                num /= primes[j]
+                powers[j] += 1
+            }
+        }
+        if num != 1 {
+            result += n - 1
+            continue
+        }
+        for j := 2; j <= n; j++ {
+            pstr := fmt.Sprintf("%d-%d-%d-%d", powers[0]*j, powers[1]*j, powers[2]*j, powers[3]*j)
+            xs[pstr] = true
+        }
+    }
+    result += len(xs)
+    return result
+}

@@ -1,0 +1,14 @@
+function codedTriangleNumbers($words) {
+    $result = 0;
+    foreach ($words as $word) {
+        $value = 0;
+        foreach (str_split($word) as $c) {
+            $value += ord($c) - 64;
+        }
+        $n = intval(sqrt($value * 2));
+        if ($n * ($n + 1) === $value * 2) {
+            $result += 1;
+        }
+    }
+    return $result;
+}

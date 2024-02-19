@@ -1,0 +1,29 @@
+func SelfPowers(n int) string {
+    digits := make([]int, 10)
+    for i := 1; i <= n; i++ {
+        tempDigits := make([]int, 10)
+        tempDigits[0] = 1
+        for j := 0; j < i; j++ {
+            carry := 0
+            for k := 0; k < 10; k++ {
+                tempDigits[k] = tempDigits[k] * i + carry
+                carry = tempDigits[k] / 10
+                tempDigits[k] %= 10
+            }
+        }
+        for j := 0; j < 10; j++ {
+            digits[j] += tempDigits[j]
+            if digits[j] >= 10 {
+                digits[j] -= 10
+                if j < 9 {
+                    digits[j + 1] += 1
+                }
+            }
+        }
+    }
+    result := ""
+    for i := 9; i >= 0; i-- {
+        result += strconv.Itoa(digits[i])
+    }
+    return result
+}

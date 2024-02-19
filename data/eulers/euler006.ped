@@ -1,0 +1,14 @@
+problem Euler006 {
+    code {
+        func sum_square_difference(n: int) -> int
+    }
+    tests {
+        template nse {
+            (100) -> 25164150
+            (10) -> 2640
+            (30) -> 206770
+            (50) -> 1582700
+            (70) -> 6058430
+        }
+    }
+}

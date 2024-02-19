@@ -1,0 +1,29 @@
+class Global {
+    public static int nDigitFibonacciNumber(int n) {
+        int[] a = {1};
+        int[] b = {1};
+        int i = 2;
+        while (b.length < n) {
+            int carry = 0;
+            int[] c = new int[b.length];
+            System.arraycopy(b, 0, c, 0, b.length);
+            for (int j = 0; j < b.length; j++) {
+                if (j < a.length) {
+                    b[j] = a[j] + b[j] + carry;
+                } else {
+                    b[j] = b[j] + carry;
+                }
+                carry = b[j] / 10;
+                b[j] = b[j] % 10;
+            }
+            if (carry!= 0) {
+                b = Arrays.copyOf(b, b.length + 1);
+                b[b.length - 1] = carry;
+            }
+            a = new int[c.length];
+            System.arraycopy(c, 0, a, 0, c.length);
+            i = i + 1;
+        }
+        return i;
+    }
+}

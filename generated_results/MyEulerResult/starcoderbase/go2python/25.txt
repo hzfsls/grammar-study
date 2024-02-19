@@ -1,0 +1,16 @@
+def reciprocal_cycles(n: int) -> int:
+    result = 0
+    max_length = 0
+    for i in range(1, n):
+        remainders = []
+        remainder = 1
+        for remainder!= 0 and not remainder in remainders:
+            remainders.append(remainder)
+            remainder = (remainder * 10) % i
+        length = 0
+        if remainder!= 0:
+            length = len(remainders) - remainders.index(remainder)
+        if length > max_length:
+            max_length = length
+            result = i
+    return result

@@ -1,0 +1,38 @@
+fun isPrime(n: Int): Boolean {
+    if (n < 2) {
+        return false
+    }
+    if (n == 2) {
+        return true
+    }
+    if (n % 2 == 0) {
+        return false
+    }
+    for (i in 3..Math.sqrt(n.toDouble()).toInt()) {
+        if (n % i == 0) {
+            return false
+        }
+    }
+    return true
+}
+
+fun quadraticPrimes(n: Int): Int {
+    var maxPrimes = 0
+    var result = 0
+    for (a in -n + 1..n - 2 step 2) {
+        for (b in -n + 1..n - 2 step 2) {
+            var x = 0
+            while (x * x + a * x + b >= 2) {
+                if (!isPrime(x * x + a * x + b)) {
+                    break
+                }
+                x++
+            }
+            if (x > maxPrimes) {
+                maxPrimes = x
+                result = a * b
+            }
+        }
+    }
+    return result
+}

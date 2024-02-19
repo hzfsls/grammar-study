@@ -1,0 +1,22 @@
+int pandigitalProducts(int n) {
+    set<int> products;
+    string s = "";
+    for (int i = 1; i <= n; i++) {
+        s += to_string(i);
+    }
+    for (int a = 1; a < 100; a++) {
+        for (int b = 1; b < 10000; b++) {
+            int c = a * b;
+            string chars = to_string(a) + to_string(b) + to_string(c);
+            sort(chars.begin(), chars.end());
+            if (chars == s) {
+                products.insert(c);
+            }
+        }
+    }
+    int result = 0;
+    for (int product : products) {
+        result += product;
+    }
+    return result;
+}

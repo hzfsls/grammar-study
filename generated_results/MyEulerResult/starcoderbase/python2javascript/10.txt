@@ -1,0 +1,25 @@
+const largestProductInAGrid = (grid) => {
+    let result = 0;
+    for (let i = 0; i < grid.length - 3; i++) {
+        for (let j = 0; j < grid[i].length - 3; j++) {
+            let p1 = 1;
+            let p2 = 1;
+            let p3 = 1;
+            let p4 = 1;
+            for (let k = 0; k < 4; k++) {
+                p1 *= grid[i + k][j];
+            }
+            for (let k = 0; k < 4; k++) {
+                p2 *= grid[i][j + k];
+            }
+            for (let k = 0; k < 4; k++) {
+                p3 *= grid[i + k][j + k];
+            }
+            for (let k = 0; k < 4; k++) {
+                p4 *= grid[i + k][j + 3 - k];
+            }
+            result = Math.max(result, p1, p2, p3, p4);
+        }
+    }
+    return result;
+}

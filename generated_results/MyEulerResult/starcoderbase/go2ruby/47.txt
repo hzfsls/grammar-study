@@ -1,0 +1,27 @@
+def self_powers(n)
+    digits = [0] * 10
+    digits[0] = 1
+    for i in 1..n
+        temp_digits = [0] * 10
+        carry = 0
+        for j in 0..9
+            temp_digits[j] = digits[j] * i + carry
+            carry = temp_digits[j] / 10
+            temp_digits[j] %= 10
+        end
+        for j in 0..9
+            digits[j] += temp_digits[j]
+            if digits[j] >= 10
+                digits[j] -= 10
+                if j < 9
+                    digits[j + 1] += 1
+                end
+            end
+        end
+    end
+    result = ""
+    for i in 9..0
+        result += digits[i].to_s
+    end
+    result
+end

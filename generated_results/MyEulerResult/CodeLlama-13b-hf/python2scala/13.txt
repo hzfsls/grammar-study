@@ -1,0 +1,21 @@
+def longestCollatzSequence(n: Int): Int = {
+  var longest = 0
+  var result = 0
+  for (i <- 1 until n) {
+    var chain = 1
+    var num = i
+    while (num != 1) {
+      if (num % 2 == 0) {
+        num = num / 2
+      } else {
+        num = 3 * num + 1
+      }
+      chain += 1
+    }
+    if (chain > longest) {
+      longest = chain
+      result = i
+    }
+  }
+  result
+}

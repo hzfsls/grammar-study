@@ -1,0 +1,25 @@
+fn largest_product_in_a_grid(grid: &Vec<Vec<i32>>) -> i32 {
+    let mut result = 0;
+    for i in 0..grid.len() - 3 {
+        for j in 0..grid[i].len() - 3 {
+            let mut p1 = 1;
+            let mut p2 = 1;
+            let mut p3 = 1;
+            let mut p4 = 1;
+            for k in 0..4 {
+                p1 *= grid[i + k][j];
+            }
+            for k in 0..4 {
+                p2 *= grid[i][j + k];
+            }
+            for k in 0..4 {
+                p3 *= grid[i + k][j + k];
+            }
+            for k in 0..4 {
+                p4 *= grid[i + k][j + 3 - k];
+            }
+            result = max(result, p1, p2, p3, p4);
+        }
+    }
+    result
+}

@@ -1,0 +1,14 @@
+problem Euler040 {
+    code {
+        func champernowne_constant(b: int) -> int
+    }
+    tests {
+        template nse {
+            (2) -> 384
+            (3) -> 68040
+            (4) -> 0
+            (5) -> 11760
+            (6) -> 1536
+        }
+    }
+}

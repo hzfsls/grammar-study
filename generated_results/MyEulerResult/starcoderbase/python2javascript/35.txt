@@ -1,0 +1,20 @@
+const isPalindrome = (s) => {
+    for (let i = 0; i < s.length / 2; i++) {
+        if (s[i]!== s[s.length - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const doubleBasePalindromes = (n) => {
+    let result = 0;
+    for (let i = 1; i < n; i++) {
+        let strI = i.toString();
+        let binI = (i).toString(2);
+        if (isPalindrome(strI) && isPalindrome(binI)) {
+            result += i;
+        }
+    }
+    return result;
+}

@@ -1,0 +1,22 @@
+class Global {
+    public static boolean isPalindrome(String s) {
+        for (int i = 0; i < s.length() / 2; i++) {
+            if (s.charAt(i) != s.charAt(s.length() - i - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int doubleBasePalindromes(int n) {
+        int result = 0;
+        for (int i = 1; i < n; i++) {
+            String str_i = Integer.toString(i);
+            String bin_i = Integer.toBinaryString(i);
+            if (isPalindrome(str_i) && isPalindrome(bin_i)) {
+                result += i;
+            }
+        }
+        return result;
+    }
+}

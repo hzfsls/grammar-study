@@ -1,0 +1,23 @@
+class Global {
+    public static int triangularPentagonalAndHexagonal(int n) {
+        Set<Integer> ps = new HashSet<>();
+        int i = 1;
+        int c = 0.5 * i * (3 * i - 1);
+        while (c < n) {
+            i += 1;
+            ps.add(c);
+            c = 0.5 * i * (3 * i - 1);
+        }
+        i = 1;
+        c = i * (2 * i - 1);
+        int result = -1;
+        while (c < n) {
+            i += 1;
+            if (c in ps) {
+                result = c;
+            }
+            c = i * (2 * i - 1);
+        }
+        return result;
+    }
+}

@@ -1,0 +1,20 @@
+def is_palindrome(s)
+    for i in (0...s.length / 2)
+        if s[i]!= s[-(i + 1)]
+            return false
+        end
+    end
+    return true
+end
+
+def double_base_palindromes(n)
+    result = 0
+    (1...n).each do |i|
+        str_i = i.to_s
+        bin_i = (i.to_s(2)).sub(/^0b/, '')
+        if is_palindrome(str_i) and is_palindrome(bin_i)
+            result += i
+        end
+    end
+    result
+end

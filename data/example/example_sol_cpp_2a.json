@@ -1,0 +1,6 @@
+{
+    "cpp": {
+        "Example1" : "int productOfDivisible(const vector<int>& nums, int m) {\n    return ranges::fold_left(\n        nums | views::filter([m](int num) { return num % m == 0; }),\n        1, [](int a, int b) { return a * b; });\n}",
+        "Example2" : "vector<string> genRotations(const string& s) {\n    return views::iota(1, s.size()) | views::transform([s](int i) { return s.substr(i) + s.substr(0, i); }) | ranges::to<vector>;\n    }\n\nint sumOfRotations(const string& s) {\n    return ranges::fold_left(genRotations(s) | views::transform([](const string& r) { return stoi(r); }), 0, plus<int>());\n}"
+    }
+}

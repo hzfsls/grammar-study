@@ -1,0 +1,17 @@
+fn pentagon_numbers(n: i32) -> i32 {
+    let mut pentagon = HashMap::new();
+    for i in 1..n {
+        pentagon.insert(i * (3 * i - 1) / 2, true);
+    }
+    let mut result = -1;
+    for j in pentagon.keys() {
+        for k in pentagon.keys() {
+            if pentagon.get(j + k).unwrap() && pentagon.get(k - j).unwrap() {
+                if result == -1 || k - j < result {
+                    result = k - j;
+                }
+            }
+        }
+    }
+    result
+}

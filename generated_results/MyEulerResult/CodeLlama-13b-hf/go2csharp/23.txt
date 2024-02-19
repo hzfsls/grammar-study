@@ -1,0 +1,18 @@
+class Global {
+    public static string LexicographicPermutations(int n) {
+        string result = "";
+        int[] digits = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int x = n - 1;
+        for (int i = 10; i > 0; i--) {
+            int fact = 1;
+            for (int j = 1; j < i; j++) {
+                fact *= j;
+            }
+            int idx = x / fact;
+            result += idx.ToString();
+            digits = digits.Where((d, i) => i != idx).ToArray();
+            x -= idx * fact;
+        }
+        return result;
+    }
+}

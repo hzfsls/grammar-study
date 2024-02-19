@@ -1,0 +1,32 @@
+class Global {
+    public static string LargeSum(IList<string> numbers) {
+        int[] digits = new int[60];
+        for (int i = 0; i < 50; i++) {
+            int tmp = 0;
+            foreach (string num in numbers) {
+                tmp += int.Parse(num[49 - i].ToString());
+            }
+            for (int j = i; j < 60; j++) {
+                digits[j] += tmp % 10;
+                if (digits[j] >= 10) {
+                    digits[j + 1] += digits[j] / 10;
+                    digits[j] %= 10;
+                }
+                tmp /= 10;
+                if (tmp == 0) {
+                    break;
+                }
+            }
+        }
+        for (int i = 59; i >= 0; i--) {
+            if (digits[i] != 0) {
+                string result = "";
+                for (int j = i; j > i - 10; j--) {
+                    result += digits[j].ToString();
+                }
+                return result;
+            }
+        }
+        return "0";
+    }
+}

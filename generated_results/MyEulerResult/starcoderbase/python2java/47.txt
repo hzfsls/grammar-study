@@ -1,0 +1,31 @@
+class Global {
+    public static String selfPowers(int n) {
+        int[] digits = new int[10];
+        for (int i = 1; i <= n; i++) {
+            int[] tempDigits = new int[10];
+            tempDigits[0] = 1;
+            for (int j = 0; j < i; j++) {
+                int carry = 0;
+                for (int k = 0; k < 10; k++) {
+                    tempDigits[k] = tempDigits[k] * i + carry;
+                    carry = tempDigits[k] / 10;
+                    tempDigits[k] %= 10;
+                }
+            }
+            for (int j = 0; j < 10; j++) {
+                digits[j] += tempDigits[j];
+                if (digits[j] >= 10) {
+                    digits[j] -= 10;
+                    if (j < 9) {
+                        digits[j + 1] += 1;
+                    }
+                }
+            }
+        }
+        String result = "";
+        for (int i = 9; i >= 0; i--) {
+            result += digits[i];
+        }
+        return result;
+    }
+}

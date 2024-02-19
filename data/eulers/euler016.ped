@@ -1,0 +1,14 @@
+problem Euler016 {
+    code {
+        func power_digit_sum(n: int) -> int
+    }
+    tests {
+        template nse {
+            (1000) -> 1366
+            (10) -> 7
+            (100) -> 115
+            (200) -> 256
+            (500) -> 679
+        }
+    }
+}

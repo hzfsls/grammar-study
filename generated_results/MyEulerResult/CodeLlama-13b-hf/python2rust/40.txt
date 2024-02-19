@@ -1,0 +1,37 @@
+fn is_prime(n: i32) -> bool {
+    if n < 2 {
+        return false;
+    }
+    if n == 2 {
+        return true;
+    }
+    if n % 2 == 0 {
+        return false;
+    }
+    for i in (3..=((n as f64).sqrt() as i32) + 1).step_by(2) {
+        if n % i == 0 {
+            return false;
+        }
+    }
+    true
+}
+
+fn pandigital_prime(n: i32) -> i32 {
+    for i in (n - 1..1).rev() {
+        if is_prime(i) {
+            let si = i.to_string();
+            let length = si.len();
+            let mut flag = true;
+            for j in 1..=length {
+                if !si.contains(&j.to_string()) {
+                    flag = false;
+                    break;
+                }
+            }
+            if flag {
+                return i;
+            }
+        }
+    }
+    -1
+}

@@ -1,0 +1,51 @@
+bool isPrime(int n) {
+    if (n < 2) {
+        return false;
+    }
+    if (n == 2) {
+        return true;
+    }
+    if (n % 2 == 0) {
+        return false;
+    }
+    for (int i = 3; i <= int(sqrt(n)); i += 2) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+vector<string> genPermutations(const string& s) {
+    if (s.size() <= 1) {
+        return {s};
+    }
+    vector<string> result;
+    for (const string& perm : genPermutations(s.substr(1))) {
+        for (int i = 0; i < s.size(); i++) {
+            result.push_back(perm.substr(0, i) + s.substr(0, 1) + perm.substr(i));
+        }
+    }
+    return result;
+}
+
+string primePermutations(int n) {
+    for (int i = n; i >= 1000; i--) {
+        if (isPrime(i)) {
+            const vector<string>& permutations = genPermutations(to_string(i));
+            set<int> candidates;
+            for (const string& j : permutations) {
+                int candidate = stoi(j);
+                if (candidate > i && isPrime(candidate)) {
+                    candidates.insert(candidate);
+                }
+            }
+            for (int m : candidates) {
+                if (m + (m - i)!= 0 && m + (m - i) in candidates) {
+                    return to_string(i) + to_string(m) + to_string(m + (m - i));
+                }
+            }
+        }
+    }
+    return "";
+}

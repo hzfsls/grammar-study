@@ -1,0 +1,12 @@
+int largestPrimeFactor(int n) {
+    int result = n;
+    int i = 2;
+    while (i * i <= result) {
+        if (result % i == 0) {
+            result /= i;
+        } else {
+            i += 1;
+        }
+    }
+    return result;
+}

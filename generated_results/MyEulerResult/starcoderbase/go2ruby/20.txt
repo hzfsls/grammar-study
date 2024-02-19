@@ -1,0 +1,23 @@
+def d(n)
+    result = 1
+    (2..Math.sqrt(n).to_i).each do |i|
+        if n % i == 0
+            result += i
+            if i!= n / i
+                result += n / i
+            end
+        end
+    end
+    result
+end
+
+def amicable_numbers(n)
+    result = 0
+    (2...n).each do |a|
+        b = d(a)
+        if a!= b && a == d(b)
+            result += a
+        end
+    end
+    result
+end

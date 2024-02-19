@@ -1,0 +1,24 @@
+fn n_digit_fibonacci_number(n: i32) -> i32 {
+    let mut a = vec![1];
+    let mut b = vec![1];
+    let mut i = 2;
+    while b.len() < n {
+        let mut carry = 0;
+        let mut c = b.clone();
+        for j in 0..b.len() {
+            if j < a.len() {
+                b[j] = a[j] + b[j] + carry;
+            } else {
+                b[j] = b[j] + carry;
+            }
+            carry = b[j] / 10;
+            b[j] = b[j] % 10;
+        }
+        if carry > 0 {
+            b.push(carry);
+        }
+        a = c;
+        i = i + 1;
+    }
+    i
+}

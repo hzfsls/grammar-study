@@ -1,0 +1,24 @@
+class Global {
+    public static int summationOfPrimes(int n) {
+        List<Integer> primes = new ArrayList<>();
+        primes.add(2);
+        int i = 3;
+        while (i <= n) {
+            for (int p : primes) {
+                if (i % p == 0) {
+                    break;
+                }
+                if (p * p > i) {
+                    primes.add(i);
+                    break;
+                }
+            }
+            i += 2;
+        }
+        int result = 0;
+        for (int prime : primes) {
+            result += prime;
+        }
+        return result;
+    }
+}

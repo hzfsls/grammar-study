@@ -1,0 +1,30 @@
+def is_prime(n)
+    return false if n < 2
+    return true if n == 2
+    return false if n % 2 == 0
+    (3...Math.sqrt(n).to_i).step(2).each do |i|
+        return false if n % i == 0
+    end
+    true
+end
+
+def circular_primes(n)
+    count = 0
+    (2...n).each do |i|
+        if is_prime(i)
+            rotations = {}
+            str = i.to_s
+            (0...str.length).each do |j|
+                x = str[j..-1] + str[0...j]
+                rotations[x.to_i] = true
+            end
+            flag = true
+            rotations.each do |x|
+                flag = false if !is_prime(x)
+                break if !flag
+            end
+            count += 1 if flag
+        end
+    end
+    count
+end

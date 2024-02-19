@@ -1,0 +1,23 @@
+class Global {
+    public static int triangularPentagonalAndHexagonal(int n) {
+        Map<Integer, Boolean> ps = new HashMap<>();
+        int i = 1;
+        int c = (int) (0.5 * i * (3 * i - 1));
+        while (c < n) {
+            i++;
+            ps.put(c, true);
+            c = (int) (0.5 * i * (3 * i - 1));
+        }
+        i = 1;
+        c = i * (2 * i - 1);
+        int result = -1;
+        while (c < n) {
+            i++;
+            if (ps.containsKey(c)) {
+                result = c;
+            }
+            c = i * (2 * i - 1);
+        }
+        return result;
+    }
+}

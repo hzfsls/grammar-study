@@ -1,0 +1,33 @@
+class Global {
+    public static IList<string> GenPermutations(string s) {
+        if (s.Length <= 1) {
+            return s;
+        }
+        IList<string> result = new List<string>();
+        foreach (string perm in GenPermutations(s.Substring(1))) {
+            for (int i = 0; i < s.Length; i++) {
+                result.Add(perm.Substring(0, i) + s.Substring(0, 1) + perm.Substring(i));
+            }
+        }
+        return result;
+    }
+
+    public static int SubStringDivisibility(int n) {
+        int result = 0;
+        IList<int> primes = new List<int> { 2, 3, 5, 7, 11, 13, 17 };
+        string s = string.Join("", Enumerable.Range(0, n + 1));
+        foreach (string i in GenPermutations(s)) {
+            bool flag = true;
+            for (int j = 1; j < n - 1; j++) {
+                if (int.Parse(i.Substring(j, 3)) % primes[j - 1]!= 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                result += int.Parse(i);
+            }
+        }
+        return result;
+    }
+}

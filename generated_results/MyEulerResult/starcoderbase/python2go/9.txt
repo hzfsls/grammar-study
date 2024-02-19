@@ -1,0 +1,21 @@
+func SummationOfPrimes(n int) int {
+    primes := []int{2}
+    i := 3
+    for i <= n {
+        for _, p := range primes {
+            if i%p == 0 {
+                break
+            }
+            if p*p > i {
+                primes = append(primes, i)
+                break
+            }
+        }
+        i += 2
+    }
+    result := 0
+    for _, prime := range primes {
+        result += prime
+    }
+    return result
+}

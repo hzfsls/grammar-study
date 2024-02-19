@@ -1,0 +1,11 @@
+fn special_pythagorean_triplet(n: i32) -> i32 {
+    for a in 1..n {
+        for b in a..n {
+            let c = n - a - b;
+            if a * a + b * b == c * c {
+                return a * b * c;
+            }
+        }
+    }
+    -1
+}

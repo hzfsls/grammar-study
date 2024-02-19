@@ -1,0 +1,31 @@
+def genPermutations(s: String): collection.Seq[String] = {
+  if (s.length <= 1) {
+    return Seq(s)
+  }
+  val result = collection.mutable.ArrayBuffer[String]()
+  for (perm <- genPermutations(s.substring(1))) {
+    for (i <- 0 until s.length) {
+      result += perm.substring(0, i) + s.substring(0, 1) + perm.substring(i)
+    }
+  }
+  result
+}
+
+def subStringDivisibility(n: Int): Int = {
+  var result = 0
+  val primes = Seq(2, 3, 5, 7, 11, 13, 17)
+  val s = (0 until n + 1).map(_.toString).mkString
+  for (i <- genPermutations(s)) {
+    var flag = true
+    for (j <- 1 until n - 1) {
+      if (i.substring(j, j + 3).toInt % primes(j - 1)!= 0) {
+        flag = false
+        break
+      }
+    }
+    if (flag) {
+      result += i.toInt
+    }
+  }
+  result
+}
