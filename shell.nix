@@ -20,5 +20,5 @@ pkgs.mkShell {
     pkgs.ruby_3_3
     pkgs.rustc
     pkgs.scala_3
-    ];
+  ];
 }
