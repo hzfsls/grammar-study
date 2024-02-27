@@ -65,7 +65,7 @@ if args.lang is not None:
         raise Exception(f"Language not supported: {args.lang}")
     cur_langs = [args.lang]
 
-print(f"Loading problem description and solution...")
+# print(f"Loading problem description and solution...")
 with open(os.path.join(ROOT, "./data/example.ped"), "r") as f:
     desc_str = f.read()
     problems = parse(desc_str)
@@ -84,10 +84,10 @@ if args.idx is not None:
         raise Exception("args error")
 
 
-print(f"Loading project templates...")
+# print(f"Loading project templates...")
 single_file_templates = {}
 for lang in cur_langs:
-    print(f"Loading {lang} single file ...")
+    # print(f"Loading {lang} single file ...")
     single_file_templates[lang] = ProjectTemplate(
         os.path.join(ROOT, "./project-templates/single-file", lang)
     )
