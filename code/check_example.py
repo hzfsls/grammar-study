@@ -117,6 +117,7 @@ res = {}
 
 for lang in cur_langs:
     res[lang] = {}
+    print(f"Evaluating {lang} examples.")
     for idx in tqdm(idxs):
         problem = list(problems.values())[idx]
         solution = solutions[lang][problem.name]
